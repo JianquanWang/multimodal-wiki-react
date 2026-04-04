@@ -1,0 +1,119 @@
+{
+  "1": {
+    "titleCN": "机器人操控 - CALM成功率 (%)",
+    "titleEN": "Robot Manipulation — CALM Success Rate (%)",
+    "metricCN": "CALM成功率(%)",
+    "metricEN": "CALM Success (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "CALM (Brohan et al., 2023), RT-2 (Brohan et al., 2023), VoxPoser (Huang et al., 2023)",
+    "items": [
+      {
+        "name": "RT-2 (PaLM-E)",
+        "val": 62.1,
+        "color": "#c0392b",
+        "note": "End-to-end VL for robotics"
+      },
+      {
+        "name": "LLaRAM (7B + BC)",
+        "val": 54.8,
+        "color": "#27ae60",
+        "note": "LLaMA + behavior cloning"
+      },
+      {
+        "name": "VoxPoser (3B LLM)",
+        "val": 71.5,
+        "color": "#3498db",
+        "note": "LLM-generated code for manipulation"
+      },
+      {
+        "name": "MOKU (7B VLA)",
+        "val": 68.2,
+        "color": "#e67e22",
+        "note": "Mobile manipulation VLA"
+      },
+      {
+        "name": "pi0 (3B action model)",
+        "val": 74.6,
+        "color": "#9b59b6",
+        "note": "Physical intelligence action"
+      }
+    ]
+  },
+  "2": {
+    "titleCN": "模仿学习 - 任务完成率 (%)",
+    "titleEN": "Imitation Learning — Task Completion (%)",
+    "metricCN": "任务完成率(%)",
+    "metricEN": "Task Complete (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "CAL-QL (Kang et al., 2024), ACT (Zhao et al., 2023), Octo (Octo Model Team, 2024)",
+    "items": [
+      {
+        "name": "BC (Behavior Cloning, 7B)",
+        "val": 42.5,
+        "color": "#c0392b",
+        "note": "Plain behavior cloning"
+      },
+      {
+        "name": "CAL-QL (7B + Q-func)",
+        "val": 61.3,
+        "color": "#27ae60",
+        "note": "Conservative adaptive Q"
+      },
+      {
+        "name": "ACT (3D Diffusion)",
+        "val": 58.7,
+        "color": "#3498db",
+        "note": "Action Chunking Transformer"
+      },
+      {
+        "name": "Diffusion Policy (1B)",
+        "val": 55.4,
+        "color": "#e67e22",
+        "note": "Columbia diffusion policy"
+      },
+      {
+        "name": "Octo (9B open VLA)",
+        "val": 64.2,
+        "color": "#9b59b6",
+        "note": "Open Instruction VLA"
+      }
+    ]
+  },
+  "3": {
+    "titleCN": "导航 - 成功率 (Habitat %)",
+    "titleEN": "Navigation — Success Rate (%)",
+    "metricCN": "导航成功率(%)",
+    "metricEN": "Success (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "DUET (Chen et al., 2023), EgoNM (Karthik et al., 2024), VLN (Hong et al., 2020)",
+    "items": [
+      {
+        "name": "VLN (CLIP-desc, 7B)",
+        "val": 52.0,
+        "color": "#c0392b",
+        "note": "Vision Language Navigation"
+      },
+      {
+        "name": "DUET (ViT-L + GPT-2)",
+        "val": 64.5,
+        "color": "#27ae60",
+        "note": "DUET transformer-based VLN"
+      },
+      {
+        "name": "EgoNM (Ego4D, 1B)",
+        "val": 58.2,
+        "color": "#3498db",
+        "note": "Ego4D neural map model"
+      },
+      {
+        "name": "OVLM (OVLM-CLIP, 400M)",
+        "val": 48.1,
+        "color": "#e67e22",
+        "note": "Object VLN model"
+      }
+    ]
+  }
+}

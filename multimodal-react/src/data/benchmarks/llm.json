@@ -1,0 +1,262 @@
+{
+  "1": {
+    "titleCN": "注意力机制 - 显存占用 (GB)",
+    "titleEN": "Attention — Memory Footprint (GB)",
+    "metricCN": "显存占用 (GB)",
+    "metricEN": "Memory (GB)",
+    "unit": "GB",
+    "higherBetter": false,
+    "source": "FlashAttention paper (Dao et al., 2022-2024)",
+    "items": [
+      {"name": "FlashAttention-2 (A100-80GB)", "val": 18.5, "color": "#e67e22", "note": "FA2 on A100 80GB"},
+      {"name": "FlashAttention-3 (H100)", "val": 9.1, "color": "#f39c12", "note": "FA3 on H100 SXM5"},
+      {"name": "Ring Attention (8xA100)", "val": 7.2, "color": "#27ae60", "note": "Distributed, 1M ctx"},
+      {"name": "Standard Attention (1K ctx)", "val": 42.0, "color": "#c0392b", "note": "Baseline, 1K context"},
+      {"name": "Standard Attention (4K ctx)", "val": 168.0, "color": "#8e44ad", "note": "Baseline, 4K context (O(N2))"},
+      {"name": "Standard Attention (16K ctx)", "val": 672.0, "color": "#2c3e50", "note": "Baseline, 16K context O(N2)"},
+      {"name": "Sparse Attention (1K ctx)", "val": 21.0, "color": "#16a085", "note": "Approximate, 2x sparse"},
+      {"name": "GQA (70B, 4K ctx)", "val": 35.0, "color": "#2980b9", "note": "Grouped Query Attention"},
+      {"name": "MQA (70B, 4K ctx)", "val": 28.0, "color": "#8e44ad", "note": "Multi-Query Attention"}
+    ]
+  },
+  "2": {
+    "titleCN": "模型量化 - MMLU 精度对比 (%)",
+    "titleCN": "模型量化 - MMLU 精度对比 (%)",
+    "titleEN": "Quantization — MMLU Accuracy (%)",
+    "metricCN": "MMLU 精度 (%)",
+    "metricEN": "MMLU Accuracy (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "GPTQ (Frantar et al., 2023), AWQ (Lin et al., 2024), QLoRA (Dettmers et al., 2023)",
+    "items": [
+      {"name": "FP16 (Baseline, LLaMA-2-7B)", "val": 67.1, "color": "#27ae60", "note": "Full precision baseline"},
+      {"name": "GPTQ-4bit (LLaMA-7B)", "val": 63.4, "color": "#e67e22", "note": "GPTQ W4, 2x compression"},
+      {"name": "AWQ-4bit (LLaMA-7B)", "val": 64.2, "color": "#f39c12", "note": "AWQ W4, activation-aware"},
+      {"name": "SpQR-4bit (LLaMA-7B)", "val": 65.1, "color": "#e74c3c", "note": "SpQR W4, sparse quantized"},
+      {"name": "NF4 (QLoRA, LLaMA-7B)", "val": 62.8, "color": "#9b59b6", "note": "Normal Float 4-bit"},
+      {"name": "GPTQ-3bit (LLaMA-7B)", "val": 59.3, "color": "#c0392b", "note": "GPTQ W3, higher compression"},
+      {"name": "LLM.int8() (LLaMA-7B)", "val": 64.5, "color": "#1abc9c", "note": "Mixed INT8, GPTQ precursor"},
+      {"name": "BitNet b1.58 (3B)", "val": 56.2, "color": "#34495e", "note": "1.58-bit weights"}
+    ]
+  },
+  "3": {
+    "titleCN": "模型压缩 - 相对精度 (FP16=100%)",
+    "titleEN": "Compression — Accuracy vs FP16 Baseline (%)",
+    "metricCN": "相对FP16精度(%)",
+    "metricEN": "vs FP16 (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "Wanda (Sun et al., 2024), SparseGPT (Frantar & Alistarh, 2023)",
+    "items": [
+      {"name": "LLaMA-7B FP16 (1x, 13.5GB)", "val": 100.0, "color": "#27ae60", "note": "Baseline full precision"},
+      {"name": "Wanda (LLaMA-7B, 4bit)", "val": 95.8, "color": "#e67e22", "note": "Pruning + quantization"},
+      {"name": "SparseGPT (LLaMA-7B)", "val": 96.2, "color": "#f39c12", "note": "2:4 structured sparsity"},
+      {"name": "LoRA+ (LLaMA-7B)", "val": 97.1, "color": "#3498db", "note": "Efficient fine-tuning"},
+      {"name": "MiniLM (6B to 2B distillation)", "val": 93.5, "color": "#9b59b6", "note": "Distilled from 6B to 2B"},
+      {"name": "QLoRA (LLaMA-7B, 4bit)", "val": 94.3, "color": "#e74c3c", "note": "Quantized + LoRA fine-tuning"}
+    ]
+  },
+  "4": {
+    "titleCN": "参数高效微调 - 相对全量微调 (%)",
+    "titleEN": "PEFT — Relative Performance vs Full FT (%)",
+    "metricCN": "相对全量微调(%)",
+    "metricEN": "vs Full FT (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "LoRA (Hu et al., 2021), QLoRA (Dettmers et al., 2023), Adapter (Houlsby et al., 2019)",
+    "items": [
+      {"name": "Full Fine-tune (LLaMA-7B)", "val": 100.0, "color": "#27ae60", "note": "Full parameter fine-tuning"},
+      {"name": "LoRA (LLaMA-7B, R=16)", "val": 97.1, "color": "#3498db", "note": "Low-Rank Adaptation, R=16"},
+      {"name": "QLoRA (LLaMA-7B, R=64)", "val": 98.3, "color": "#e67e22", "note": "Quantized + LoRA, R=64"},
+      {"name": "Adapter (LLaMA-7B)", "val": 96.5, "color": "#f39c12", "note": "MLP Adapter layers"},
+      {"name": "Prefix Tuning (K=10)", "val": 95.2, "color": "#9b59b6", "note": "K=10 prefix tokens"},
+      {"name": "P-Tuning v2 (R=128)", "val": 95.8, "color": "#e74c3c", "note": "Continuous prompts"},
+      {"name": "IA3 (LLaMA-7B)", "val": 96.9, "color": "#1abc9c", "note": "Infused Adapter by Invoking LLMs"},
+      {"name": "LoRA-R8 (LLaMA-7B)", "val": 94.2, "color": "#34495e", "note": "LoRA rank=8, fewer params"}
+    ]
+  },
+  "5": {
+    "titleCN": "显存高效训练 - 最大Batch Size (A100-80GB)",
+    "titleEN": "Memory Training — Max Batch Size (A100-80GB)",
+    "metricCN": "最大Batch Size",
+    "metricEN": "Max Batch Size",
+    "unit": "",
+    "higherBetter": true,
+    "source": "ZeRO (Rajbhandari et al., 2020), DeepSpeed blog",
+    "items": [
+      {"name": "Naive (LLaMA-7B, fp32)", "val": 1, "color": "#c0392b", "note": "Naive full precision"},
+      {"name": "Naive (LLaMA-7B, fp16)", "val": 4, "color": "#e74c3c", "note": "Naive FP16"},
+      {"name": "ZeRO-1 (LLaMA-7B)", "val": 8, "color": "#f39c12", "note": "Sharded optimizer states"},
+      {"name": "ZeRO-2 (LLaMA-7B)", "val": 12, "color": "#e67e22", "note": "+ gradient partitioning"},
+      {"name": "ZeRO-3 (LLaMA-7B)", "val": 20, "color": "#27ae60", "note": "+ parameter partitioning"},
+      {"name": "FSDP (LLaMA-7B)", "val": 18, "color": "#3498db", "note": "Fully Sharded Data Parallel"},
+      {"name": "Gradient Checkpointing", "val": 3, "color": "#9b59b6", "note": "66% memory reduction"},
+      {"name": "CPU Offload (LLaMA-7B)", "val": 32, "color": "#1abc9c", "note": "With CPU memory offloading"}
+    ]
+  },
+  "6": {
+    "titleCN": "训练稳定性 - 收敛步数 (K steps)",
+    "titleEN": "Training Stability — Steps to 90% Perf (K)",
+    "metricCN": "收敛步数(K)",
+    "metricEN": "Steps to 90% (K)",
+    "unit": "K",
+    "higherBetter": false,
+    "source": "Prodigy (Diot et al., 2024), LAMB (You et al., 2020)",
+    "items": [
+      {"name": "AdamW (baseline, no warmup)", "val": 10.0, "color": "#c0392b", "note": "Standard AdamW, no warmup"},
+      {"name": "AdamW + Warmup (2K steps)", "val": 7.5, "color": "#e67e22", "note": "2K warmup steps"},
+      {"name": "AdamW + Linear LR Decay", "val": 8.2, "color": "#f39c12", "note": "With cosine decay"},
+      {"name": "Mixed Precision (FP16)", "val": 9.5, "color": "#3498db", "note": "FP16 + loss scaler"},
+      {"name": "BF16 Mixed Precision", "val": 9.2, "color": "#27ae60", "note": "More stable than FP16"},
+      {"name": "LAMB optimizer", "val": 5.5, "color": "#9b59b6", "note": "Layer-wise Adaptive (LAMB)"},
+      {"name": "8-bit Adam (K-FAC approx)", "val": 7.8, "color": "#e74c3c", "note": "Memory-efficient 2nd order"},
+      {"name": "Prodigy + dLLR", "val": 4.2, "color": "#1abc9c", "note": "Adaptive LR, better than AdamW"}
+    ]
+  },
+  "7": {
+    "titleCN": "对齐方法 - 人类偏好胜率 (HH-RLHF %)",
+    "titleEN": "Alignment — HH-RLHF Win Rate (%)",
+    "metricCN": "HH-RLHF胜率(%)",
+    "metricEN": "HH-RLHF Win Rate (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "DPO (Rafailov et al., 2023), RLHF (Ouyang et al., 2022), Constitutional AI (Bai et al., 2022)",
+    "items": [
+      {"name": "SFT (Behavior Cloning)", "val": 50.0, "color": "#95a5a6", "note": "Baseline behavior cloning"},
+      {"name": "RLHF (PPO, LLaMA-7B)", "val": 67.0, "color": "#27ae60", "note": "PPO-based RLHF"},
+      {"name": "DPO (LLaMA-7B, r=16)", "val": 69.5, "color": "#3498db", "note": "Direct Preference Optimization"},
+      {"name": "KTO (LLaMA-7B)", "val": 68.2, "color": "#e67e22", "note": "Kahneman-Taversky Optim"},
+      {"name": "RLAIF (LLaMA-7B)", "val": 65.5, "color": "#9b59b6", "note": "AI Feedback for alignment"},
+      {"name": "Constitutional AI (CAI)", "val": 70.1, "color": "#f39c12", "note": "Anthropic's CAI method"},
+      {"name": "SimPO (LLaMA-8B)", "val": 71.3, "color": "#e74c3c", "note": "Simple Preference Optimization"},
+      {"name": "GRPO (DeepSeek-7B)", "val": 72.8, "color": "#1abc9c", "note": "Group Relative Policy Opt"}
+    ]
+  },
+  "8": {
+    "titleCN": "数据效率 - Few-shot MMLU 精度 (%)",
+    "titleEN": "Data Efficiency — Few-shot MMLU (%)",
+    "metricCN": "MMLU 5-shot(%)",
+    "metricEN": "MMLU 5-shot (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "Phi-1.5 (Li et al., 2023), Self-Instruct (Wang et al., 2022), Textbook is All You Need (Yue et al., 2023)",
+    "items": [
+      {"name": "Full Dataset (LLaMA-7B)", "val": 67.1, "color": "#27ae60", "note": "14B tokens training"},
+      {"name": "Curriculum Sampling (50%)", "val": 64.5, "color": "#3498db", "note": "Curriculum sampling"},
+      {"name": "Random Subsample (50%)", "val": 61.2, "color": "#e74c3c", "note": "Random subsampling"},
+      {"name": "Self-Instruct (52K samples)", "val": 58.3, "color": "#9b59b6", "note": "Generated instructions 52K"},
+      {"name": "Textbook Quality (LLaMA-7B)", "val": 65.8, "color": "#f39c12", "note": "Educational quality data"},
+      {"name": "Phi-1.5 (1.3B, textbook)", "val": 55.0, "color": "#e67e22", "note": "High-quality small model"},
+      {"name": "Less is More Filtering", "val": 63.1, "color": "#1abc9c", "note": "Filtered noisy web data"},
+      {"name": "In-Context 5-shot (7B)", "val": 67.1, "color": "#34495e", "note": "With demonstrations"}
+    ]
+  },
+  "9": {
+    "titleCN": "推理优化 - 吞吐量 (tok/s/A100)",
+    "titleEN": "Inference — Throughput (tok/s/A100)",
+    "metricCN": "吞吐量(tok/s/A100)",
+    "metricEN": "Throughput (tok/s/A100)",
+    "unit": "tok/s",
+    "higherBetter": true,
+    "source": "vLLM paper (Kwon et al., 2023), TensorRT-LLM (NVIDIA), FlashDecoding (Dao et al., 2023)",
+    "items": [
+      {"name": "HuggingFace Naive (LLaMA-7B)", "val": 28, "color": "#c0392b", "note": "Naive HuggingFace serving"},
+      {"name": "vLLM (PagedAttention, 7B)", "val": 89, "color": "#27ae60", "note": "24x vs HF throughput"},
+      {"name": "TensorRT-LLM (7B, fp16)", "val": 142, "color": "#e67e22", "note": "NVIDIA optimized kernels"},
+      {"name": "TensorRT-LLM (7B, fp8)", "val": 215, "color": "#f39c12", "note": "FP8 quantization speedup"},
+      {"name": "FlashDecoding (LLaMA-7B)", "val": 105, "color": "#3498db", "note": "Parallel new-token generation"},
+      {"name": "Speculative Decoding (2x)", "val": 56, "color": "#9b59b6", "note": "4 draft tokens, 2x speedup"},
+      {"name": "Continuous Batching (naive)", "val": 45, "color": "#e74c3c", "note": "Naive batching"},
+      {"name": "DeepSpeed-Inference (7B)", "val": 78, "color": "#1abc9c", "note": "DeepSpeed ZeRO-Inference"}
+    ]
+  },
+  "10": {
+    "titleCN": "长上下文 - 最大可扩展上下文长度 (K tokens)",
+    "titleEN": "Long Context — Maximum Context Length (K tokens)",
+    "metricCN": "最大上下文长度(K)",
+    "metricEN": "Max Context (K tokens)",
+    "unit": "K",
+    "higherBetter": true,
+    "source": "YaRN (Peng et al., 2023), StreamingLLM (Xiao et al., 2023), Mamba (Gu & Dao, 2023)",
+    "items": [
+      {"name": "RoPE (LLaMA base 4K)", "val": 4, "color": "#95a5a6", "note": "Base LLaMA-2 context"},
+      {"name": "RoPE + YaRN (LLaMA-7B)", "val": 128, "color": "#3498db", "note": "YaRN extrapolation"},
+      {"name": "ALiBi (sliding window)", "val": 16, "color": "#27ae60", "note": "Attention with Linear Biases"},
+      {"name": "NTK-aware Scaling (4K to 1M)", "val": 1024, "color": "#f39c12", "note": "NTK-by-parts scaling"},
+      {"name": "StreamingLLM (unlimited)", "val": 9999, "color": "#e74c3c", "note": "Streaming prefix, no degradation"},
+      {"name": "Ring Attention (64 GPUs)", "val": 4096, "color": "#9b59b6", "note": "Distributed long context"},
+      {"name": "Mamba (SSM, O(N))", "val": 256, "color": "#1abc9c", "note": "Selective State Space"}
+    ]
+  },
+  "11": {
+    "titleCN": "RAG与知识 - 检索准确率 (NQ %)",
+    "titleEN": "RAG — Retrieval Accuracy on NQ (%)",
+    "metricCN": "NQ准确率(%)",
+    "metricEN": "NQ Accuracy (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "Self-RAG (Asai et al., 2023), Corrective RAG (Yan et al., 2024)",
+    "items": [
+      {"name": "Naive RAG (LLaMA-7B)", "val": 28.4, "color": "#c0392b", "note": "Naive retrieval + generation"},
+      {"name": "Self-RAG (LLaMA-7B)", "val": 34.1, "color": "#27ae60", "note": "Self-reflective RAG"},
+      {"name": "Corrective RAG", "val": 32.8, "color": "#e67e22", "note": "Error correction pipeline"},
+      {"name": "HyDE (Hypothetical Docs)", "val": 29.6, "color": "#3498db", "note": "HyDE embedding approach"},
+      {"name": "Hybrid Search (BM25+Vector)", "val": 31.2, "color": "#9b59b6", "note": "Sparse + dense fusion"},
+      {"name": "Fusion-in-Decoder", "val": 33.7, "color": "#f39c12", "note": "FiD cross-encoder fusion"}
+    ]
+  },
+  "12": {
+    "titleCN": "稀疏与专家 - 训练吞吐量 (K tok/s/GPU)",
+    "titleEN": "Sparse MoE — Training Throughput (K tok/s/GPU)",
+    "metricCN": "吞吐量(K tok/s/GPU)",
+    "metricEN": "Throughput (K tok/s/GPU)",
+    "unit": "K tok/s",
+    "higherBetter": true,
+    "source": "Mixtral (Jiang et al., 2024), DeepSeek-MoE (Dai et al., 2024), Switch Transformer (Fedus et al., 2022)",
+    "items": [
+      {"name": "Dense (LLaMA-7B, fp16)", "val": 2.1, "color": "#95a5a6", "note": "Dense baseline"},
+      {"name": "Mixtral-8x7B (46B, fp16)", "val": 8.4, "color": "#27ae60", "note": "8 experts, 2 active, MoE"},
+      {"name": "Switch Transformer (1.6T)", "val": 4.0, "color": "#3498db", "note": "1 expert per token, MoE"},
+      {"name": "DeepSeek-MoE (145B)", "val": 11.2, "color": "#f39c12", "note": "Fine-grained 64 experts"},
+      {"name": "GShard (600B, Top-2)", "val": 6.8, "color": "#9b59b6", "note": "Top-2 routing, sparse MoE"},
+      {"name": "ST-MoE (32B, 1.1x params)", "val": 3.5, "color": "#e74c3c", "note": "Stable Training MoE"}
+    ]
+  },
+  "13": {
+    "titleCN": "架构创新 - 能效 (K tok/J)",
+    "titleEN": "Architecture — Efficiency (K tok/J)",
+    "metricCN": "能效(K tok/J)",
+    "metricEN": "Efficiency (K tok/J)",
+    "unit": "K tok/J",
+    "higherBetter": true,
+    "source": "Mamba (Gu & Dao, 2023), RWKV (Peng et al., 2023), RetNet (Sun et al., 2023)",
+    "items": [
+      {"name": "Transformer (LLaMA-7B)", "val": 28.5, "color": "#95a5a6", "note": "Standard Transformer baseline"},
+      {"name": "Mamba (SSM, 2.8B)", "val": 42.0, "color": "#27ae60", "note": "Selective State Space, O(N)"},
+      {"name": "RWKV (RWKV-4, 3B)", "val": 38.5, "color": "#e67e22", "note": "Linear attention, RNN-like"},
+      {"name": "RetNet (2.7B)", "val": 36.2, "color": "#3498db", "note": "Retention network"},
+      {"name": "Hyena (20B, 64K ctx)", "val": 18.4, "color": "#9b59b6", "note": "Implicit conv替代attention"},
+      {"name": "Griffin (HSM, 2B)", "val": 35.1, "color": "#f39c12", "note": "Gated Linear Recurrent"},
+      {"name": "Mamba-2 (8B)", "val": 48.3, "color": "#e74c3c", "note": "Mamba v2, SSM+attention hybrid"},
+      {"name": "DeltaNet (Linear, 2B)", "val": 33.7, "color": "#1abc9c", "note": "Linearized time-varying SSM"}
+    ]
+  },
+  "14": {
+    "titleCN": "部署与服务 - 请求吞吐量 (req/s/V100)",
+    "titleEN": "Serving — Request Throughput (req/s/V100)",
+    "metricCN": "吞吐量(req/s)",
+    "metricEN": "Throughput (req/s)",
+    "unit": "req/s",
+    "higherBetter": true,
+    "source": "vLLM paper (Kwon et al., 2023), SGLang (Zheng et al., 2024), LightLLM (BAAI)",
+    "items": [
+      {"name": "Naive HF Pipeline (7B)", "val": 3.2, "color": "#c0392b", "note": "HuggingFace naive serving"},
+      {"name": "vLLM (PagedAttention, 7B)", "val": 24.8, "color": "#27ae60", "note": "24x vs HF throughput"},
+      {"name": "TGI v1.4 (LLaMA-7B)", "val": 18.5, "color": "#e67e22", "note": "HuggingFace TGI server"},
+      {"name": "TensorRT-LLM (7B, V100)", "val": 31.2, "color": "#3498db", "note": "CUDA kernels optimized"},
+      {"name": "DeepSpeed-Inference (7B)", "val": 21.4, "color": "#9b59b6", "note": "ZeRO-Inference + kernel opt"},
+      {"name": "LightLLM (7B)", "val": 26.1, "color": "#f39c12", "note": "Token attention, ~25% faster"},
+      {"name": "SGLang (RadixAttention, 7B)", "val": 29.3, "color": "#e74c3c", "note": "Batch with RadixAttention"}
+    ]
+  }
+}
