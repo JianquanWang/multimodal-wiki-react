@@ -1,0 +1,83 @@
+{
+  "1": {
+    "titleCN": "VLM效率 - 图像编码延迟 (ms)",
+    "titleEN": "VLM Efficiency — Image Encoding Latency (ms)",
+    "metricCN": "编码延迟(ms)",
+    "metricEN": "Latency (ms)",
+    "unit": "ms",
+    "higherBetter": false,
+    "source": "CLIP paper (Radford et al., 2021), EVA-CLIP (Sun et al., 2023), SigLIP (Zhai et al., 2023)",
+    "items": [
+      {"name": "CLIP ViT-L/14 (fp32)", "val": 85.2, "color": "#c0392b", "note": "Standard CLIP"},
+      {"name": "CLIP ViT-L/14 (fp16)", "val": 42.6, "color": "#e67e22", "note": "FP16 optimization"},
+      {"name": "SigLIP ViT-SO/14", "val": 52.1, "color": "#3498db", "note": "Sigmoid loss variant"},
+      {"name": "EVA-CLIP ViT-G (14)", "val": 156.0, "color": "#9b59b6", "note": "Largest EVA variant"},
+      {"name": "DeCLIP ViT-B/16", "val": 18.2, "color": "#f39c12", "note": "Data efficient CLIP"}
+    ]
+  },
+  "2": {
+    "titleCN": "多模态推理 - VQA准确率 (VQA-v2 %)",
+    "titleEN": "Multimodal Reasoning — VQA Accuracy (%)",
+    "metricCN": "VQA-v2准确率(%)",
+    "metricEN": "VQA-v2 Accuracy (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "LLaVA (Liu et al., 2023), InstructBLIP (Li et al., 2023), Qwen-VL (Bai et al., 2023)",
+    "items": [
+      {"name": "LLaVA-1.5 (7B)", "val": 78.5, "color": "#27ae60", "note": "LLaVA + vicuna baseline"},
+      {"name": "LLaVA-1.6 (7B)", "val": 79.8, "color": "#3498db", "note": "Dynamic high-res, 4K ctx"},
+      {"name": "InstructBLIP (7B)", "val": 77.6, "color": "#e67e22", "note": "Instruction-tuned BLIP"},
+      {"name": "MiniGPT-4 (7B)", "val": 65.2, "color": "#9b59b6", "note": "Alpaca-style instruction tuning"},
+      {"name": "Qwen-VL (7B)", "val": 79.4, "color": "#f39c12", "note": "Alibaba Qwen VL model"},
+      {"name": "InternVL (26B)", "val": 83.2, "color": "#e74c3c", "note": "Strong open-source VL model"}
+    ]
+  },
+  "3": {
+    "titleCN": "图像生成效率 - 生成速度 (steps/s)",
+    "titleEN": "Generation Efficiency — Steps/s (SDXL)",
+    "metricCN": "生成速度(steps/s)",
+    "metricEN": "Steps/s",
+    "unit": "steps/s",
+    "higherBetter": true,
+    "source": "LCM (Luo et al., 2023), SDXS (Shao et al., 2024), SD Turbo ( Sauer et al., 2023)",
+    "items": [
+      {"name": "SDXL (fp16, A100)", "val": 8.5, "color": "#95a5a6", "note": "FP16 baseline"},
+      {"name": "SDXL + LCM (4 steps)", "val": 22.1, "color": "#27ae60", "note": "Latent Consistency Model"},
+      {"name": "SDXL + SDXS (1 step)", "val": 28.4, "color": "#3498db", "note": "One-step distillation"},
+      {"name": "SDXL + Turbo (4 steps)", "val": 20.8, "color": "#e67e22", "note": "Adversarial distillation"},
+      {"name": "LCM-LoRA (SDXL, 4 steps)", "val": 18.5, "color": "#9b59b6", "note": "LoRA + LCM combination"}
+    ]
+  },
+  "4": {
+    "titleCN": "训练效率 - GPU小时 (A100)",
+    "titleEN": "Training Efficiency — GPU Hours (A100)",
+    "metricCN": "GPU小时",
+    "metricEN": "GPU Hours",
+    "unit": "hrs",
+    "higherBetter": false,
+    "source": "OpenCLIP (Cherti et al., 2023), SigLIP (Zhai et al., 2023), ALIGN (Jia et al., 2021)",
+    "items": [
+      {"name": "CLIP (ViT-B/32, 256 A100s)", "val": 18.0, "color": "#c0392b", "note": "OpenAI CLIP training"},
+      {"name": "OpenCLIP (ViT-L/14, 256 A100s)", "val": 14.5, "color": "#27ae60", "note": "LAION-400M training"},
+      {"name": "SigLIP (ViT-SO/14, 256 TPU)", "val": 12.0, "color": "#3498db", "note": "Google SigLIP"},
+      {"name": "ALIGN (ViT-L/14, 1024 TPU)", "val": 8.2, "color": "#e67e22", "note": "1.8B image-text pairs"},
+      {"name": "EVA-CLIP (ViT-G/14, 512 A100s)", "val": 22.0, "color": "#9b59b6", "note": "Large EVA-CLIP training"}
+    ]
+  },
+  "5": {
+    "titleCN": "图文匹配 - Recall@1 (Flickr30K %)",
+    "titleEN": "Retrieval — Recall@1 (Flickr30K %)",
+    "metricCN": "Recall@1(%)",
+    "metricEN": "Recall@1 (%)",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "OpenCLIP (Cherti et al., 2023), EVA-CLIP (Sun et al., 2023)",
+    "items": [
+      {"name": "CLIP ViT-L/14 (fp16)", "val": 75.2, "color": "#c0392b", "note": "OpenAI CLIP baseline"},
+      {"name": "OpenCLIP ViT-L/14", "val": 77.8, "color": "#27ae60", "note": "LAION-2B trained"},
+      {"name": "SigLIP ViT-SO/14", "val": 79.4, "color": "#3498db", "note": "Sigmoid pairwise ranking"},
+      {"name": "EVA-CLIP ViT-G/14", "val": 82.1, "color": "#9b59b6", "note": "EVA-CLIP ViT-G/14"},
+      {"name": "GIT2 (CLIP-finetuned)", "val": 78.5, "color": "#f39c12", "note": "Git2 transformer + CLIP"}
+    ]
+  }
+}

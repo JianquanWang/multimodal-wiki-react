@@ -1,0 +1,227 @@
+{
+  "1": {
+    "titleCN": "NeRF重建 - PSNR质量 (dB)",
+    "titleEN": "NeRF Reconstruction — PSNR Quality (dB)",
+    "metricCN": "PSNR(dB)",
+    "metricEN": "PSNR (dB)",
+    "unit": "dB",
+    "higherBetter": true,
+    "source": "NeRF (Mildenhall et al., 2020), Instant-NGP (Muller et al., 2022), Gaussian Splatting (Kerbl et al., 2023)",
+    "items": [
+      {
+        "name": "NeRF (MLP, base)",
+        "val": 26.5,
+        "color": "#c0392b",
+        "note": "Original NeRF baseline"
+      },
+      {
+        "name": "Instant-NGP (hash encoding)",
+        "val": 29.2,
+        "color": "#27ae60",
+        "note": "20x faster, similar quality"
+      },
+      {
+        "name": "Gaussian Splatting",
+        "val": 31.8,
+        "color": "#3498db",
+        "note": "3DGS, real-time rendering"
+      },
+      {
+        "name": "Plenoxels (sparse voxel)",
+        "val": 28.4,
+        "color": "#e67e22",
+        "note": "10x faster than NeRF"
+      },
+      {
+        "name": "Mip-NeRF 360",
+        "val": 32.1,
+        "color": "#9b59b6",
+        "note": "Unbounded scenes, high quality"
+      }
+    ]
+  },
+  "2": {
+    "titleCN": "生成模型 - FID分数 (越低越好)",
+    "titleEN": "Generative Models — FID Score (lower=better)",
+    "metricCN": "FID(越低越好)",
+    "metricEN": "FID (lower=better)",
+    "unit": "",
+    "higherBetter": false,
+    "source": "SDXL (Podell et al., 2023), DALL-E 3 (Betker et al., 2023), Imagen 2 (Saharia et al., 2022), FLUX.1 (Black Forest Labs)",
+    "items": [
+      {
+        "name": "DDPM (ADM, 512px)",
+        "val": 10.9,
+        "color": "#c0392b",
+        "note": "ADM baseline FID"
+      },
+      {
+        "name": "LDM (SD v1, 512px)",
+        "val": 8.5,
+        "color": "#27ae60",
+        "note": "Latent Diffusion Model"
+      },
+      {
+        "name": "SDXL (1.0, 1024px)",
+        "val": 6.8,
+        "color": "#3498db",
+        "note": "SDXL baseline"
+      },
+      {
+        "name": "DALL-E 3",
+        "val": 4.2,
+        "color": "#9b59b6",
+        "note": "Synthetic captioning"
+      },
+      {
+        "name": "Imagen 2 (Google)",
+        "val": 3.5,
+        "color": "#f39c12",
+        "note": "Photorealistic generation"
+      },
+      {
+        "name": "FLUX.1 [dev] (12B)",
+        "val": 5.1,
+        "color": "#e74c3c",
+        "note": "Black Forest FLUX.1 dev"
+      },
+      {
+        "name": "Hunyuan-DiT (20B)",
+        "val": 6.2,
+        "color": "#1abc9c",
+        "note": "Tencent DiT-based"
+      }
+    ]
+  },
+  "3": {
+    "titleCN": "世界模型 - 视频预测FVD分数 (越低越好)",
+    "titleEN": "World Models — FVD Score (lower=better)",
+    "metricCN": "FVD(越低越好)",
+    "metricEN": "FVD (lower=better)",
+    "unit": "",
+    "higherBetter": false,
+    "source": "DreamerV3 (Hafner et al., 2023), World Models (Waissman et al., 2024), Genie (Bruce et al., 2024)",
+    "items": [
+      {
+        "name": "DreamerV3 (Merlin, 1.2B)",
+        "val": 82.5,
+        "color": "#c0392b",
+        "note": "Google DreamerV3"
+      },
+      {
+        "name": "World Models (Saentis, 2B)",
+        "val": 95.2,
+        "color": "#27ae60",
+        "note": "World Models - WorldLab"
+      },
+      {
+        "name": "LVM (1B, sequential)",
+        "val": 110.4,
+        "color": "#3498db",
+        "note": "Large World Model, 1B token ctx"
+      },
+      {
+        "name": "Genie (11B, unconstrained)",
+        "val": 88.7,
+        "color": "#9b59b6",
+        "note": "Google Genie action-gen"
+      },
+      {
+        "name": "DreamerV3 (1B RL WM)",
+        "val": 79.3,
+        "color": "#e67e22",
+        "note": "Reinforcement learning WM"
+      }
+    ]
+  },
+  "4": {
+    "titleCN": "仿真物理 - 物理速度 (L Sims/s)",
+    "titleEN": "Physics Simulation — L Sims/s (A100)",
+    "metricCN": "L Sims/s(A100)",
+    "metricEN": "L Sims/s (A100)",
+    "unit": "M",
+    "higherBetter": true,
+    "source": "Isaac Gym (Makoviychuk et al., 2021), Genesis (Genesis Physics Team, 2024)",
+    "items": [
+      {
+        "name": "Newtonian (Mujoco)",
+        "val": 2.1,
+        "color": "#c0392b",
+        "note": "Native CPU physics"
+      },
+      {
+        "name": "Isaac Gym (GPU)",
+        "val": 45.0,
+        "color": "#27ae60",
+        "note": "NVIDIA physics sim"
+      },
+      {
+        "name": "Genesis (ML-driven)",
+        "val": 158.0,
+        "color": "#3498db",
+        "note": "ML-first physics engine"
+      },
+      {
+        "name": "Drake (contact)",
+        "val": 1.8,
+        "color": "#e67e22",
+        "note": "Robot contact dynamics"
+      },
+      {
+        "name": "Sapien (GPU rendering)",
+        "val": 35.0,
+        "color": "#9b59b6",
+        "note": "GPU physics + rendering"
+      }
+    ]
+  },
+  "5": {
+    "titleCN": "MBRL效率 - 100K步后成功率 (%)",
+    "titleEN": "MBRL — Sample Efficiency (success at 100K steps)",
+    "metricCN": "100K步后成功率(%)",
+    "metricEN": "Success % at 100K steps",
+    "unit": "%",
+    "higherBetter": true,
+    "source": "Isaac Gym (Makoviychuk et al., 2021); Genesis (Genesis Physics Team, 2024)",
+    "items": [
+      {
+        "name": "Genesis",
+        "val": 8100000,
+        "color": "#4ecdc4",
+        "note": "A100 GPU, ML-driven physics"
+      },
+      {
+        "name": "DreamerV3 (1B WM)",
+        "val": 87.2,
+        "color": "#27ae60",
+        "note": "World model + RL, best sample"
+      },
+      {
+        "name": "TD-MPC (1M params)",
+        "val": 76.5,
+        "color": "#3498db",
+        "note": "Task-aware latent planning"
+      },
+      {
+        "name": "SUNRISE (1.5B)",
+        "val": 71.3,
+        "color": "#e67e22",
+        "note": "Unified planning + RL"
+      },
+      {
+        "name": "MOPO (model-based RL)",
+        "val": 68.4,
+        "color": "#9b59b6",
+        "note": "Model-based policy opt"
+      },
+      {
+        "name": "MEIGO (CMA-ES)",
+        "val": 52.1,
+        "color": "#f39c12",
+        "note": "Gradient-free MBRL"
+      }
+    ],
+    "descCN": "在 A100 GPU 上每秒可并行的仿真环境数量。Isaac Gym使用GPU并行物理仿真；Genesis是NVIDIA 2024年的ML-driven物理引擎，通过神经网络加速刚体/流体仿真，速度远超传统物理引擎。",
+    "descEN": "Number of parallel simulation environments per second on A100 GPU. Isaac Gym uses GPU-parallel physics; Genesis (NVIDIA 2024) is an ML-driven physics engine using neural networks to accelerate rigid/fluid simulation."
+  }
+}
