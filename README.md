@@ -2,7 +2,7 @@
 
 🧠 Comprehensive guide to multimodal AI techniques — **LLM / VLM / VLA / World Models**
 
-🌐 **Live Demo:** https://multimodalwiki.ai
+🌐 **Live Demo:** https://jianquanwang.github.io/multimodal-wiki-react
 
 > A curated, practical guide covering 106+ techniques across four domains: LLM efficiency, Vision-Language Models, Vision-Language-Action (robotics), and World Models.
 
