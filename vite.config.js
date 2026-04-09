@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/multimodal-wiki-react/',
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
