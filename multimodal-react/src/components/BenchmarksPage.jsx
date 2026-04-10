@@ -5,7 +5,6 @@ function BenchmarksPage({ benches, cats, techs, isCN, onOpenTech }) {
   const [activeBenchCat, setActiveBenchCat] = useState(() => benchKeys[0] ? parseInt(benchKeys[0]) : null);
   const [sortBy, setSortBy] = useState('val'); // 'val' | 'name'
 
-  // Reset when benches change (topic switch) - use benchKeys.length to avoid infinite loop
   useEffect(() => {
     if (benchKeys.length > 0) {
       setActiveBenchCat(parseInt(benchKeys[0]));
@@ -43,8 +42,8 @@ function BenchmarksPage({ benches, cats, techs, isCN, onOpenTech }) {
         </h2>
         <p style={{ fontSize: '0.82rem', color: 'var(--text3)' }}>
           {isCN
-            ? `按 ${cur.metricCN} 可视化对比 · 数值越高越好`
-            : `Visual comparison by ${cur.metricEN} · Higher is better`}
+            ? `按 ${cur.metricCN} 可视化对比 · ${cur.higherBetter !== false ? '数值越高越好' : '数值越低越好'}`
+            : `Visual comparison by ${cur.metricEN} · ${cur.higherBetter !== false ? 'Higher is better' : 'Lower is better'}`}
         </p>
       </div>
 
@@ -58,6 +57,32 @@ function BenchmarksPage({ benches, cats, techs, isCN, onOpenTech }) {
           </button>
         ))}
       </div>
+
+      {/* Benchmark description */}
+      {cur.descCN && (
+        <div style={{
+          background: 'var(--card2)',
+          border: '1px solid var(--border)',
+          borderRadius: 10,
+          padding: '14px 16px',
+          marginBottom: 20,
+          fontSize: '0.8rem',
+          lineHeight: 1.65,
+          color: 'var(--text2)',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+            <span style={{ color: 'var(--accent3)', fontSize: '0.9rem', marginTop: 2, flexShrink: 0 }}>
+              <i className="fas fa-info-circle"></i>
+            </span>
+            <div>
+              <div style={{ color: 'var(--text)', fontWeight: 600, marginBottom: 5, fontSize: '0.78rem' }}>
+                {isCN ? '📊 指标说明' : '📊 Metric Explanation'}
+              </div>
+              <div>{isCN ? cur.descCN : cur.descEN}</div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Summary stats */}
       <div style={{ display: 'flex', gap: 16, marginBottom: 20, flexWrap: 'wrap' }}>
@@ -100,7 +125,6 @@ function BenchmarksPage({ benches, cats, techs, isCN, onOpenTech }) {
           return (
             <div key={i} className="bar-row" style={{ cursor: 'pointer' }}
               onClick={() => {
-                // Find the tech in techs that matches this bench item by keyword
                 const key = item.name.replace(/\s*\([^)]*\)/g, '').split(/\s+/)[0].toLowerCase();
                 const matched = techs.find(t =>
                   t.name.toLowerCase().includes(key) ||

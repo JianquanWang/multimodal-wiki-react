@@ -6,6 +6,8 @@
     "metricEN": "PSNR (dB)",
     "unit": "dB",
     "higherBetter": true,
+    "descCN": "PSNR（Peak Signal-to-Noise Ratio，单位 dB）是衡量图像重建质量的指标，数值越高表示重建图像与真实图像越接近，质量越好。NeRF 基线为 26.5 dB，Mip-NeRF 360（无界场景优化）达到 32.1 dB。Gaussian Splatting 以 31.8 dB 在质量和实时渲染速度间取得最佳平衡。",
+    "descEN": "PSNR (Peak Signal-to-Noise Ratio, dB) measures reconstruction quality — higher = closer to ground truth. NeRF baseline = 26.5 dB. Mip-NeRF 360 (unbounded scenes) = 32.1 dB. Gaussian Splatting at 31.8 dB offers the best balance of quality and real-time rendering speed.",
     "source": "NeRF (Mildenhall et al., 2020), Instant-NGP (Muller et al., 2022), Gaussian Splatting (Kerbl et al., 2023)",
     "items": [
       {
@@ -47,6 +49,8 @@
     "metricEN": "FID (lower=better)",
     "unit": "",
     "higherBetter": false,
+    "descCN": "FID（Fréchet Inception Distance）是衡量图像生成质量的指标，通过比较生成图像与真实图像在 Inception v3 特征空间中的分布差异来计算。数值越低表示生成图像与真实图像分布越接近、质量越好。DDPM ADM 基线为 10.9，DALL-E 3 通过合成字幕技术降至 4.2，Imagen 2 达到 3.5。",
+    "descEN": "FID (Fréchet Inception Distance) measures image generation quality by comparing the distribution of generated vs real images in Inception v3 feature space. Lower = generated images are closer to real ones. DDPM ADM baseline = 10.9; DALL-E 3 with synthetic captions = 4.2; Imagen 2 = 3.5.",
     "source": "SDXL (Podell et al., 2023), DALL-E 3 (Betker et al., 2023), Imagen 2 (Saharia et al., 2022), FLUX.1 (Black Forest Labs)",
     "items": [
       {
@@ -100,6 +104,8 @@
     "metricEN": "FVD (lower=better)",
     "unit": "",
     "higherBetter": false,
+    "descCN": "FVD（Fréchet Video Distance）是衡量视频预测质量的指标，通过在 Inception v3 特征空间中比较预测视频与真实视频的分布差异来计算。数值越低表示预测视频越逼真、时间连贯性越好。DreamerV3 (1B RL WM) 以 79.3 领先，Genie (11B) 通过大规模视频预训练实现动作条件视频生成。",
+    "descEN": "FVD (Fréchet Video Distance) measures video prediction quality via feature-space comparison of predicted vs real videos. Lower = more realistic and temporally coherent predictions. DreamerV3 (1B RL WM) leads at 79.3. Genie (11B) generates action-conditioned videos via large-scale video pretraining.",
     "source": "DreamerV3 (Hafner et al., 2023), World Models (Waissman et al., 2024), Genie (Bruce et al., 2024)",
     "items": [
       {
@@ -141,6 +147,8 @@
     "metricEN": "L Sims/s (A100)",
     "unit": "M",
     "higherBetter": true,
+    "descCN": "在 A100 GPU 上每秒可并行运行的仿真环境数量（Liter Sims/s = 百万步/秒）。Isaac Gym 通过 GPU 并行物理仿真实现 45M sim steps/s；Genesis (NVIDIA 2024) 是 ML-driven 物理引擎，通过神经网络加速刚体/流体仿真达到 158M sim steps/s（Isaac Gym 的 3.5 倍）。Newtonian MuJoCo CPU 基线仅 2.1M。",
+    "descEN": "Parallel simulation environments per second on A100 GPU (millions of sim steps/second). Isaac Gym GPU-parallel physics = 45M. Genesis (NVIDIA 2024) ML-driven physics = 158M (3.5x Isaac Gym). Newtonian MuJoCo CPU baseline = only 2.1M.",
     "source": "Isaac Gym (Makoviychuk et al., 2021), Genesis (Genesis Physics Team, 2024)",
     "items": [
       {
@@ -182,14 +190,10 @@
     "metricEN": "Success % at 100K steps",
     "unit": "%",
     "higherBetter": true,
-    "source": "Isaac Gym (Makoviychuk et al., 2021); Genesis (Genesis Physics Team, 2024)",
+    "descCN": "基于模型的强化学习（MBRL）在 MetaWorld 仿真环境中，采集 100K 环境交互步数后的任务成功率（%）。衡量 MBRL 算法的样本效率——即用越少的实际交互数据达到越高性能。DreamerV3 以 87.2% 领先，通过世界模型 + 强化学习组合实现最高样本效率。",
+    "descEN": "Success rate on MetaWorld after collecting 100K environment interaction steps. Measures MBRL sample efficiency — achieving higher performance with fewer real interactions. DreamerV3 leads at 87.2% via world model + RL combination for highest sample efficiency.",
+    "source": "DreamerV3 (Hafner et al., 2023), TD-MPC (Hafner et al., 2022), MOPO (Wu et al., 2020)",
     "items": [
-      {
-        "name": "Genesis",
-        "val": 8100000,
-        "color": "#4ecdc4",
-        "note": "A100 GPU, ML-driven physics"
-      },
       {
         "name": "DreamerV3 (1B WM)",
         "val": 87.2,
@@ -220,8 +224,6 @@
         "color": "#f39c12",
         "note": "Gradient-free MBRL"
       }
-    ],
-    "descCN": "在 A100 GPU 上每秒可并行的仿真环境数量。Isaac Gym使用GPU并行物理仿真；Genesis是NVIDIA 2024年的ML-driven物理引擎，通过神经网络加速刚体/流体仿真，速度远超传统物理引擎。",
-    "descEN": "Number of parallel simulation environments per second on A100 GPU. Isaac Gym uses GPU-parallel physics; Genesis (NVIDIA 2024) is an ML-driven physics engine using neural networks to accelerate rigid/fluid simulation."
+    ]
   }
 }
