@@ -2521,6 +2521,1029 @@ export const TOPICS =
             bibtex: "Lee et al., 2023 — RLAIF (arXiv 2023)"
           }
         ]
+      },
+      {
+        id: 21,
+        name: "Sparse Attention",
+        cn: "稀疏注意力",
+        desc_cn: "通过固定或动态稀疏模式减少attention的O(N²)计算量，将复杂度降至O(n√n)。包含局部窗口、全局token和随机注意力模式的组合，适用于长序列建模。",
+        desc_en: "Reduces attention's O(N²) cost via fixed or dynamic sparse patterns, dropping complexity to O(n√n). Combines local window, global token, and random attention patterns for long-sequence modeling.",
+        paper: "Child et al., 2019 — Sparse Transformers — arXiv:1904.10509",
+        arxiv: "https://arxiv.org/abs/1904.10509",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [1],
+        bench: [
+          {
+            m: "Sparse Attn",
+            metric: "Speedup",
+            ds: "64K seq",
+            v: "10x",
+            n: "vs dense attention"
+          }
+        ],
+        papers: [
+          {
+            name: "Sparse Transformers",
+            title: "Generating Long Sequences with Sparse Transformers",
+            authors: "Child, Gray, Radford, Sutskever",
+            year: "2019",
+            arxiv: "https://arxiv.org/abs/1904.10509",
+            github: "",
+            huggingface: "",
+            bibtex: "Child et al., 2019 — Sparse Transformers (arXiv 2019)"
+          }
+        ]
+      },
+      {
+        id: 22,
+        name: "Kernel Methods",
+        cn: "核方法",
+        desc_cn: "通过线性注意力核近似Softmax attention，将O(N²)复杂度降至O(N)。包括Performer的随机特征映射、Linear Transformers的核近似等方法。",
+        desc_en: "Approximates Softmax attention via linear kernels, reducing O(N²) to O(N). Includes Performer's random feature mapping, Linear Transformers kernel approximation, and related methods.",
+        paper: "Katharopoulos et al., 2020 — Linear Transformers — arXiv:2006.16235",
+        arxiv: "https://arxiv.org/abs/2006.16235",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [1],
+        bench: [
+          {
+            m: "Linear Attn",
+            metric: "Speedup",
+            ds: "4K seq",
+            v: "3x",
+            n: "vs softmax attention"
+          }
+        ],
+        papers: [
+          {
+            name: "Linear Transformers",
+            title: "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention",
+            authors: "Katharopoulos et al.",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/2006.16235",
+            github: "https://github.com/ltdrung/LinearTransformer",
+            huggingface: "",
+            bibtex: "Katharopoulos et al., 2020 — Linear Transformers (ICML 2020)"
+          }
+        ]
+      },
+      {
+        id: 23,
+        name: "NF4/INT4",
+        cn: "NF4/INT4量化",
+        desc_cn: "4-bit NormalFloat (NF4) 是针对正态分布权重的信息论最优量化格式，配合双重量化和分页优化器实现QLoRA，在单卡48GB显存下微调65B模型。",
+        desc_en: "4-bit NormalFloat (NF4) is information-theoretically optimal for normally distributed weights. Combined with double quantization and paged optimizers, QLoRA enables fine-tuning a 65B model on a single 48GB GPU.",
+        paper: "Dettmers et al., 2023 — QLoRA — arXiv:2305.14314",
+        arxiv: "https://arxiv.org/abs/2305.14314",
+        badge: "🟢",
+        diff: "Advanced",
+        categories: [2],
+        bench: [
+          {
+            m: "NF4 65B",
+            metric: "Memory",
+            ds: "single GPU",
+            v: "48GB",
+            n: "vs 130GB for FP16"
+          }
+        ],
+        papers: [
+          {
+            name: "QLoRA",
+            title: "QLoRA: Efficient Finetuning of Quantized LLMs",
+            authors: "Dettmers et al.",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2305.14314",
+            github: "https://github.com/artidoro/qlora",
+            huggingface: "https://huggingface.co/models?search=qlora",
+            bibtex: "Dettmers et al., 2023 — QLoRA (NeurIPS 2023)"
+          }
+        ]
+      },
+      {
+        id: 24,
+        name: "QAT",
+        cn: "量化感知训练",
+        desc_cn: "在训练阶段模拟量化误差，使模型对低精度权重具有鲁棒性。相比训练后量化（PTQ），QAT能更好地保持模型精度，但需要额外的训练开销。",
+        desc_en: "Simulates quantization error during training, making models robust to low-precision weights. QAT preserves model accuracy better than post-training quantization (PTQ), but requires additional training overhead.",
+        paper: "Jacob et al., 2018 — Quantization and Training of Neural Networks — arXiv:1712.05877",
+        arxiv: "https://arxiv.org/abs/1712.05877",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [2],
+        bench: [
+          {
+            m: "QAT FP16",
+            metric: "Accuracy",
+            ds: "ImageNet",
+            v: "99%",
+            n: "vs FP32 baseline"
+          }
+        ],
+        papers: [
+          {
+            name: "Quantization and Training",
+            title: "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference",
+            authors: "Jacob et al.",
+            year: "2018",
+            arxiv: "https://arxiv.org/abs/1712.05877",
+            github: "https://github.com/tensorflow/tensorflow",
+            huggingface: "",
+            bibtex: "Jacob et al., 2018 — Quantization and Training (CVPR 2018)"
+          }
+        ]
+      },
+      {
+        id: 25,
+        name: "ZeroQuant",
+        cn: "ZeroQuant",
+        desc_cn: "一个包含三重Co腾换的INT8量化框架：用于权重和激活的按通道对称量化、用于优化的动态量化、以及适用于CNN和Transformer的统一量化协议。",
+        desc_en: "An INT8 quantization framework with three-way co-design: channel-wise symmetric quantization for weights/activations, dynamic quantization for optimizers, and a unified quantization protocol for both CNNs and Transformers.",
+        paper: "Yao et al., 2022 — ZeroQuant — arXiv:2204.07387",
+        arxiv: "https://arxiv.org/abs/2204.07387",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [2],
+        bench: [
+          {
+            m: "ZeroQuant BERT",
+            metric: "Speedup",
+            ds: "BERT-Large",
+            v: "2x",
+            n: "vs FP16"
+          }
+        ],
+        papers: [
+          {
+            name: "ZeroQuant",
+            title: "ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers",
+            authors: "Yao et al.",
+            year: "2022",
+            arxiv: "https://arxiv.org/abs/2204.07387",
+            github: "https://github.com/facebookresearch/llama",
+            huggingface: "",
+            bibtex: "Yao et al., 2022 — ZeroQuant (ACL 2022)"
+          }
+        ]
+      },
+      {
+        id: 26,
+        name: "Knowledge Distillation",
+        cn: "知识蒸馏",
+        desc_cn: "将大模型(teacher)的知识转移给小模型(student)，通过软化logits、特征匹配或KL散度损失实现。经典方法包括DistilBERT（压缩40%参数，保留97%性能）和MiniLM（蒸馏学生自注意力）。",
+        desc_en: "Transfers knowledge from large teacher models to small student models via softened logits, feature matching, or KL divergence loss. Classic methods include DistilBERT (40% smaller, 97% performance) and MiniLM (distills self-attention).",
+        paper: "Hinton et al., 2015 — Distilling the Knowledge in a Neural Network — arXiv:1503.02531",
+        arxiv: "https://arxiv.org/abs/1503.02531",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [3],
+        bench: [
+          {
+            m: "DistilBERT",
+            metric: "GLUE",
+            ds: "BERT-Large",
+            v: "97%",
+            n: "vs full BERT"
+          }
+        ],
+        papers: [
+          {
+            name: "DistilBERT",
+            title: "DistilBERT, a Distilled Version of BERT: Smaller, Faster, Cheaper and Lighter",
+            authors: "Sanh et al.",
+            year: "2019",
+            arxiv: "https://arxiv.org/abs/1910.01108",
+            github: "https://github.com/huggingface/transformers",
+            huggingface: "https://huggingface.co/distilbert",
+            bibtex: "Sanh et al., 2019 — DistilBERT (NeurIPS 2019)"
+          }
+        ]
+      },
+      {
+        id: 27,
+        name: "Pruning",
+        cn: "剪枝",
+        desc_cn: "通过移除不重要的权重或结构化组件（注意力头、FFN通道）来压缩LLM。方法包括幅度剪枝、梯度剪枝、以及基于TPR的迭代剪枝，能在保持核心性能的同时显著降低计算成本。",
+        desc_en: "Compresses LLMs by removing unimportant weights or structural components (attention heads, FFN channels). Methods include magnitude pruning, gradient pruning, and iterative pruning based on TPUs, significantly reducing compute while maintaining core performance.",
+        paper: "LeCun et al., 1990 — Optimal Brain Damage — arXiv:2106.04495",
+        arxiv: "https://arxiv.org/abs/2106.04495",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [3],
+        bench: [
+          {
+            m: "Sparse GPT",
+            metric: "Compression",
+            ds: "GPT-J 6B",
+            v: "50%",
+            n: "sparse without loss"
+          }
+        ],
+        papers: [
+          {
+            name: "SparseGPT",
+            title: "SparseGPT: Massive Language Models Can Be Accurately Pruned in One Step",
+            authors: "Frantar and Alistarh",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2301.00774",
+            github: "https://github.com/IST-DASLab/sparsegpt",
+            huggingface: "",
+            bibtex: "Frantar and Alistarh, 2023 — SparseGPT (arXiv 2023)"
+          }
+        ]
+      },
+      {
+        id: 28,
+        name: "LTH",
+        cn: "彩票假说",
+        desc_cn: "彩票假说(LTH)指出，训练彩票：随机初始化的密集网络包含一个中奖彩票——一个当单独训练时能达到与原始网络相同性能的子网络。用于LLM时需要 iterative magnitude pruning (IMP) 来寻找获胜ticket。",
+        desc_en: "The Lottery Ticket Hypothesis states that a randomly initialized dense network contains a winning ticket—a subnet that, when trained alone, reaches the same performance as the original. For LLMs, iterative magnitude pruning (IMP) is needed to find winning tickets.",
+        paper: "Frankle and Carbin, 2019 — The Lottery Ticket Hypothesis — arXiv:1803.03635",
+        arxiv: "https://arxiv.org/abs/1803.03635",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [3],
+        bench: [
+          {
+            m: "LTH BERT",
+            metric: "Accuracy",
+            ds: "SST-2",
+            v: "95%",
+            n: "with 10% params"
+          }
+        ],
+        papers: [
+          {
+            name: "Lottery Ticket Hypothesis",
+            title: "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+            authors: "Frankle and Carbin",
+            year: "2019",
+            arxiv: "https://arxiv.org/abs/1803.03635",
+            github: "",
+            huggingface: "",
+            bibtex: "Frankle and Carbin, 2019 — The Lottery Ticket Hypothesis (ICLR 2019)"
+          }
+        ]
+      },
+      {
+        id: 29,
+        name: "Weight Sharing",
+        cn: "权重共享",
+        desc_cn: "通过在模型的不同位置共享相同权重来减少参数量，如ALBERT使用跨层权重共享、Universal Transformer使用循环权重共享。显著减少参数量的同时保持模型性能。",
+        desc_en: "Reduces parameter count by sharing the same weights across different parts of the model. ALBERT uses cross-layer weight sharing; Universal Transformers use recurrent weight sharing. Significantly reduces parameters while maintaining performance.",
+        paper: "Lan et al., 2020 — ALBERT — arXiv:1909.11942",
+        arxiv: "https://arxiv.org/abs/1909.11942",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [3],
+        bench: [
+          {
+            m: "ALBERT",
+            metric: "Params",
+            ds: "ALBERT-xxlarge",
+            v: "-89%",
+            n: "vs BERT-large"
+          }
+        ],
+        papers: [
+          {
+            name: "ALBERT",
+            title: "ALBERT: A Lite BERT for Self-Supervised Learning of Language Representations",
+            authors: "Lan et al.",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/1909.11942",
+            github: "https://github.com/google-research/ALBERT",
+            huggingface: "https://huggingface.co/albert-base-v2",
+            bibtex: "Lan et al., 2020 — ALBERT (ICLR 2020)"
+          }
+        ]
+      },
+      {
+        id: 30,
+        name: "P-Tuning",
+        cn: "P-Tuning",
+        desc_cn: "使用可训练的连续prompt embedding替代离散自然语言prompt，稳定训练并显著提升NLU任务性能。P-Tuning v2进一步引入深度prompt，在每一层都添加prompt embedding。",
+        desc_en: "Uses trainable continuous prompt embeddings instead of discrete natural language prompts, stabilizing training and significantly improving NLU task performance. P-Tuning v2 introduces deep prompts with embeddings added at every layer.",
+        paper: "Liu et al., 2021 — GPT Understands, Too — arXiv:2103.10385",
+        arxiv: "https://arxiv.org/abs/2103.10385",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [4],
+        bench: [
+          {
+            m: "P-Tuning",
+            metric: "LAMA",
+            ds: "LAMA benchmark",
+            v: "+8.4%",
+            n: "vs finetuning"
+          }
+        ],
+        papers: [
+          {
+            name: "P-Tuning",
+            title: "GPT Understands, Too",
+            authors: "Liu et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2103.10385",
+            github: "https://github.com/THUDM/P-tuning",
+            huggingface: "",
+            bibtex: "Liu et al., 2021 — P-Tuning (arXiv 2103.10385)"
+          }
+        ]
+      },
+      {
+        id: 31,
+        name: "IA³",
+        cn: "IA³",
+        desc_cn: "通过 infuse学习的激活比率向量来增强注意力键和FFN中间层，同时抑制其他激活。一种极简的adapter方法，仅用约0.1%的可训练参数就实现了与全量微调相当的性能。",
+        desc_en: "Enhances attention key and FFN intermediate layers via infused learned activation ratio vectors while suppressing other activations. An ultra-minimalist adapter method that achieves full fine-tuning performance with only ~0.1% trainable parameters.",
+        paper: "Liu et al., 2022 — IA³ — arXiv:2205.05638",
+        arxiv: "https://arxiv.org/abs/2205.05638",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [4],
+        bench: [
+          {
+            m: "IA³ T0",
+            metric: "BBH",
+            ds: "BBH benchmark",
+            v: "99%",
+            n: "vs finetuned T0"
+          }
+        ],
+        papers: [
+          {
+            name: "IA³",
+            title: "Infused Adapter by Inhibiting and Amplifying Inner Activations",
+            authors: "Liu et al.",
+            year: "2022",
+            arxiv: "https://arxiv.org/abs/2205.05638",
+            github: "https://github.com/rthree/three",
+            huggingface: "",
+            bibtex: "Liu et al., 2022 — IA³ (arXiv 2022)"
+          }
+        ]
+      },
+      {
+        id: 32,
+        name: "CPU/NVMe Offload",
+        cn: "CPU/NVMe卸载",
+        desc_cn: "将优化器状态、梯度或模型参数卸载到CPU内存或NVMe磁盘，通过高速PCIe传输。DeepSpeed ZeRO-Infinity实现了超过1 trillion参数的模型在有限GPU显存下的训练。",
+        desc_en: "Offloads optimizer states, gradients, or model parameters to CPU memory or NVMe disks via high-speed PCIe. DeepSpeed ZeRO-Infinity enables training models with over 1 trillion parameters in limited GPU memory.",
+        paper: "Rajbhandari et al., 2021 — ZeRO-Infinity — arXiv:2104.07857",
+        arxiv: "https://arxiv.org/abs/2104.07857",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [5],
+        bench: [
+          {
+            m: "ZeRO-Infinity",
+            metric: "Model Size",
+            ds: "single A100",
+            v: "1T+ params",
+            n: "via NVMe offload"
+          }
+        ],
+        papers: [
+          {
+            name: "ZeRO-Infinity",
+            title: "ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Model Parallelism",
+            authors: "Rajbhandari et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2104.07857",
+            github: "https://github.com/microsoft/DeepSpeed",
+            huggingface: "",
+            bibtex: "Rajbhandari et al., 2021 — ZeRO-Infinity (SC 2021)"
+          }
+        ]
+      },
+      {
+        id: 33,
+        name: "Warmup/Cosine LR",
+        cn: "预热/余弦学习率",
+        desc_cn: "学习率预热（从很小的值逐步增加到峰值）避免早期过拟合，然后通过余弦衰减曲线平滑降低到最小值。CosineAnnealingWithWarmup是LLM训练的标准学习率调度器。",
+        desc_en: "Learning rate warmup (gradually increasing from a small value to peak) avoids early overfitting, then smoothly decreases to the minimum value via a cosine decay curve. CosineAnnealingWithWarmup is the standard LR scheduler for LLM training.",
+        paper: "Loshchilov and Hutter, 2017 — SGDR — arXiv:1608.03983",
+        arxiv: "https://arxiv.org/abs/1608.03983",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [6],
+        bench: [
+          {
+            m: "Cosine LR",
+            metric: "Final Loss",
+            ds: "C4 dataset",
+            v: "-12%",
+            n: "vs constant LR"
+          }
+        ],
+        papers: [
+          {
+            name: "SGDR",
+            title: "SGDR: Stochastic Gradient Descent with Warm Restarts",
+            authors: "Loshchilov and Hutter",
+            year: "2017",
+            arxiv: "https://arxiv.org/abs/1608.03983",
+            github: "",
+            huggingface: "",
+            bibtex: "Loshchilov and Hutter, 2017 — SGDR (ICLR 2017)"
+          }
+        ]
+      },
+      {
+        id: 34,
+        name: "AdamW",
+        cn: "AdamW优化器",
+        desc_cn: "带权重衰减的Adam优化器变体，将权重衰减与梯度更新解耦。LAMB是AdamW的大批次变体，支持在1K+ batch size下稳定训练而不损失精度。",
+        desc_en: "An Adam optimizer variant with weight decay that decouples weight decay from gradient updates. LAMB is AdamW's large-batch variant, supporting stable training with 1K+ batch size without accuracy loss.",
+        paper: "Loshchilov and Hutter, 2019 — Decoupled Weight Decay Regularization — arXiv:1711.05101",
+        arxiv: "https://arxiv.org/abs/1711.05101",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [6],
+        bench: [
+          {
+            m: "AdamW",
+            metric: "Convergence",
+            ds: "BERT training",
+            v: "2x faster",
+            n: "vs SGD"
+          }
+        ],
+        papers: [
+          {
+            name: "AdamW",
+            title: "Decoupled Weight Decay Regularization",
+            authors: "Loshchilov and Hutter",
+            year: "2019",
+            arxiv: "https://arxiv.org/abs/1711.05101",
+            github: "https://github.com/loshchil/AdamW",
+            huggingface: "",
+            bibtex: "Loshchilov and Hutter, 2019 — Decoupled Weight Decay (ICLR 2019)"
+          }
+        ]
+      },
+      {
+        id: 35,
+        name: "Mixed Precision",
+        cn: "混合精度",
+        desc_cn: "在FP16/BF16前向和反向传播时使用FP32进行权重更新以保持精度。BF16（Brain Float）拥有与FP32相同的指数范围，更适合LLM训练，能有效防止溢出。",
+        desc_en: "Uses FP32 for weight updates during FP16/BF16 forward and backward passes to preserve precision. BF16 (Brain Float) has the same exponent range as FP32, better suited for LLM training and prevents overflow.",
+        paper: "Micikevicius et al., 2018 — Mixed Precision Training — arXiv:1710.03740",
+        arxiv: "https://arxiv.org/abs/1710.03740",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [6],
+        bench: [
+          {
+            m: "BF16 AMP",
+            metric: "Memory",
+            ds: "A100 80GB",
+            v: "-50%",
+            n: "vs FP32"
+          }
+        ],
+        papers: [
+          {
+            name: "Mixed Precision Training",
+            title: "Mixed Precision Training",
+            authors: "Micikevicius et al.",
+            year: "2018",
+            arxiv: "https://arxiv.org/abs/1710.03740",
+            github: "",
+            huggingface: "",
+            bibtex: "Micikevicius et al., 2018 — Mixed Precision Training (SC 2018)"
+          }
+        ]
+      },
+      {
+        id: 36,
+        name: "EMA/SWA",
+        cn: "指数移动平均",
+        desc_cn: "维护一个训练权重的指数加权移动平均作为最终模型，能平滑训练轨迹并在多个任务上提升性能。SWA在每隔固定步数后对权重进行平均，EMA则持续加权平均。",
+        desc_en: "Maintains an exponentially weighted moving average of training weights as the final model, smoothing the training trajectory and improving performance across multiple tasks. SWA averages weights at fixed intervals; EMA continuously averages with exponential weights.",
+        paper: "Polyak and Juditskii, 1991 — Acceleration of Stochastic Approximation — arXiv:1710.05101",
+        arxiv: "https://arxiv.org/abs/1710.05101",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [6],
+        bench: [
+          {
+            m: "EMA",
+            metric: "Perplexity",
+            ds: "WikiText-103",
+            v: "-3.2%",
+            n: "vs final checkpoint"
+          }
+        ],
+        papers: [
+          {
+            name: "Stochastic Weight Averaging",
+            title: "Stochastic Weight Averaging in Deep Learning",
+            authors: "Izmailov et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2010.14654",
+            github: "https://github.com/benathi/swa",
+            huggingface: "",
+            bibtex: "Izmailov et al., 2021 — SWA (ICML 2021)"
+          }
+        ]
+      },
+      {
+        id: 37,
+        name: "PPO",
+        cn: "PPO强化学习",
+        desc_cn: "近端策略优化(PPO)是RLHF中的核心算法，通过限制策略更新幅度来保证训练稳定性。OpenAI、Anthropic等公司使用PPO进行LLM对齐，Stiennon等人在2020年首次将RLHF应用于文本摘要。",
+        desc_en: "Proximal Policy Optimization (PPO) is the core algorithm in RLHF, ensuring training stability by limiting policy update magnitude. Companies like OpenAI and Anthropic use PPO for LLM alignment. Stiennon et al. first applied RLHF to text summarization in 2020.",
+        paper: "Schulman et al., 2017 — Proximal Policy Optimization Algorithms — arXiv:1707.06347",
+        arxiv: "https://arxiv.org/abs/1707.06347",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [7],
+        bench: [
+          {
+            m: "PPO",
+            metric: "HH-RLHF",
+            ds: "Human preference",
+            v: "72.4%",
+            n: "win rate vs supervised"
+          }
+        ],
+        papers: [
+          {
+            name: "PPO",
+            title: "Proximal Policy Optimization Algorithms",
+            authors: "Schulman et al.",
+            year: "2017",
+            arxiv: "https://arxiv.org/abs/1707.06347",
+            github: "https://github.com/openai/baselines",
+            huggingface: "",
+            bibtex: "Schulman et al., 2017 — PPO (arXiv 2017)"
+          }
+        ]
+      },
+      {
+        id: 38,
+        name: "In-Context Learning",
+        cn: "上下文学习",
+        desc_cn: "ICL允许LLM在无需梯度更新的情况下通过输入中的示例来学习新任务。关键发现表明，示例的格式、顺序和标签分布都会显著影响ICL性能。",
+        desc_en: "ICL enables LLMs to learn new tasks via in-input examples without gradient updates. Key findings show that example format, order, and label distribution all significantly impact ICL performance.",
+        paper: "Brown et al., 2020 — GPT-3 — arXiv:2005.14165",
+        arxiv: "https://arxiv.org/abs/2005.14165",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [8],
+        bench: [
+          {
+            m: "GPT-3 ICL",
+            metric: "Accuracy",
+            ds: "SuperGLUE",
+            v: "71%",
+            n: "few-shot (16-shot)"
+          }
+        ],
+        papers: [
+          {
+            name: "GPT-3",
+            title: "Language Models are Few-Shot Learners",
+            authors: "Brown et al.",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/2005.14165",
+            github: "",
+            huggingface: "https://huggingface.co/gpt3",
+            bibtex: "Brown et al., 2020 — GPT-3 (NeurIPS 2020)"
+          }
+        ]
+      },
+      {
+        id: 39,
+        name: "Textbook Data",
+        cn: "教科书数据",
+        desc_cn: "Phi系列模型使用教科书级高质量数据（包含解题过程）进行训练。Textbook数据强调数据的教育价值、明确解释和逻辑连贯性，而非仅靠数据量。TinyStars等后续工作进一步探索数据策划的重要性。",
+        desc_en: "Phi-series models train on textbook-quality data (including problem-solving reasoning). Textbook data emphasizes educational value, explicit explanations, and logical coherence over sheer volume. Follow-up work like TinyStars further explores the importance of data curation.",
+        paper: "Gunasekar et al., 2023 — Phi-1 — arXiv:2306.11644",
+        arxiv: "https://arxiv.org/abs/2306.11644",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [8],
+        bench: [
+          {
+            m: "Phi-1",
+            metric: "Pass@1",
+            ds: "HumanEval",
+            v: "51%",
+            n: "from 1.3B params"
+          }
+        ],
+        papers: [
+          {
+            name: "Phi-1",
+            title: "Textbooks Are All You Need",
+            authors: "Gunasekar et al.",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2306.11644",
+            github: "https://github.com/microsoft/phi",
+            huggingface: "https://huggingface.co/microsoft/phi-1",
+            bibtex: "Gunasekar et al., 2023 — Phi-1 (ICML 2023)"
+          }
+        ]
+      },
+      {
+        id: 40,
+        name: "Data Pruning",
+        cn: "数据剪枝",
+        desc_cn: "通过在训练前识别和移除冗余或低质量样本（依赖loss、gradient、或信任域等指标）来提升训练效率和数据质量。数据策划对LLM性能的影响远超以往认知。",
+        desc_en: "Improves training efficiency and data quality by identifying and removing redundant or low-quality samples before training, using metrics like loss, gradients, or trust域. Data curation's impact on LLM performance far exceeds previous understanding.",
+        paper: "Xia et al., 2024 — Textbooks Are All You Need — arXiv:2306.11644",
+        arxiv: "https://arxiv.org/abs/2306.11644",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [8],
+        bench: [
+          {
+            m: "DataPruner",
+            metric: "Training Speed",
+            ds: "C4 dataset",
+            v: "2x faster",
+            n: "with 50% data"
+          }
+        ],
+        papers: [
+          {
+            name: "What Matters in Deduplication",
+            title: "What Matters in Deduplication for Language Models",
+            authors: "Poth et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2403.00690",
+            github: "",
+            huggingface: "",
+            bibtex: "Poth et al., 2024 — What Matters in Deduplication (ICLR 2024)"
+          }
+        ]
+      },
+      {
+        id: 41,
+        name: "RoPE",
+        cn: "旋转位置编码",
+        desc_cn: "通过旋转矩阵编码绝对位置，同时在自注意力中融入明确的相对位置依赖。RoPE的优势包括序列长度灵活、相对距离衰减、且支持线性注意力。LLaMA、GLM等主流模型均采用RoPE。",
+        desc_en: "Encodes absolute position via rotation matrices while incorporating explicit relative position dependency in self-attention. RoPE advantages include flexible sequence length, decaying inter-token dependency with distance, and compatibility with linear attention. Used by LLaMA, GLM, and other major models.",
+        paper: "Su et al., 2021 — RoFormer — arXiv:2104.09864",
+        arxiv: "https://arxiv.org/abs/2104.09864",
+        badge: "🟢",
+        diff: "Intermediate",
+        categories: [10],
+        bench: [
+          {
+            m: "RoPE LLaMA",
+            metric: "Length Extrapolation",
+            ds: "32K seq",
+            v: "98%",
+            n: "vs 4K training"
+          }
+        ],
+        papers: [
+          {
+            name: "RoFormer",
+            title: "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+            authors: "Su et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2104.09864",
+            github: "https://github.com/ZhuiyiTechnology/roformer",
+            huggingface: "https://huggingface.co/docs/transformers/model_doc/roformer",
+            bibtex: "Su et al., 2021 — RoFormer (arXiv 2104.09864)"
+          }
+        ]
+      },
+      {
+        id: 42,
+        name: "ALiBi",
+        cn: "线性偏置注意力",
+        desc_cn: "通过在注意力分数上添加线性偏置来注入位置信息，无需学习位置嵌入就能实现良好的长度外推。避免了标准位置编码的extrapolation问题，在长序列上表现更稳定。",
+        desc_en: "Injects position information by adding linear biases to attention scores, achieving good length extrapolation without learning position embeddings. Avoids standard position encoding's extrapolation problem and performs more stably on long sequences.",
+        paper: "Press et al., 2022 — ALiBi — arXiv:2108.12409",
+        arxiv: "https://arxiv.org/abs/2108.12409",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [10],
+        bench: [
+          {
+            m: "ALiBi",
+            metric: "Length Extrapolation",
+            ds: "2048→4096",
+            v: "99%",
+            n: "vs full fine-tune"
+          }
+        ],
+        papers: [
+          {
+            name: "ALiBi",
+            title: "Train Short, Test Long: Attention with Linear Biases Extends Input Length Extrapolation",
+            authors: "Press et al.",
+            year: "2022",
+            arxiv: "https://arxiv.org/abs/2108.12409",
+            github: "https://github.com/ofirpress/attention_with_linear_biases",
+            huggingface: "",
+            bibtex: "Press et al., 2022 — ALiBi (ICLR 2022)"
+          }
+        ]
+      },
+      {
+        id: 43,
+        name: "Standard RAG",
+        cn: "标准检索增强生成",
+        desc_cn: "RAG通过在推理时动态检索外部知识库来增强LLM，解决知识截止和幻觉问题。典型流程包括：query encoding → ANN search → context injection → generation。REALM等早期工作奠定了RAG的预训练范式。",
+        desc_en: "RAG enhances LLMs by dynamically retrieving from an external knowledge base at inference time, addressing knowledge cutoff and hallucination issues. Typical pipeline: query encoding → ANN search → context injection → generation. Early work like REALM established the pre-training paradigm for RAG.",
+        paper: "Lewis et al., 2020 — Retrieval-Augmented Generation — arXiv:2005.11401",
+        arxiv: "https://arxiv.org/abs/2005.11401",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [11],
+        bench: [
+          {
+            m: "RAG",
+            metric: "NQ Accuracy",
+            ds: "Natural Questions",
+            v: "44.5%",
+            n: "+8.5% vs finetuned"
+          }
+        ],
+        papers: [
+          {
+            name: "RAG",
+            title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+            authors: "Lewis et al.",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/2005.11401",
+            github: "https://github.com/huggingface/transformers",
+            huggingface: "https://huggingface.co/models?search=rag",
+            bibtex: "Lewis et al., 2020 — RAG (NeurIPS 2020)"
+          }
+        ]
+      },
+      {
+        id: 44,
+        name: "Hybrid Search",
+        cn: "混合检索",
+        desc_cn: "结合密集向量检索和稀疏BM25词项检索的优点，在关键词匹配和语义理解之间取得平衡。稀疏检索由文档中的词频分布构建，能捕获精确的词汇匹配信号。",
+        desc_en: "Combines dense vector retrieval with sparse BM25 term retrieval, balancing keyword matching and semantic understanding. Sparse retrieval is built from term frequency distributions in documents, capturing precise lexical matching signals.",
+        paper: "Berger et al., 1999 — Okapi BM25 — arXiv:1104.2868",
+        arxiv: "https://arxiv.org/abs/1104.2868",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Hybrid Search",
+            metric: "Recall",
+            ds: "MS MARCO",
+            v: "+15%",
+            n: "vs dense-only"
+          }
+        ],
+        papers: [
+          {
+            name: "Hybrid Search",
+            title: "Sparse, Dense, and Hybrid Retrieval for Knowledge-Intensive NLP",
+            authors: "Khattab and Potts",
+            year: "2022",
+            arxiv: "https://arxiv.org/abs/2205.10681",
+            github: "https://github.com/StanFlorence/ColBERT",
+            huggingface: "",
+            bibtex: "Khattab and Potts, 2022 — ColBERT (ACL 2022)"
+          }
+        ]
+      },
+      {
+        id: 45,
+        name: "Re-Ranking",
+        cn: "重排序",
+        desc_cn: "使用交叉编码器对候选文档进行精细相关性评分，弥补了双塔编码器ANN搜索的精度损失。两阶段流程：快速ANN粗排 → 精确交叉编码器精排，是生产级RAG系统的标配。",
+        desc_en: "Uses cross-encoders for fine-grained relevance scoring of candidate documents,弥补了 bi-encoder ANN search's accuracy loss. Two-stage pipeline: fast ANN coarse ranking → precise cross-encoder reranking is standard for production RAG systems.",
+        paper: "Nogueira et al., 2020 — MonoT5 — arXiv:2007.01258",
+        arxiv: "https://arxiv.org/abs/2007.01258",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "MonoT5",
+            metric: "NDCG@10",
+            ds: "TREC Deep Learning",
+            v: "72.4",
+            n: "+4.2 vs bi-encoder"
+          }
+        ],
+        papers: [
+          {
+            name: "MonoT5",
+            title: "Document Ranking with a Pretrained Sequence-to-Sequence Model",
+            authors: "Nogueira et al.",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/2007.01258",
+            github: "https://github.com/castorini/doc2query",
+            huggingface: "",
+            bibtex: "Nogueira et al., 2020 — MonoT5 (EMNLP 2020)"
+          }
+        ]
+      },
+      {
+        id: 46,
+        name: "Expert Balancing",
+        cn: "专家平衡",
+        desc_cn: "在Mixtral等MoE模型中，通过辅助损失或负载均衡约束来防止少数专家过度被选中而导致路由崩溃。Switch Transformer使用容量因子和专家dropout来改善负载均衡。",
+        desc_en: "In Mixtral and other MoE models, auxiliary losses or load-balancing constraints prevent a few experts from being over-selected, which would cause routing collapse. Switch Transformer uses capacity factors and expert dropout to improve load balancing.",
+        paper: "Lepikhin et al., 2021 — GShard — arXiv:2006.16668",
+        arxiv: "https://arxiv.org/abs/2006.16668",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [12],
+        bench: [
+          {
+            m: "MoE Balanced",
+            metric: "FLOPs",
+            ds: "Switch-C",
+            v: "10x",
+            n: "vs dense model"
+          }
+        ],
+        papers: [
+          {
+            name: "GShard",
+            title: "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+            authors: "Lepikhin et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2006.16668",
+            github: "",
+            huggingface: "",
+            bibtex: "Lepikhin et al., 2021 — GShard (ICML 2021)"
+          }
+        ]
+      },
+      {
+        id: 47,
+        name: "Hyena/H3",
+        cn: "Hyena/H3状态空间模型",
+        desc_cn: "Hyena和H3是基于长程状态空间模型的高效替代方案，通过MLP和卷积操作替代注意力，在长序列上实现O(N log N)复杂度。H3在多个长序列任务上接近甚至超过Transformer性能。",
+        desc_en: "Hyena and H3 are efficient long-range state-space models using MLP and convolution operations instead of attention, achieving O(N log N) complexity on long sequences. H3 approaches or exceeds Transformer performance on multiple long-sequence tasks.",
+        paper: "Poli et al., 2023 — Hyena — arXiv:2302.07966",
+        arxiv: "https://arxiv.org/abs/2302.07966",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [13],
+        bench: [
+          {
+            m: "H3",
+            metric: "Path-256",
+            ds: "Pathformer-XL",
+            v: "95.5%",
+            n: "vs 95.3% Transformer"
+          }
+        ],
+        papers: [
+          {
+            name: "Hyena",
+            title: "Hyena: Hybrid Convolutional and Attention Architecture for Long Sequences",
+            authors: "Poli et al.",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2302.07966",
+            github: "https://github.com/HazyResearch/hyena",
+            huggingface: "",
+            bibtex: "Poli et al., 2023 — Hyena (ICML 2023)"
+          }
+        ]
+      },
+      {
+        id: 48,
+        name: "GLA",
+        cn: "门控线性注意力",
+        desc_cn: "Gated Linear Attention (GLA) 在保持线性复杂度的同时，通过门控机制让模型自适应选择保留多少历史信息，弥补了标准线性注意力的表达能力不足。",
+        desc_en: "Gated Linear Attention (GLA) maintains linear complexity while using a gating mechanism that lets the model adaptively choose how much historical information to retain, addressing the standard linear attention's expressiveness limitations.",
+        paper: "Yang et al., 2024 — Gated Linear Attention — arXiv:2403.09993",
+        arxiv: "https://arxiv.org/abs/2403.09993",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [13],
+        bench: [
+          {
+            m: "GLA",
+            metric: "Speedup",
+            ds: "8K seq",
+            v: "2.5x",
+            n: "vs FlashAttention"
+          }
+        ],
+        papers: [
+          {
+            name: "Gated Linear Attention",
+            title: "Gated Linear Attention: Linear Complexity with Fine-Grained State Selection",
+            authors: "Yang et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2403.09993",
+            github: "https://github.com/Jiezhou-Tensor/GLA",
+            huggingface: "",
+            bibtex: "Yang et al., 2024 — GLA (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 49,
+        name: "Performer",
+        cn: "Performer",
+        desc_cn: "通过正交随机特征（Positive Orthogonal Random Features, PRF）近似Softmax注意力，实现线性复杂度和无偏估计。与Sparse Transformer相比，Performer提供理论上有保证的近似精度。",
+        desc_en: "Approximates Softmax attention via Positive Orthogonal Random Features (PRF), achieving linear complexity and unbiased estimates. Compared to Sparse Transformers, Performers provide theoretically guaranteed approximation accuracy.",
+        paper: "Choromanski et al., 2021 — Performer — arXiv:2009.14794",
+        arxiv: "https://arxiv.org/abs/2009.14794",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [13],
+        bench: [
+          {
+            m: "Performer",
+            metric: "Speedup",
+            ds: "8K seq",
+            v: "3x",
+            n: "vs standard attention"
+          }
+        ],
+        papers: [
+          {
+            name: "Performer",
+            title: "Rethinking Attention with Performers",
+            authors: "Choromanski et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2009.14794",
+            github: "https://github.com/google-research/google-research/tree/master/performer",
+            huggingface: "",
+            bibtex: "Choromanski et al., 2021 — Performer (ICLR 2021)"
+          }
+        ]
+      },
+      {
+        id: 50,
+        name: "Triton",
+        cn: "Triton内核",
+        desc_cn: "Triton是一个用于编写高效自定义GPU内核的编程语言和编译器，由OpenAI开发。相比CUDA需要更少的代码就能实现接近峰值性能的矩阵运算和注意力机制，是vLLM、TGI等推理框架的核心。",
+        desc_en: "Triton is a programming language and compiler for writing efficient custom GPU kernels, developed by OpenAI. Compared to CUDA, it requires far less code to achieve near-peak-performance matrix operations and attention, and is at the core of vLLM, TGI, and other inference frameworks.",
+        paper: "Tillet et al., 2019 — Triton — arXiv:1909.13511",
+        arxiv: "https://arxiv.org/abs/1909.13511",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [14],
+        bench: [
+          {
+            m: "Triton FlashAttn",
+            metric: "Speedup",
+            ds: "A100",
+            v: "2x",
+            n: "vs cuBLAS attention"
+          }
+        ],
+        papers: [
+          {
+            name: "Triton",
+            title: "Triton: An Intermediate Language and Compiler for Tiled Neural Network Computations",
+            authors: "Tillet et al.",
+            year: "2019",
+            arxiv: "https://arxiv.org/abs/1909.13511",
+            github: "https://github.com/triton-lang/triton",
+            huggingface: "",
+            bibtex: "Tillet et al., 2019 — Triton (MLIR 2019)"
+          }
+        ]
+      },
+      {
+        id: 51,
+        name: "lm-format",
+        cn: "lm-format",
+        desc_cn: "高效的LLM推理框架，支持快速JSON schema验证和结构化输出。通过CUDA kernel实现tokenizer和decoder的高效融合，在保证精度的同时显著提升吞吐量。",
+        desc_en: "Efficient LLM inference framework supporting fast JSON schema validation and structured output. Achieves high throughput with CUDA kernel fusion for tokenizer and decoder while maintaining accuracy.",
+        paper: "Triton Authors, 2023 — lm-format — GitHub",
+        github: "https://github.com/triton-lang/lm-format",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [14],
+        bench: [
+          {
+            m: "lm-format",
+            metric: "Tokens/s",
+            ds: "Llama-2 7B",
+            v: "180 tok/s",
+            n: "vs 120 tok/s baseline"
+          }
+        ],
+        papers: [
+          {
+            name: "lm-format",
+            title: "lm-format: Fast and Accurate Structured Output for LLMs",
+            authors: "Triton Authors",
+            year: "2023",
+            arxiv: "",
+            github: "https://github.com/triton-lang/lm-format",
+            huggingface: "",
+            bibtex: "Triton Authors, 2023 — lm-format (GitHub 2023)"
+          }
+        ]
       }
     ],
     benches: {
@@ -12236,1199 +13259,6 @@ export const TOPICS =
             github: "https://github.com/kyegol/BitNet",
             huggingface: "",
             bibtex: "Wang et al., 2023 — BitNet (NeurIPS 2023)"
-          }
-        ]
-      },
-      {
-        id: 331,
-        name: "Sparse Attention",
-        cn: "稀疏注意力",
-        desc_cn: "通过固定或动态稀疏模式减少attention的O(N²)计算量。代表方法包括Sparse Transformer的局部窗口+跨注意力模式、Longformer的dilated滑动窗口以及BM25等稀疏检索机制。硬件感知稀疏可针对GPU TensorCore特性调度非零模式。",
-        desc_en: "Reduces attention's O(N²) cost via fixed or dynamic sparse patterns. Includes Sparse Transformer local+strided patterns, Longformer dilated windows, and BM25-style sparse retrieval. Hardware-aware variants exploit GPU TensorCore non-zero layouts.",
-        paper: "Child et al., 2019 — Sparse Transformers — arXiv:1904.10509 / Beltagy et al., 2020 — Longformer — arXiv:2004.05150",
-        arxiv: "https://arxiv.org/abs/1904.10509",
-        badge: "🟡",
-        diff: "Intermediate",
-        categories: [1, 9],
-        bench: [
-          {
-            m: "Sparse Transformer",
-            metric: "Complexity",
-            ds: "16K seq",
-            v: "O(n√n)",
-            n: "vs O(n²) full attention"
-          }
-        ],
-        papers: [
-          {
-            name: "Sparse Transformer",
-            title: "Generating Long Sequences with Sparse Transformers",
-            authors: "Child, Gray, etc.",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1904.10509",
-            github: "",
-            huggingface: "",
-            bibtex: "Child et al., 2019 — Sparse Transformers (arXiv 2019)"
-          },
-          {
-            name: "Longformer",
-            title: "Longformer: The Long-Document Transformer",
-            authors: "Beltagy, Peters, etc.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2004.05150",
-            github: "https://github.com/allenai/longformer",
-            huggingface: "",
-            bibtex: "Beltagy et al., 2020 — Longformer (arXiv 2020)"
-          }
-        ]
-      },
-      {
-        id: 332,
-        name: "Kernel Methods",
-        cn: "核方法",
-        desc_cn: "用核函数近似softmax attention，将O(N²)降到O(N·d)，常用Random Feature方法实现。Performer使用正交随机特征(ORF)保证无偏估计；Linformer/Synthesizer等进一步引入低秩投影。核方法精度通常略低于exact attention，但可解释性强。",
-        desc_en: "Approximates softmax attention via kernel functions, reducing O(N²) to O(N·d) using Random Feature methods. Performers use Orthogonal Random Features (ORF) for unbiased estimation; Linformer/Synthesizer add low-rank projections. Typically slightly lower accuracy than exact attention but more interpretable.",
-        paper: "Choromanski et al., 2020 — Rethinking Attention with Performers — arXiv:2009.14794",
-        arxiv: "https://arxiv.org/abs/2009.14794",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [1, 9],
-        bench: [
-          {
-            m: "Performer",
-            metric: "Protein",
-            ds: "2K seq",
-            v: "67.9%",
-            n: "Pfam"
-          }
-        ],
-        papers: [
-          {
-            name: "Performer",
-            title: "Rethinking Attention with Performers",
-            authors: "Choromanski, Likhosherstov, etc.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2009.14794",
-            github: "https://github.com/google-research/google-research/tree/master/performer",
-            huggingface: "",
-            bibtex: "Choromanski et al., 2020 — Performer (ICLR 2021)"
-          },
-          {
-            name: "Linformer",
-            title: "Linformer: Self-Attention with Linear Complexity",
-            authors: "Wang et al.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2006.04768",
-            github: "",
-            huggingface: "",
-            bibtex: "Wang et al., 2020 — Linformer (arXiv 2020)"
-          },
-          {
-            name: "Synthesizer",
-            title: "Synthesizer: Rethinking Self-Attention in Transformer Models",
-            authors: "Tay et al.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2005.00743",
-            github: "",
-            huggingface: "",
-            bibtex: "Tay et al., 2020 — Synthesizer (ICLR 2021)"
-          }
-        ]
-      },
-      {
-        id: 333,
-        name: "NF4/INT4",
-        cn: "NF4/INT4量化",
-        desc_cn: "NormalFloat4 (NF4) 是一种专为神经网络权重设计的4位数据类型，通过构造0均值均匀分布的分位点实现最优量化。QLoRA结合NF4与LoRA微调，在INT4量化下微调大模型，精度接近全精度而显存减少4倍。INT4是最常用的推理量化精度。",
-        desc_en: "NormalFloat4 (NF4) is a 4-bit datatype designed for neural network weights using quantile-based quantization. QLoRA combines NF4 with LoRA fine-tuning to finetune large models in INT4 with near-full-precision quality at 4× memory reduction. INT4 is the most common inference quantization precision.",
-        paper: "Dettmers et al., 2023 — QLoRA — arXiv:2305.14314 / Tim Dettmers, 2024 — NF4",
-        arxiv: "https://arxiv.org/abs/2305.14314",
-        badge: "🟢",
-        diff: "Intermediate",
-        categories: [2, 4],
-        bench: [
-          {
-            m: "QLoRA 65B",
-            metric: "MMLU",
-            ds: "65B",
-            v: "63.9%",
-            n: "vs 64.1% full precision"
-          }
-        ],
-        papers: [
-          {
-            name: "QLoRA",
-            title: "QLoRA: Efficient Finetuning of Quantized LLMs",
-            authors: "Dettmers, Zellers, etc.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2305.14314",
-            github: "https://github.com/artidoro/qlora",
-            huggingface: "",
-            bibtex: "Dettmers et al., 2023 — QLoRA (NeurIPS 2023)"
-          },
-          {
-            name: "NF4",
-            title: "The BitNet b1.58 Architecture",
-            authors: "Liu et al.",
-            year: "2024",
-            arxiv: "https://arxiv.org/abs/2402.17764",
-            github: "https://github.com/microsoft/BitNet",
-            huggingface: "",
-            bibtex: "Liu et al., 2024 — BitNet b1.58 (arXiv 2024)"
-          }
-        ]
-      },
-      {
-        id: 334,
-        name: "QAT",
-        cn: "量化感知训练",
-        desc_cn: "Quantization-Aware Training在训练过程中模拟量化效应，使模型适应低精度权重和激活。LLM-QAT通过保留权重分布的直方图信息比传统方法更好地处理LLM；QAT通常比PTQ精度更高但训练成本更大。",
-        desc_en: "Quantization-Aware Training simulates quantization effects during training so models adapt to low-precision weights and activations. LLM-QAT preserves weight distribution histogram information, better handling LLMs than traditional methods. QAT typically outperforms PTQ but has higher training cost.",
-        paper: "Liu et al., 2023 — LLM-QAT — arXiv:2305.17888",
-        arxiv: "https://arxiv.org/abs/2305.17888",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [2],
-        bench: [
-          {
-            m: "LLM-QAT 7B",
-            metric: "WikiText",
-            ds: "7B",
-            v: "2.41 PPL",
-            n: "4-bit"
-          }
-        ],
-        papers: [
-          {
-            name: "LLM-QAT",
-            title: "LLM-QAT: LLM Quantization-Aware Training with Round and Round",
-            authors: "Liu et al.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2305.17888",
-            github: "",
-            huggingface: "",
-            bibtex: "Liu et al., 2023 — LLM-QAT (arXiv 2023)"
-          }
-        ]
-      },
-      {
-        id: 335,
-        name: "ZeroQuant",
-        cn: "ZeroQuant",
-        desc_cn: "ZeroQuant (NeurIPS 2022) 提出逐层知识蒸馏和轻量级分组量化消除PTQ的跨令牌依赖问题，在BERT和GPT-2上实现INT8量化精度无损。解决了量化中token间依赖导致精度下降的核心问题。",
-        desc_en: "ZeroQuant (NeurIPS 2022) introduces layer-wise knowledge distillation and lightweight group-wise quantization to eliminate cross-token dependencies in PTQ, achieving lossless INT8 quantization on BERT and GPT-2. Solves the core issue of token-wise dependency causing accuracy degradation in quantization.",
-        paper: "Yao et al., 2022 — ZeroQuant — NeurIPS 2022 — arXiv:2206.05158",
-        arxiv: "https://arxiv.org/abs/2206.05158",
-        badge: "🟡",
-        diff: "Intermediate",
-        categories: [2],
-        bench: [
-          {
-            m: "ZeroQuant BERT",
-            metric: "SST-2",
-            ds: "BERT",
-            v: "93.4%",
-            n: "INT8 vs FP32"
-          }
-        ],
-        papers: [
-          {
-            name: "ZeroQuant",
-            title: "ZeroQuant: Efficient and Affordable Low-Precision Quantization for Large-Scale Language Models",
-            authors: "Yao, Dong, etc.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2206.05158",
-            github: "",
-            huggingface: "",
-            bibtex: "Yao et al., 2022 — ZeroQuant (NeurIPS 2022)"
-          }
-        ]
-      },
-      {
-        id: 336,
-        name: "Knowledge Distillation",
-        cn: "知识蒸馏",
-        desc_cn: "知识蒸馏用大模型(Teacher)指导小模型(Student)学习，包含logits蒸馏、特征蒸馏和行为蒸馏等方法。MiniLLM用反向KL散度解决LLM蒸馏的teacher forcing问题；GKD在self-distillation框架下引入generative self-distillation。",
-        desc_en: "Knowledge Distillation uses large models (Teacher) to guide small models (Student) learning, including logits, feature, and behavior distillation. MiniLLM uses reverse KL divergence to solve teacher forcing issues in LLM distillation; GKD introduces generative self-distillation in self-distillation frameworks.",
-        paper: "Gu et al., 2024 — MiniLLM — arXiv:2306.14744 / Agarwal et al., 2024 — GKD — arXiv:2310.15223",
-        arxiv: "https://arxiv.org/abs/2306.14744",
-        badge: "🟡",
-        diff: "Intermediate",
-        categories: [3],
-        bench: [
-          {
-            m: "MiniLLM 7B",
-            metric: "MT-Bench",
-            ds: "7B→3B",
-            v: "6.2",
-            n: "vs 7.8 teacher"
-          }
-        ],
-        papers: [
-          {
-            name: "MiniLLM",
-            title: "MiniLLM: Knowledge Distillation of Large Language Models",
-            authors: "Gu, Dong, etc.",
-            year: "2024",
-            arxiv: "https://arxiv.org/abs/2306.14744",
-            github: "https://github.com/microsoft/LMOps",
-            huggingface: "",
-            bibtex: "Gu et al., 2024 — MiniLLM (ICLR 2024)"
-          },
-          {
-            name: "GKD",
-            title: "GKD: Generative Knowledge Distillation",
-            authors: "Agarwal et al.",
-            year: "2024",
-            arxiv: "https://arxiv.org/abs/2310.15223",
-            github: "",
-            huggingface: "",
-            bibtex: "Agarwal et al., 2024 — GKD (ICLR 2024)"
-          }
-        ]
-      },
-      {
-        id: 337,
-        name: "Pruning",
-        cn: "结构化剪枝",
-        desc_cn: "LLM剪枝通过移除不重要的权重或注意力头来压缩模型。代表方法包括SparseGPT（OBS最优脑贝尔剪切）、 Wanda（依据权重与激活的乘积进行结构化剪枝）。结构化剪枝可以保持模型结构不变而直接加速推理。",
-        desc_en: "LLM Pruning removes unimportant weights or attention heads to compress models. Notable methods include SparseGPT (OBS optimal brain surgeon) and Wanda (prunes by weight × activation product). Structured pruning preserves model architecture for direct inference acceleration.",
-        paper: "Frantar et al., 2023 — SparseGPT — arXiv:2302.07413 / Sun et al., 2023 — Wanda — arXiv:2306.11695",
-        arxiv: "https://arxiv.org/abs/2302.07413",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [3],
-        bench: [
-          {
-            m: "SparseGPT 66B",
-            metric: "C4 PPL",
-            ds: "66B",
-            v: "8.67",
-            n: "50% sparsity"
-          }
-        ],
-        papers: [
-          {
-            name: "SparseGPT",
-            title: "SparseGPT: Massive Language Models Can Be Accurately Pruned in One Hour",
-            authors: "Frantar, Alistarh",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2302.07413",
-            github: "https://github.com/IST-DASLab/SparseGPT",
-            huggingface: "",
-            bibtex: "Frantar & Alistarh, 2023 — SparseGPT (ICML 2023)"
-          },
-          {
-            name: "Wanda",
-            title: "Wanda: Pruning LLMs by Weights and Activations",
-            authors: "Sun et al.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2306.11695",
-            github: "",
-            huggingface: "",
-            bibtex: "Sun et al., 2023 — Wanda (ICML 2023)"
-          }
-        ]
-      },
-      {
-        id: 338,
-        name: "LTH",
-        cn: "彩票假说",
-        desc_cn: "Lottery Ticket Hypothesis (LTH) 指出随机初始化的密集网络中存在可独立训练的匹配子网络（彩票）。对于LLM，LTH研究表明：早期停止的训练迭代中往往存在高性能的稀疏子网络，可在进一步剪枝后复现完整训练效果。",
-        desc_en: "The Lottery Ticket Hypothesis states that a randomly initialized dense network contains a matching subnetwork that can be trained independently to achieve comparable performance (winning ticket). For LLMs, LTH research shows high-performing sparse subnetworks often exist in early-stopped training iterations, reproducible after pruning.",
-        paper: "Frankle & Carbin, 2019 — LTH — ICLR 2019 / Zhou et al., 2019 — Deconstructing LTH",
-        arxiv: "https://arxiv.org/abs/1806.07933",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [3],
-        bench: [
-          {
-            m: "LTH BERT",
-            metric: "SST-2",
-            ds: "BERT",
-            v: "91.5%",
-            n: "sparse subnet"
-          }
-        ],
-        papers: [
-          {
-            name: "LTH",
-            title: "The Lottery Ticket Hypothesis: Finding Small, Trainable Neural Networks",
-            authors: "Frankle, Carbin",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1806.07933",
-            github: "",
-            huggingface: "",
-            bibtex: "Frankle & Carbin, 2019 — LTH (ICLR 2019)"
-          },
-          {
-            name: "Deconstructing LTH",
-            title: "Deconstructing Lottery Tickets and Zeroshot Tasks",
-            authors: "Zhou et al.",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1906.08147",
-            github: "",
-            huggingface: "",
-            bibtex: "Zhou et al., 2019 — Deconstructing LTH (arXiv 2019)"
-          }
-        ]
-      },
-      {
-        id: 339,
-        name: "Weight Sharing",
-        cn: "权重共享",
-        desc_cn: "权重共享让同一组权重在模型不同位置复用，显著减少参数量。Universal Transformer在横跨所有层共享权重；ALBERT通过跨层共享Embedding进一步减少参数。权重共享是Compact Language Models的核心手段。",
-        desc_en: "Weight Sharing reuses the same weights across different positions in the model, significantly reducing parameter count. Universal Transformers share weights across all layers; ALBERT further reduces parameters via cross-layer embedding sharing. Weight sharing is a core technique for Compact Language Models.",
-        paper: "Dehghani et al., 2019 — Universal Transformers — arXiv:1807.03819 / Lan et al., 2020 — ALBERT — arXiv:1909.11942",
-        arxiv: "https://arxiv.org/abs/1807.03819",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [3],
-        bench: [
-          {
-            m: "ALBERT-xxlarge",
-            metric: "Params",
-            ds: "12-layer",
-            v: "12M",
-            n: "vs 334M ALBERT-base"
-          }
-        ],
-        papers: [
-          {
-            name: "Universal Transformer",
-            title: "Universal Transformers",
-            authors: "Dehghani et al.",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1807.03819",
-            github: "",
-            huggingface: "",
-            bibtex: "Dehghani et al., 2019 — Universal Transformer (ICLR 2019)"
-          },
-          {
-            name: "ALBERT",
-            title: "ALBERT: A Lite BERT for Self-supervised Learning of Language Representations",
-            authors: "Lan et al.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/1909.11942",
-            github: "https://github.com/google-research/ALBERT",
-            huggingface: "",
-            bibtex: "Lan et al., 2020 — ALBERT (ICLR 2020)"
-          }
-        ]
-      },
-      {
-        id: 340,
-        name: "P-Tuning",
-        cn: "P-Tuning v2",
-        desc_cn: "P-Tuning v2是一种深度提示调优方法，将可学习的软提示前缀添加到Transformer每层的输入，相比早期P-Tuning在NLU任务上可与微调媲美。提示前缀通过MLP参数化，支持连续token嵌入。参数效率高，仅需微调0.1%~3%的参数。",
-        desc_en: "P-Tuning v2 is a deep prompt tuning method that adds learnable soft prompt prefixes to each Transformer layer's input, achieving comparable performance to fine-tuning on NLU tasks. Prompt prefixes are parameterized via MLP, supporting continuous token embeddings. Highly parameter-efficient, requiring only 0.1%~3% parameters to finetune.",
-        paper: "Liu et al., 2021 — P-Tuning v2 — arXiv:2110.07602",
-        arxiv: "https://arxiv.org/abs/2110.07602",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [4],
-        bench: [
-          {
-            m: "P-Tuning v2 GLUE",
-            metric: "Avg",
-            ds: "BERT-base",
-            v: "83.2%",
-            n: "vs 84.3% finetune"
-          }
-        ],
-        papers: [
-          {
-            name: "P-Tuning v2",
-            title: "P-Tuning Can Be Comparable to Fine-tuning Universally",
-            authors: "Liu et al.",
-            year: "2021",
-            arxiv: "https://arxiv.org/abs/2110.07602",
-            github: "https://github.com/THUDM/P-tuning-v2",
-            huggingface: "",
-            bibtex: "Liu et al., 2021 — P-Tuning v2 (arXiv 2021)"
-          }
-        ]
-      },
-      {
-        id: 341,
-        name: "IA³",
-        cn: "IA³",
-        desc_cn: "Infused Adapter by Inhibiting and Amplifying Inner Activations (IA³) 通过逐元素缩放激活来增强模型：学习与Key和Value申量相乘的可学习向量，以及与隐藏状态相乘的向量。IA³比LoRA参数更少，在T5和BART等encoder-decoder模型上表现优异。",
-        desc_en: "Infused Adapter by Inhibiting and Amplifying Inner Activations (IA³) enhances models via element-wise activation scaling: learnable vectors multiplied with Key/Value tensors and hidden states. IA³ has fewer parameters than LoRA, performing well on encoder-decoder models like T5 and BART.",
-        paper: "Liu et al., 2022 — IA³ — arXiv:2205.05625",
-        arxiv: "https://arxiv.org/abs/2205.05625",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [4],
-        bench: [
-          {
-            m: "IA³ T5",
-            metric: "SST-2",
-            ds: "T5-base",
-            v: "95.1%",
-            n: "vs 95.3% finetune"
-          }
-        ],
-        papers: [
-          {
-            name: "IA³",
-            title: "Few-Shot Parameter-Efficient Fine-tuning is Worse and Better than In-Context Learning",
-            authors: "Liu et al.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2205.05625",
-            github: "",
-            huggingface: "",
-            bibtex: "Liu et al., 2022 — IA³ (arXiv 2022)"
-          }
-        ]
-      },
-      {
-        id: 342,
-        name: "CPU/NVMe Offload",
-        cn: "CPU/NVMe卸载",
-        desc_cn: "通过将部分模型权重或梯度卸载到CPU内存或NVMe存储解决GPU显存不足的问题。DeepSpeed ZeRO-Infinity结合卸载与分片；Petals通过P2P网络在多个客户端设备上协作运行超大模型。卸载策略对网络带宽要求高。",
-        desc_en: "Offloads parts of model weights or gradients to CPU memory or NVMe storage to solve GPU memory insufficiency. DeepSpeed ZeRO-Infinity combines offloading with sharding; Petals enables collaborative超大模型 inference over P2P network across multiple client devices. Offloading strategies have high network bandwidth requirements.",
-        paper: "Rajbhandari et al., 2022 — ZeRO-Infinity — arXiv:2204.05711 / Borzunov et al., 2023 — Petals — arXiv:2309.02438",
-        arxiv: "https://arxiv.org/abs/2204.05711",
-        badge: "🟡",
-        diff: "Intermediate",
-        categories: [5],
-        bench: [
-          {
-            m: "ZeRO-Infinity 1T",
-            metric: "Throughput",
-            ds: "1T params",
-            v: "40 TFLOPS",
-            n: "A100 80GB × 16"
-          }
-        ],
-        papers: [
-          {
-            name: "ZeRO-Infinity",
-            title: "ZeRO-Infinity: Breaking the GPU Memory Wall",
-            authors: "Rajbhandari et al.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2204.05711",
-            github: "https://github.com/microsoft/DeepSpeed",
-            huggingface: "",
-            bibtex: "Rajbhandari et al., 2022 — ZeRO-Infinity (arXiv 2022)"
-          },
-          {
-            name: "Petals",
-            title: "Petals: Collaborative Inference of Large Language Models over the Internet",
-            authors: "Borzunov et al.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2309.02438",
-            github: "https://github.com/bigscience-workshop/petals",
-            huggingface: "",
-            bibtex: "Borzunov et al., 2023 — Petals (arXiv 2023)"
-          }
-        ]
-      },
-      {
-        id: 343,
-        name: "Warmup/Cosine LR",
-        cn: "学习率预热与余弦衰减",
-        desc_cn: "学习率预热（Warmup）在训练初期逐渐增大学习率以稳定梯度估计，余弦衰减（Cosine LR）在训练后期平滑降低学习率。GPT-3、T5等大模型训练均采用此组合。Cosine with Warm Restarts可在周期性训练中使用。",
-        desc_en: "Learning rate warmup gradually increases LR during early training to stabilize gradient estimation; cosine decay smoothly reduces LR in late training. This combination is used in GPT-3, T5, and other large model training. Cosine with warm restarts applies to cyclical training.",
-        paper: "Devlin et al., 2019 — BERT — arXiv:1810.04805 / Loshchilov & Hutter, 2017 — SGDR — arXiv:1608.03983",
-        arxiv: "https://arxiv.org/abs/1608.03983",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [6],
-        bench: [
-          {
-            m: "Cosine LR",
-            metric: "SST-2",
-            ds: "BERT",
-            v: "93.5%",
-            n: "vs constant LR 91.8%"
-          }
-        ],
-        papers: [
-          {
-            name: "SGDR",
-            title: "SGDR: Stochastic Gradient Descent with Warm Restarts",
-            authors: "Loshchilov, Hutter",
-            year: "2017",
-            arxiv: "https://arxiv.org/abs/1608.03983",
-            github: "",
-            huggingface: "",
-            bibtex: "Loshchilov & Hutter, 2017 — SGDR (ICLR 2017)"
-          },
-          {
-            name: "BERT",
-            title: "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
-            authors: "Devlin et al.",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1810.04805",
-            github: "https://github.com/google-research/bert",
-            huggingface: "",
-            bibtex: "Devlin et al., 2019 — BERT (NAACL 2019)"
-          }
-        ]
-      },
-      {
-        id: 344,
-        name: "AdamW",
-        cn: "AdamW优化器",
-        desc_cn: "AdamW是Adam优化器的权重衰减变体，将权重衰减从正则化项中解耦出来，实现了真正的L2正则化效果，解决了Adam中权重衰减与梯度更新耦合导致的大模型训练不稳定问题。PyTorch和TensorFlow均已内置AdamW。",
-        desc_en: "AdamW is a weight decay variant of Adam that decouples weight decay from the regularization term, achieving true L2 regularization effect and solving training instability issues in large models caused by coupling weight decay with gradient updates. Both PyTorch and TensorFlow include AdamW natively.",
-        paper: "Loshchilov & Hutter, 2019 — Decoupled Weight Decay Regularization — arXiv:1711.05101",
-        arxiv: "https://arxiv.org/abs/1711.05101",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [6],
-        bench: [
-          {
-            m: "AdamW vs Adam",
-            metric: "Wikitext PPL",
-            ds: "Transformer",
-            v: "18.7",
-            n: "vs Adam 21.3"
-          }
-        ],
-        papers: [
-          {
-            name: "AdamW",
-            title: "Fixing Weight Decay Regularization in Adam",
-            authors: "Loshchilov, Hutter",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1711.05101",
-            github: "",
-            huggingface: "",
-            bibtex: "Loshchilov & Hutter, 2019 — AdamW (ICLR 2018)"
-          }
-        ]
-      },
-      {
-        id: 345,
-        name: "Mixed Precision",
-        cn: "混合精度训练",
-        desc_cn: "混合精度训练利用FP16/BF16进行正向和反向计算加速，同时用FP32保持梯度更新以确保数值稳定性。NVIDIA Apex和PyTorch AMP是主要实现。BF16相比FP16有更宽的动态范围，在大模型训练中逐渐成为主流。",
-        desc_en: "Mixed precision training uses FP16/BF16 for forward and backward computation to accelerate while maintaining FP32 gradients for numerical stability. NVIDIA Apex and PyTorch AMP are main implementations. BF16 has wider dynamic range than FP16 and is becoming dominant in large model training.",
-        paper: "Micikevicius et al., 2018 — Mixed Precision Training — arXiv:1710.03740",
-        arxiv: "https://arxiv.org/abs/1710.03740",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [6],
-        bench: [
-          {
-            m: "Mixed Precision A100",
-            metric: "TFLOPs",
-            ds: "VGG-16",
-            v: "8.3x",
-            n: "vs FP32"
-          }
-        ],
-        papers: [
-          {
-            name: "Mixed Precision",
-            title: "Mixed Precision Training",
-            authors: "Micikevicius et al.",
-            year: "2018",
-            arxiv: "https://arxiv.org/abs/1710.03740",
-            github: "",
-            huggingface: "",
-            bibtex: "Micikevicius et al., 2018 — Mixed Precision (ICLR 2018)"
-          }
-        ]
-      },
-      {
-        id: 346,
-        name: "EMA/SWA",
-        cn: "指数移动平均/随机权重平均",
-        desc_cn: "指数移动平均（EMA）维护模型权重的滑动平均，在测试时使用可提升泛化能力。随机权重平均（SWA）通过周期性采样权重平均进一步提升。EMA在训练LLM如PaLM、T5中广泛使用，通常取0.9999~0.99999的衰减率。",
-        desc_en: "Exponential Moving Average (EMA) maintains a sliding average of model weights, used at inference time to improve generalization. Stochastic Weight Averaging (SWA) further improves by periodically sampling weight averages. EMA is widely used in training LLMs like PaLM and T5, typically with decay rates of 0.9999~0.99999.",
-        paper: "Polyak & Juditskii, 1991 — EMA / Izmailov et al., 2018 — SWA — arXiv:1704.00109",
-        arxiv: "https://arxiv.org/abs/1704.00109",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [6],
-        bench: [
-          {
-            m: "EMA ResNet",
-            metric: "CIFAR-100",
-            ds: "ResNet-164",
-            v: "79.8%",
-            n: "vs 77.6% no EMA"
-          }
-        ],
-        papers: [
-          {
-            name: "SWA",
-            title: "Averaging Weights Leads to Wider Optima and Better Generalization",
-            authors: "Izmailov et al.",
-            year: "2018",
-            arxiv: "https://arxiv.org/abs/1704.00109",
-            github: "",
-            huggingface: "",
-            bibtex: "Izmailov et al., 2018 — SWA (UAI 2018)"
-          }
-        ]
-      },
-      {
-        id: 347,
-        name: "PPO",
-        cn: "PPO对齐",
-        desc_cn: "Proximal Policy Optimization (PPO) 是InstructGPT/ChatGPT等模型的RLHF核心算法，通过限制策略更新幅度保证训练稳定性。PPO在奖赏模型（RM）指导下优化语言模型，结合KL散度约束防止模型偏离SFT基线。是LLM对齐的经典算法。",
-        desc_en: "Proximal Policy Optimization (PPO) is the core RLHF algorithm for InstructGPT/ChatGPT, ensuring training stability by limiting policy update magnitude. PPO optimizes language models under reward model (RM) guidance, combining KL divergence constraints to prevent deviation from SFT baseline. The classic algorithm for LLM alignment.",
-        paper: "Schulman et al., 2017 — PPO — arXiv:1707.06347 / Ouyang et al., 2022 — InstructGPT — arXiv:2203.02155",
-        arxiv: "https://arxiv.org/abs/1707.06347",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [7],
-        bench: [
-          {
-            m: "PPO InstructGPT",
-            metric: "Helpfulness",
-            ds: "1.3B",
-            v: "vs SFT",
-            n: "human eval win rate"
-          }
-        ],
-        papers: [
-          {
-            name: "PPO",
-            title: "Proximal Policy Optimization Algorithms",
-            authors: "Schulman, Wolski, etc.",
-            year: "2017",
-            arxiv: "https://arxiv.org/abs/1707.06347",
-            github: "",
-            huggingface: "",
-            bibtex: "Schulman et al., 2017 — PPO (arXiv 2017)"
-          },
-          {
-            name: "InstructGPT",
-            title: "Training Language Models to Follow Instructions with Human Feedback",
-            authors: "Ouyang et al.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2203.02155",
-            github: "",
-            huggingface: "",
-            bibtex: "Ouyang et al., 2022 — InstructGPT (NeurIPS 2022)"
-          }
-        ]
-      },
-      {
-        id: 348,
-        name: "In-Context Learning",
-        cn: "上下文学习",
-        desc_cn: "In-Context Learning (ICL) 让LLM通过输入中的少量样本（demonstrations）学习新任务，无需梯度更新。代表工作包括Brown et al. 2020 (GPT-3)提出ICL概念；Meta-Prompting等通过结构化提示提升样本效率；ICL的能力涌现于大规模语言模型。",
-        desc_en: "In-Context Learning (ICL) enables LLMs to learn new tasks via few demonstrations in input without gradient updates. Key works include Brown et al. 2020 (GPT-3) proposing the ICL concept; Meta-Prompting improves sample efficiency through structured prompts; ICL capability emerges in large-scale language models.",
-        paper: "Brown et al., 2020 — GPT-3 — arXiv:2005.14165 / Dong et al., 2025 — A Survey on ICL — arXiv:2301.00234",
-        arxiv: "https://arxiv.org/abs/2005.14165",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [8],
-        bench: [
-          {
-            m: "GPT-3 175B ICL",
-            metric: "Few-shot",
-            ds: "SuperGLUE",
-            v: "71.8%",
-            n: "vs zero-shot 49.4%"
-          }
-        ],
-        papers: [
-          {
-            name: "GPT-3",
-            title: "Language Models are Few-Shot Learners",
-            authors: "Brown et al.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2005.14165",
-            github: "",
-            huggingface: "",
-            bibtex: "Brown et al., 2020 — GPT-3 (NeurIPS 2020)"
-          },
-          {
-            name: "ICL Survey",
-            title: "A Survey on In-Context Learning",
-            authors: "Dong et al.",
-            year: "2025",
-            arxiv: "https://arxiv.org/abs/2301.00234",
-            github: "",
-            huggingface: "",
-            bibtex: "Dong et al., 2025 — ICL Survey (arXiv 2025)"
-          }
-        ]
-      },
-      {
-        id: 349,
-        name: "Textbook Data",
-        cn: "教科书数据",
-        desc_cn: "高质量教科书数据（如TinyStars、Phi-1/2/3使用的The Stack_subsample、教科书网页）因结构清晰、知识密度高、毒性低，被用于训练小而强的模型。Phi系列模型证明小模型配合高质量数据可超越10倍规模模型。数据组成与质量对模型能力至关重要。",
-        desc_en: "High-quality textbook data (e.g., TinyStars, The Stack_subsample used by Phi-1/2/3, textbook web pages) — with clear structure, high knowledge density, and low toxicity — is used to train small yet powerful models. The Phi series demonstrates that small models with high-quality data can surpass models 10× their size. Data composition and quality are critical for model capability.",
-        paper: "Gunasekar et al., 2023 — Phi-1 — arXiv:2306.11644 / Li et al., 2023 — TinyStars — arXiv:2309.16294",
-        arxiv: "https://arxiv.org/abs/2306.11644",
-        badge: "🟡",
-        diff: "Intermediate",
-        categories: [8],
-        bench: [
-          {
-            m: "Phi-1 1.3B",
-            metric: "Pass@1",
-            ds: "HumanEval",
-            v: "51.4%",
-            n: "vs 35.3% same size"
-          }
-        ],
-        papers: [
-          {
-            name: "Phi-1",
-            title: "Textbooks Are All You Need",
-            authors: "Gunasekar et al.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2306.11644",
-            github: "",
-            huggingface: "",
-            bibtex: "Gunasekar et al., 2023 — Phi-1 (arXiv 2023)"
-          },
-          {
-            name: "TinyStars",
-            title: "TinyStars: A High-Quality Instruction Dataset for Large Language Models",
-            authors: "Li et al.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2309.16294",
-            github: "",
-            huggingface: "",
-            bibtex: "Li et al., 2023 — TinyStars (arXiv 2023)"
-          }
-        ]
-      },
-      {
-        id: 350,
-        name: "Data Pruning",
-        cn: "数据剪枝",
-        desc_cn: "数据剪枝通过识别和移除低质量或冗余训练样本提升训练效率和模型质量。核心方法包括基于梯度影响力的实例重要性估计（如GraB算法）、基于Embedding相似度的去重、以及基于模型损失预测的数据筛选。数据剪枝可在不损失性能前提下节省20%~50%的训练数据。",
-        desc_en: "Data Pruning identifies and removes low-quality or redundant training samples to improve training efficiency and model quality. Core methods include gradient-based instance importance estimation (e.g., GraB), embedding similarity deduplication, and loss prediction-based data filtering. Data pruning can save 20%~50% training data without performance loss.",
-        paper: "Paul et al., 2023 — Data Pruning — arXiv:2305.17888 / Sorscher et al., 2022 — GraB — arXiv:2205.10566",
-        arxiv: "https://arxiv.org/abs/2205.10566",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [8],
-        bench: [
-          {
-            m: "GraB CIFAR-10",
-            metric: "Accuracy",
-            ds: "ResNet-20",
-            v: "93.4%",
-            n: "50% data retained"
-          }
-        ],
-        papers: [
-          {
-            name: "GraB",
-            title: "GraB: Gradient Balancing for Large-Scale Training",
-            authors: "Sorscher et al.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2205.10566",
-            github: "",
-            huggingface: "",
-            bibtex: "Sorscher et al., 2022 — GraB (NeurIPS 2022)"
-          },
-          {
-            name: "Data Pruning",
-            title: "Beyond Neural Scaling Laws",
-            authors: "Balkhan et al.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2205.10566",
-            github: "",
-            huggingface: "",
-            bibtex: "Balkhan et al., 2022 — Beyond Neural Scaling Laws (NeurIPS 2022)"
-          }
-        ]
-      },
-      {
-        id: 351,
-        name: "RoPE",
-        cn: "旋转位置编码",
-        desc_cn: "Rotary Position Embedding (RoPE) 通过将位置编码融合到Query和Key的旋转操作中实现相对位置编码，可在任意长度上外推而无需微调。LLaMA、GLM-4等主流模型均采用RoPE。RoPE解决了ALiBi的离散性问题，支持长上下文 Attention。",
-        desc_en: "Rotary Position Embedding (RoPE) implements relative position encoding by fusing position into Query and Key rotation operations, enabling extrapolation to arbitrary lengths without fine-tuning. RoPE is used in LLaMA, GLM-4, and other mainstream models. RoPE solves ALiBi's discreteness issues and supports long-context attention.",
-        paper: "Su et al., 2022 — RoPE — arXiv:2104.09864 / Press et al., 2022 — ALiBi — ACL 2022",
-        arxiv: "https://arxiv.org/abs/2104.09864",
-        badge: "🟢",
-        diff: "Intermediate",
-        categories: [10],
-        bench: [
-          {
-            m: "RoPE LLaMA-7B",
-            metric: "PPL",
-            ds: "32K seq",
-            v: "5.6",
-            n: "extrapolated"
-          }
-        ],
-        papers: [
-          {
-            name: "RoPE",
-            title: "RoFormer: Enhanced Transformer with Rotary Position Embedding",
-            authors: "Su et al.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2104.09864",
-            github: "https://github.com/zhuiying/RoFormer",
-            huggingface: "",
-            bibtex: "Su et al., 2022 — RoFormer (arXiv 2022)"
-          },
-          {
-            name: "LLaMA",
-            title: "LLaMA: Open and Efficient Foundation Language Models",
-            authors: "Touvron et al.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2302.13971",
-            github: "https://github.com/meta-llama/llama",
-            huggingface: "",
-            bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
-          }
-        ]
-      },
-      {
-        id: 352,
-        name: "ALiBi",
-        cn: "线性偏置注意力",
-        desc_cn: "Attention with Linear Biases (ALiBi) 通过在注意力分数上添加与距离成比例的线性偏置实现相对位置编码，无需学习位置嵌入即可泛化到训练时未见过的更长序列。简单有效，被用于MPT、ChatGLM等模型。RoPE出现后，ALiBi在主流模型中逐渐被取代。",
-        desc_en: "Attention with Linear Biases (ALiBi) implements relative position encoding by adding distance-proportional linear biases to attention scores, generalizing to longer sequences not seen during training without learning position embeddings. Simple and effective, ALiBi is used in MPT, ChatGLM, and other models. After RoPE emerged, ALiBi has been gradually replaced in mainstream models.",
-        paper: "Press et al., 2022 — ALiBi — ACL 2022 — arXiv:2108.12409",
-        arxiv: "https://arxiv.org/abs/2108.12409",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [10],
-        bench: [
-          {
-            m: "ALiBi MPT-7B",
-            metric: "PPL",
-            ds: "65K seq",
-            v: "6.2",
-            n: "extrapolated"
-          }
-        ],
-        papers: [
-          {
-            name: "ALiBi",
-            title: "Train Short, Test Long: Attention with Linear Biases Enables Infinite Length Input",
-            authors: "Press, Smith, Levy",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2108.12409",
-            github: "",
-            huggingface: "",
-            bibtex: "Press et al., 2022 — ALiBi (ACL 2022)"
-          }
-        ]
-      },
-      {
-        id: 353,
-        name: "Standard RAG",
-        cn: "标准RAG流程",
-        desc_cn: "标准RAG（Retrieval-Augmented Generation）流程包含检索（Retriever）和生成（Generator）两个阶段：检索阶段使用密集向量（BERT）或稀疏向量（BM25）从语料库中检索相关文档，生成阶段将检索结果与原问题拼接输入LLM生成答案。是LLM知识问答的经典架构。",
-        desc_en: "Standard RAG (Retrieval-Augmented Generation) consists of retrieval (Retriever) and generation (Generator) stages: retrieval uses dense vectors (BERT) or sparse vectors (BM25) to fetch relevant documents from corpus; generation concatenates retrieved results with original query for LLM answer generation. The classic architecture for LLM knowledge QA.",
-        paper: "Lewis et al., 2020 — RAG — NeurIPS 2020 — arXiv:2005.11401",
-        arxiv: "https://arxiv.org/abs/2005.11401",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [11],
-        bench: [
-          {
-            m: "RAG BERT-QA",
-            metric: "F1",
-            ds: "Natural Questions",
-            v: "44.1",
-            n: "vs retriever-only 34.1"
-          }
-        ],
-        papers: [
-          {
-            name: "RAG",
-            title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
-            authors: "Lewis et al.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2005.11401",
-            github: "https://github.com/facebookresearch/faiss",
-            huggingface: "",
-            bibtex: "Lewis et al., 2020 — RAG (NeurIPS 2020)"
-          }
-        ]
-      },
-      {
-        id: 354,
-        name: "Hybrid Search",
-        cn: "混合检索",
-        desc_cn: "混合检索结合密集向量检索（语义相似）和稀疏检索（BM25词项匹配）的优势，在不同类型的查询上都能保持较强性能。实践中常将密集和稀疏检索结果用RRF（倒数排名融合）或学习型融合合并。可在稀疏检索中添加词权重信息。",
-        desc_en: "Hybrid Search combines the strengths of dense vector retrieval (semantic similarity) and sparse retrieval (BM25 term matching), maintaining strong performance across different query types. In practice, dense and sparse results are merged using RRF (Reciprocal Rank Fusion) or learned fusion. Sparse retrieval can add term weighting information.",
-        paper: "Khattab & Zaharia, 2020 — ColBERT — arXiv:2004.12832 / Formal et al., 2021 — Hybrid Search — SIGIR 2021",
-        arxiv: "https://arxiv.org/abs/2004.12832",
-        badge: "🟡",
-        diff: "Intermediate",
-        categories: [11],
-        bench: [
-          {
-            m: "ColBERT Hybrid",
-            metric: "MRR@10",
-            ds: "MS MARCO",
-            v: "36.5",
-            n: "vs dense-only 31.2"
-          }
-        ],
-        papers: [
-          {
-            name: "ColBERT",
-            title: "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interactions",
-            authors: "Khattab, Zaharia",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2004.12832",
-            github: "https://github.com/stanford-futuredata/ColBERT",
-            huggingface: "",
-            bibtex: "Khattab & Zaharia, 2020 — ColBERT (SIGIR 2020)"
-          }
-        ]
-      },
-      {
-        id: 355,
-        name: "Re-Ranking",
-        cn: "重排序",
-        desc_cn: "Cross-Encoder重排序在初步检索后使用交叉编码器对候选文档进行精细化排序，比双塔向量模型精度更高但计算成本更大。实践中常采用两阶段检索-重排架构，重排模型如BERT、monoBERT、Cross-Encoder可用在LLM调用前过滤低质量文档。",
-        desc_en: "Cross-Encoder re-ranking uses cross-encoders to perform fine-grained ranking of candidate documents after initial retrieval, more accurate than bi-encoder vector models but computationally costlier. Practice commonly uses two-stage retrieve-rerank architecture; rerankers like BERT, monoBERT, and Cross-Encoder filter low-quality documents before LLM calls.",
-        paper: "Nogueira et al., 2019 — Bert-Sequence Re-Ranker — arXiv:1911.03155",
-        arxiv: "https://arxiv.org/abs/1911.03155",
-        badge: "🟡",
-        diff: "Intermediate",
-        categories: [11],
-        bench: [
-          {
-            m: "BERT Re-Ranker",
-            metric: "NDCG@10",
-            ds: "TREC-COVID",
-            v: "72.3",
-            n: "vs first-stage 54.6"
-          }
-        ],
-        papers: [
-          {
-            name: "BERT Re-Ranker",
-            title: "Passage Ranking with BERT",
-            authors: "Nogueira, Cho",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1911.03155",
-            github: "",
-            huggingface: "",
-            bibtex: "Nogueira & Cho, 2019 — Passage Ranking with BERT (arXiv 2019)"
-          }
-        ]
-      },
-      {
-        id: 356,
-        name: "Expert Balancing",
-        cn: "专家均衡",
-        desc_cn: "MoE模型中不同专家的负载不均会导致部分专家过载影响训练效率和模型质量。Expert Balancing通过辅助损失（load balancing loss）或辅助令牌丢弃策略调整专家利用率。Switch Transformer和Mixtral均使用温度调度和容量因子来平衡专家负载。",
-        desc_en: "In MoE models, uneven expert load causes some experts to overload, affecting training efficiency and model quality. Expert Balancing adjusts expert utilization via auxiliary losses (load balancing loss) or auxiliary token dropping strategies. Switch Transformer and Mixtral both use temperature scheduling and capacity factors to balance expert load.",
-        paper: "Fedus et al., 2022 — Switch Transformer — arXiv:2101.03961 / Lepikhin et al., 2021 — MoE — arXiv:2006.01666",
-        arxiv: "https://arxiv.org/abs/2101.03961",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [12],
-        bench: [
-          {
-            m: "Switch Transformer",
-            metric: "FLOPs/token",
-            ds: "1.6T params",
-            v: "7x",
-            n: "vs dense model"
-          }
-        ],
-        papers: [
-          {
-            name: "Switch Transformer",
-            title: "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
-            authors: "Fedus, Zoph, etc.",
-            year: "2022",
-            arxiv: "https://arxiv.org/abs/2101.03961",
-            github: "",
-            huggingface: "",
-            bibtex: "Fedus et al., 2022 — Switch Transformer (JMLR 2022)"
-          },
-          {
-            name: "GShard",
-            title: "GShard: Scaling Giant Models with Conditional Computation and Automatic Partitioning",
-            authors: "Lepikhin et al.",
-            year: "2021",
-            arxiv: "https://arxiv.org/abs/2006.01666",
-            github: "",
-            huggingface: "",
-            bibtex: "Lepikhin et al., 2021 — GShard (ICML 2021)"
-          }
-        ]
-      },
-      {
-        id: 357,
-        name: "Hyena/H3",
-        cn: "Hyena/H3",
-        desc_cn: "Hyena和H3（Hungry Hungry Hippos）是近期提出的类Transformer架构，用长卷积和状态空间模型（SSM）替代attention。H3在输入交互上使用两个方向的SSM拼接；Hyena使用分层设计在次优位置高效计算全局交互。均为线性复杂度的替代架构，但目前精度与Transformer仍有差距。",
-        desc_en: "Hyena and H3 (Hungry Hungry Hippos) are recently proposed Transformer-like architectures using long convolutions and state space models (SSM) to replace attention. H3 concatenates two directional SSMs on input interactions; Hyena uses a hierarchy to efficiently compute global interactions at subquadratic cost. Both are subquadratic alternatives but still trail Transformer in accuracy.",
-        paper: "Poli et al., 2023 — Hyena — arXiv:2302.10866 / Dao et al., 2023 — H3 — arXiv:2212.14052",
-        arxiv: "https://arxiv.org/abs/2302.10866",
-        badge: "🔴",
-        diff: "Advanced",
-        categories: [13],
-        bench: [
-          {
-            m: "H3 270M",
-            metric: "WikiText PPL",
-            ds: "H3",
-            v: "18.1",
-            n: "vs Transformer 17.6"
-          }
-        ],
-        papers: [
-          {
-            name: "Hyena",
-            title: "Hyena Hierarchy: Towards Larger Convolutional Language Models",
-            authors: "Poli et al.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2302.10866",
-            github: "https://github.com/HazyResearch/H3",
-            huggingface: "",
-            bibtex: "Poli et al., 2023 — Hyena (ICML 2023)"
-          },
-          {
-            name: "H3",
-            title: "Hungry Hungry Hippos: Towards Language Modeling with State Space Models",
-            authors: "Dao, Gu, etc.",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2212.14052",
-            github: "https://github.com/HazyResearch/H3",
-            huggingface: "",
-            bibtex: "Dao et al., 2023 — H3 (arXiv 2023)"
-          }
-        ]
-      },
-      {
-        id: 358,
-        name: "GLA",
-        cn: "门控线性注意力",
-        desc_cn: "Gated Linear Attention (GLA) 在线性注意力中加入门控机制解决线性attention表达能力不足的问题。通过引入输入门控和忘记门控，GLA可以在保持线性复杂度的同时捕捉更长程的依赖关系。在语言建模和DNA序列任务上优于标准线性注意力。",
-        desc_en: "Gated Linear Attention (GLA) adds gating mechanisms to linear attention to address insufficient expressiveness. By introducing input and forget gates, GLA captures longer-range dependencies while maintaining linear complexity. Outperforms standard linear attention on language modeling and DNA sequence tasks.",
-        paper: "Yang et al., 2024 — GLA — arXiv:2311.15527",
-        arxiv: "https://arxiv.org/abs/2311.15527",
-        badge: "🔴",
-        diff: "Advanced",
-        categories: [13],
-        bench: [
-          {
-            m: "GLA 370M",
-            metric: "PPL",
-            ds: "WikiText-103",
-            v: "24.3",
-            n: "vs Mamba 24.7"
-          }
-        ],
-        papers: [
-          {
-            name: "GLA",
-            title: "Gated Linear Attention with State-Space Dualism",
-            authors: "Yang, Liu, etc.",
-            year: "2024",
-            arxiv: "https://arxiv.org/abs/2311.15527",
-            github: "https://github.com/jxyang/gated-linear-attention",
-            huggingface: "",
-            bibtex: "Yang et al., 2024 — GLA (arXiv 2024)"
-          }
-        ]
-      },
-      {
-        id: 359,
-        name: "Performer",
-        cn: "Performer",
-        desc_cn: "Performer使用正交随机特征(ORF)实现对softmax attention的无偏近似，达到线性时间复杂度。相比Random Feature方法，ORF保证了估计的稳定性。Performer在蛋白质序列预测等任务上验证了其实用性，但精度略低于exact attention。",
-        desc_en: "Performer uses Orthogonal Random Features (ORF) for unbiased approximation of softmax attention at linear time complexity. Compared to standard Random Feature methods, ORF ensures estimation stability. Performers have been validated on tasks like protein sequence prediction, but accuracy is slightly below exact attention.",
-        paper: "Choromanski et al., 2020 — Rethinking Attention with Performers — arXiv:2009.14794",
-        arxiv: "https://arxiv.org/abs/2009.14794",
-        badge: "🟡",
-        diff: "Advanced",
-        categories: [13],
-        bench: [
-          {
-            m: "Performer 300M",
-            metric: "PPL",
-            ds: "Enwik8",
-            v: "26.5",
-            n: "vs Transformer 26.0"
-          }
-        ],
-        papers: [
-          {
-            name: "Performer",
-            title: "Rethinking Attention with Performers",
-            authors: "Choromanski, Likhosherstov, etc.",
-            year: "2020",
-            arxiv: "https://arxiv.org/abs/2009.14794",
-            github: "https://github.com/google-research/google-research/tree/master/performer",
-            huggingface: "",
-            bibtex: "Choromanski et al., 2020 — Performer (ICLR 2021)"
-          }
-        ]
-      },
-      {
-        id: 360,
-        name: "Triton",
-        cn: "Triton推理内核",
-        desc_cn: "Triton是OpenAI开源的深度学习内核编程语言和编译器，通过Triton-IR让用户用Python编写高效GPU内核，支持自动融合和共享内存优化。TensorRT-LLM和vLLM等推理框架内部使用Triton内核实现attention、矩阵乘法等关键操作，大幅提升推理吞吐量。",
-        desc_en: "Triton is OpenAI's open-source deep learning kernel programming language and compiler. Through Triton-IR, users write efficient GPU kernels in Python with automatic fusion and shared memory optimization. Inference frameworks like TensorRT-LLM and vLLM use Triton kernels internally for attention, matmul, and other critical operations, significantly boosting inference throughput.",
-        paper: "Tillet et al., 2019 — Triton — arXiv:1909.13511",
-        arxiv: "https://arxiv.org/abs/1909.13511",
-        badge: "🟢",
-        diff: "Intermediate",
-        categories: [14],
-        bench: [
-          {
-            m: "Triton GEMM",
-            metric: "TFLOPs",
-            ds: "A100",
-            v: "85%",
-            n: "peak utilization"
-          }
-        ],
-        papers: [
-          {
-            name: "Triton",
-            title: "Triton: An Intermediate Language and Compiler for Tiled Neural Network Programs",
-            authors: "Tillet, Kung, et al.",
-            year: "2019",
-            arxiv: "https://arxiv.org/abs/1909.13511",
-            github: "https://github.com/openai/triton",
-            huggingface: "",
-            bibtex: "Tillet et al., 2019 — Triton (arXiv 2019)"
-          }
-        ]
-      },
-      {
-        id: 361,
-        name: "lm-format",
-        cn: "lm-format",
-        desc_cn: "lm-format是用于LLM推理的高效数据打包和格式化库，支持tokens、logits等批量数据的零拷贝操作。它与vLLM、TGI等推理服务器配合使用，优化KV Cache格式和数据搬运效率。是LLM Serving基础设施建设的重要组成部分。",
-        desc_en: "lm-format is an efficient data packing and formatting library for LLM inference, supporting zero-copy operations on batched tokens, logits, and other data. Used alongside vLLM, TGI, and other inference servers to optimize KV Cache format and data transfer efficiency. A key component of LLM Serving infrastructure.",
-        paper: "lm-format — Open Source Library — GitHub",
-        arxiv: "https://github.com/huggingface/safetensors",
-        badge: "🟢",
-        diff: "Easy",
-        categories: [14],
-        bench: [
-          {
-            m: "lm-format decode",
-            metric: "Tokens/sec",
-            ds: "Llama-2 70B",
-            v: "45 tok/s",
-            n: "per A100"
-          }
-        ],
-        papers: [
-          {
-            name: "Safetensors",
-            title: "Safetensors: Safe and Fast Model Loading",
-            authors: "SafeTensors Authors",
-            year: "2023",
-            arxiv: "https://arxiv.org/abs/2306.13547",
-            github: "https://github.com/huggingface/safetensors",
-            huggingface: "",
-            bibtex: "SafeTensors Authors, 2023 — Safetensors (GitHub 2023)"
           }
         ]
       }
