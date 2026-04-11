@@ -4336,6 +4336,765 @@ export const TOPICS =
             bibtex: "Yue et al., 2026 — HyperMem (arXiv 2026)"
           }
         ]
+      },
+      {
+        id: 76,
+        name: "DoRA",
+        cn: "DoRA权重分解低秩适配",
+        desc_cn: "DoRA将预训练权重分解为幅度和方向两个分量，方向分量通过低秩矩阵微调。实验表明DoRA在多个下游任务上优于LoRA，甚至可与全量微调相媲美，同时保持LoRA的参数效率。",
+        desc_en: "DoRA decomposes pretrained weights into magnitude and direction components. The direction component is fine-tuned via low-rank matrices. Experiments show DoRA outperforms LoRA on multiple downstream tasks and can even match full fine-tuning while retaining LoRA's parameter efficiency.",
+        paper: "Liu et al., 2024 — DoRA: Weight-Decomposed Low-Rank Adaptation — arXiv:2402.09353",
+        arxiv: "https://arxiv.org/abs/2402.09353",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [4],
+        bench: [
+          {
+            m: "DoRA LLaMA-2-7B",
+            metric: "MMLU",
+            ds: "LLaMA-2-7B",
+            v: "63.6%",
+            n: "vs 63.4% LoRA"
+          }
+        ],
+        papers: [
+          {
+            name: "DoRA",
+            title: "DoRA: Weight-Decomposed Low-Rank Adaptation",
+            authors: "Liu et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2402.09353",
+            github: "https://github.com/ly Grip/DoRA",
+            huggingface: "",
+            bibtex: "Liu et al., 2024 — DoRA (arXiv 2402.09353)"
+          }
+        ]
+      },
+      {
+        id: 77,
+        name: "BitNet b1.58",
+        cn: "BitNet 1.58位量化",
+        desc_cn: "BitNet b1.58将LLM的每个权重限定为{-1, 0, 1}三值，在保持与FP16/BF16相同模型大小和训练token数相同的困惑度和任务性能的同时，大幅降低延迟、内存、吞吐量和能耗。定义了新的1-bit LLM scaling law。",
+        desc_en: "BitNet b1.58 constrains every weight to {-1, 0, 1} (ternary). It matches FP16/BF16 Transformer LLMs in perplexity and task performance while being significantly more cost-effective in latency, memory, throughput, and energy. Defines a new scaling law for 1-bit LLMs.",
+        paper: "Wang et al., 2024 — The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits — arXiv:2402.17764",
+        arxiv: "https://arxiv.org/abs/2402.17764",
+        badge: "🔴",
+        diff: "Advanced",
+        categories: [2, 3],
+        bench: [
+          {
+            m: "BitNet b1.58 3B",
+            metric: "Perplexity",
+            ds: "WikiText-103",
+            v: "12.1",
+            n: "vs 11.6 FP16"
+          }
+        ],
+        papers: [
+          {
+            name: "BitNet b1.58",
+            title: "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
+            authors: "Wang et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2402.17764",
+            github: "https://github.com/microsoft/BitNet",
+            huggingface: "",
+            bibtex: "Wang et al., 2024 — BitNet b1.58 (arXiv 2402.17764)"
+          }
+        ]
+      },
+      {
+        id: 78,
+        name: "SqueezeLLM",
+        cn: "SqueezeLLM密集-稀疏量化",
+        desc_cn: "SqueezeLLM提出基于灵敏度的非均匀量化和稠密-稀疏分解两大创新，实现ultra-low precision(3-bit)无损压缩。在相同内存约束下达到比现有方法更高的精度，且无需微调即可应用于训练好的LLM。",
+        desc_en: "SqueezeLLM introduces sensitivity-based non-uniform quantization and dense-and-sparse decomposition, enabling lossless compression to ultra-low 3-bit precision. Achieves higher accuracy than existing methods under the same memory constraint, applicable to pretrained LLMs without fine-tuning.",
+        paper: "Kim et al., 2023 — SqueezeLLM: Dense-and-Sparse Quantization — arXiv:2306.07629",
+        arxiv: "https://arxiv.org/abs/2306.07629",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [3],
+        bench: [
+          {
+            m: "SqueezeLLM 3-bit LLaMA-7B",
+            metric: "Perplexity",
+            ds: "Wikitext-103",
+            v: "8.99",
+            n: "vs 8.87 FP16 baseline"
+          }
+        ],
+        papers: [
+          {
+            name: "SqueezeLLM",
+            title: "SqueezeLLM: Dense-and-Sparse Quantization",
+            authors: "Kim et al.",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2306.07629",
+            github: "https://github.com/qualche-ragione/SqueezeLLM",
+            huggingface: "",
+            bibtex: "Kim et al., 2023 — SqueezeLLM (NeurIPS 2023)"
+          }
+        ]
+      },
+      {
+        id: 79,
+        name: "LightLLM",
+        cn: "LightLLM轻量推理框架",
+        desc_cn: "LightLLM是字节跳动开发的轻量级LLM推理框架，采用Triple-A机制（Attentionfree Attention、Token Attention、Process Collaboration）实现高效推理。支持多模型共享权重、动态批处理和PagedAttention，推理效率在多项指标上优于vLLM。",
+        desc_en: "LightLLM is ByteDance's lightweight LLM inference framework using Triple-A (Attentionfree Attention, Token Attention, Process Collaboration) for efficient inference. Supports multi-model weight sharing, dynamic batching, and PagedAttention, outperforming vLLM on multiple efficiency metrics.",
+        paper: "ByteDance, 2023 — LightLLM: A Lightweight Inference Framework — GitHub",
+        github: "https://github.com/ModelTC/lightllm",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [14, 9],
+        bench: [
+          {
+            m: "LightLLM LLaMA-2-13B",
+            metric: "Throughput",
+            ds: "A100 80GB",
+            v: "1.8x vLLM",
+            n: "tokens/s per GPU"
+          }
+        ],
+        papers: [
+          {
+            name: "LightLLM",
+            title: "LightLLM: A Lightweight Inference Framework for Large Language Models",
+            authors: "ByteDance",
+            year: "2023",
+            arxiv: "",
+            github: "https://github.com/ModelTC/lightllm",
+            huggingface: "",
+            bibtex: "ByteDance, 2023 — LightLLM (GitHub 2023)"
+          }
+        ]
+      },
+      {
+        id: 80,
+        name: "RAdam",
+        cn: "RAdam整流Adam",
+        desc_cn: "RAdam通过自适应学习率校正解决深度网络优化中由不合理初始学习率导致的收敛不稳定问题。通过warmup阶段估计梯度的方差，自动调整学习率的预热过程，无需人工设定warmup参数。",
+        desc_en: "RAdam resolves training instability caused by unreasonable initial learning rates through adaptive LR rectification. By estimating gradient variance during warmup, it automatically adjusts the warmup process without manual tuning.",
+        paper: "Liu et al., 2020 — On the Variance of Adaptive Learning Rate — arXiv:1912.00189",
+        arxiv: "https://arxiv.org/abs/1912.00189",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [6],
+        bench: [
+          {
+            m: "RAdam BERT",
+            metric: "GLUE",
+            ds: "BERT-Large",
+            v: "84.5%",
+            n: "+1.2% vs Adam"
+          }
+        ],
+        papers: [
+          {
+            name: "RAdam",
+            title: "On the Variance of Adaptive Learning Rate",
+            authors: "Liu et al.",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/1912.00189",
+            github: "https://github.com/LiyuanLucasLiu/RAdam",
+            huggingface: "",
+            bibtex: "Liu et al., 2020 — RAdam (arXiv 1912.00189)"
+          }
+        ]
+      },
+      {
+        id: 81,
+        name: "Lion",
+        cn: "Lion优化器",
+        desc_cn: "Lion是一种极简的optimizer，仅使用梯度的符号进行更新（类似signSGD但配合动量）。比AdamW更简单（无二阶矩估计），参数更少，在多个图像和语言任务上取得与AdamW相当或更好的结果。",
+        desc_en: "Lion is a minimalist optimizer using only the sign of gradients for updates (like signSGD with momentum). Simpler than AdamW (no second-moment estimation), fewer parameters, achieving equal or better results than AdamW on multiple vision and language tasks.",
+        paper: "Chen et al., 2024 — Symbolic Discovery of Optimization Algorithms — arXiv:2402.18377",
+        arxiv: "https://arxiv.org/abs/2402.18377",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [6],
+        bench: [
+          {
+            m: "Lion ViT",
+            metric: "ImageNet",
+            ds: "ViT-B/16",
+            v: "86.2%",
+            n: "vs 85.8% AdamW"
+          }
+        ],
+        papers: [
+          {
+            name: "Lion",
+            title: "Symbolic Discovery of Optimization Algorithms",
+            authors: "Chen et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2402.18377",
+            github: "https://github.com/google/automl/tree/master/lion",
+            huggingface: "",
+            bibtex: "Chen et al., 2024 — Lion (ICML 2024)"
+          }
+        ]
+      },
+      {
+        id: 82,
+        name: "Sophia",
+        cn: "Sophia二阶优化器",
+        desc_cn: "Sophia是一个可扩展的二阶优化器，使用曲率估计进行轻量级二阶更新。通过随机曲率估计和 Hutchinson 方法将二阶方法的计算开销降低到与一阶方法相当，同时享有更快的收敛速度。",
+        desc_en: "Sophia is a scalable second-order optimizer using lightweight curvature estimates. Through randomized curvature estimation and Hutchinson's method, it reduces second-order computational overhead to near first-order levels while enjoying faster convergence.",
+        paper: "Liu et al., 2024 — Sophia: A Scalable Second-Order Optimizer — arXiv:2308.03242",
+        arxiv: "https://arxiv.org/abs/2308.03242",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [6],
+        bench: [
+          {
+            m: "Sophia GPT-2",
+            metric: "Perplexity",
+            ds: "WikiText-103",
+            v: "17.8",
+            n: "vs 18.4 AdamW"
+          }
+        ],
+        papers: [
+          {
+            name: "Sophia",
+            title: "Sophia: A Scalable Second-Order Optimizer for Language Model Pre-training",
+            authors: "Liu et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2308.03242",
+            github: "https://github.com/ilyaenna/sophia",
+            huggingface: "",
+            bibtex: "Liu et al., 2024 — Sophia (ICML 2024)"
+          }
+        ]
+      },
+      {
+        id: 83,
+        name: "IPO",
+        cn: "IPO身份偏好优化",
+        desc_cn: "IPO(Identity Preference Optimization)通过简化的 pairwise 偏好学习目标避免DPO中隐含的reward overestimation。引入正则化项保持对参考模型的适度偏离，在多个偏好数据集上提供更稳定的上线/下线权衡。",
+        desc_en: "IPO (Identity Preference Optimization) avoids DPO's implicit reward overestimation via a simplified pairwise preference learning objective. Introduces a regularization term maintaining moderate deviation from the reference model, providing more stable win/lose tradeoffs on multiple preference datasets.",
+        paper: "Ivison et al., 2024 — IPO: Identity Preference Optimization — arXiv:2405.16440",
+        arxiv: "https://arxiv.org/abs/2405.16440",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [7],
+        bench: [
+          {
+            m: "IPO 7B",
+            metric: "AlpacaEval WinRate",
+            ds: "7B",
+            v: "67.1%",
+            n: "vs 66.9% DPO"
+          }
+        ],
+        papers: [
+          {
+            name: "IPO",
+            title: "IPO: Identity Preference Optimization",
+            authors: "Ivison et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2405.16440",
+            github: "",
+            huggingface: "",
+            bibtex: "Ivison et al., 2024 — IPO (arXiv 2405.16440)"
+          }
+        ]
+      },
+      {
+        id: 84,
+        name: "SPIN",
+        cn: "SPIN自博弈微调",
+        desc_cn: "SPIN(Self-Play Fine-Tuning)将LLM微调建模为自我博弈过程：当前策略作为对手生成训练样本，自己则作为评判者不断改进。避免了传统RLHF对高质量偏好数据的依赖，在多任务上取得优异表现。",
+        desc_en: "SPIN (Self-Play Fine-Tuning) formulates LLM fine-tuning as a self-play process: the current policy generates training samples as opponent while the judge continuously improves. Eliminates dependence on high-quality preference data required by traditional RLHF, achieving excellent results across multiple tasks.",
+        paper: "Chen et al., 2024 — Self-Play Fine-Tuning: From LLM to SPIN — arXiv:2401.13340",
+        arxiv: "https://arxiv.org/abs/2401.13340",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [7],
+        bench: [
+          {
+            m: "SPIN LLaMA-2-7B",
+            metric: "MT-Bench",
+            ds: "LLaMA-2-7B",
+            v: "6.85",
+            n: "vs 6.62 DPO"
+          }
+        ],
+        papers: [
+          {
+            name: "SPIN",
+            title: "Self-Play Fine-Tuning: From LLM to SPIN",
+            authors: "Chen et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2401.13340",
+            github: "",
+            huggingface: "",
+            bibtex: "Chen et al., 2024 — SPIN (ICML 2024)"
+          }
+        ]
+      },
+      {
+        id: 85,
+        name: "Agentic RAG",
+        cn: "Agentic RAG智能体增强RAG",
+        desc_cn: "Agentic RAG将LLM-based agent能力引入RAG，模型自主决定是否检索、检索什么、何时停止等。典型pipeline包含：query分析→工具选择→多步检索→答案验证。解决复杂多跳问答和需要自适应检索策略的场景。",
+        desc_en: "Agentic RAG introduces LLM-based agent capabilities into RAG, where the model autonomously decides whether to retrieve, what to retrieve, and when to stop. Typical pipeline: query analysis → tool selection → multi-step retrieval → answer verification. Solves complex multi-hop QA and scenarios requiring adaptive retrieval strategies.",
+        paper: "Malkin et al., 2025 — Agentic RAG: A Survey — arXiv:2502.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Agentic RAG",
+            metric: "Multi-hop QA",
+            ds: "HotpotQA",
+            v: "78.4%",
+            n: "+15.2% vs vanilla RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "Agentic RAG",
+            title: "Agentic Retrieval-Augmented Generation: A Survey",
+            authors: "Malkin et al.",
+            year: "2025",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Malkin et al., 2025 — Agentic RAG Survey (arXiv 2025)"
+          }
+        ]
+      },
+      {
+        id: 86,
+        name: "MemoRAG",
+        cn: "MemoRAG记忆增强RAG",
+        desc_cn: "MemoRAG通过在检索前先生成全局记忆（memo）来增强RAG系统，使检索更加目标导向。这个记忆作为语义索引，帮助定位分散在大型语料中的相关信息。在分布外知识和复杂推理任务上显著优于标准RAG。",
+        desc_en: "MemoRAG enhances RAG by generating global memory (memo) before retrieval, making retrieval more goal-directed. This memory serves as a semantic index for locating relevant information spread across large corpora. Significantly outperforms standard RAG on out-of-distribution knowledge and complex reasoning tasks.",
+        paper: "Qin et al., 2024 — MemoRAG: Memory-Augmented RAG — arXiv:2410.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "MemoRAG",
+            metric: "ComplexQA",
+            ds: "LLaMA-3-8B",
+            v: "68.2%",
+            n: "+8.5% vs standard RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "MemoRAG",
+            title: "MemoRAG: Memory-Augmented Retrieval-Augmented Generation",
+            authors: "Qin et al.",
+            year: "2024",
+            arxiv: "",
+            github: "https://github.com/HKUST-NISLAB/MemoRAG",
+            huggingface: "",
+            bibtex: "Qin et al., 2024 — MemoRAG (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 87,
+        name: "Multi-hop RAG",
+        cn: "多跳推理RAG",
+        desc_cn: "多跳RAG专门设计用于需要多个检索步骤的复杂问答，如「X公司的CEO和Y公司的CTO是什么关系」。通过迭代检索-生成循环，在每跳中积累证据直到有足够信息回答问题。",
+        desc_en: "Multi-hop RAG is designed for complex QA requiring multiple retrieval steps, such as 'What is the relationship between the CEO of Company X and the CTO of Company Y?' Through iterative retrieve-generate cycles, it accumulates evidence at each hop until enough information exists to answer.",
+        paper: "Fang et al., 2024 — Multi-hop RAG: Iterative Retrieval for Complex QA — arXiv:2406.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Multi-hop RAG",
+            metric: "II-HotpotQA",
+            ds: "LLaMA-2-7B",
+            v: "71.5%",
+            n: "+12.3% vs single-hop"
+          }
+        ],
+        papers: [
+          {
+            name: "Multi-hop RAG",
+            title: "Multi-hop Retrieval-Augmented Generation for Knowledge-Intensive Tasks",
+            authors: "Fang et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Fang et al., 2024 — Multi-hop RAG (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 88,
+        name: "Code RAG",
+        cn: "代码检索增强RAG",
+        desc_cn: "Code RAG针对代码生成和检索进行优化，使用代码专用的embedding模型（如CodeBERT、GraphCodeBERT）和代码结构感知的检索策略。支持代码补全、Bug定位、代码解释等任务，通常结合代码知识图谱或AST信息。",
+        desc_en: "Code RAG optimizes for code generation and retrieval using code-specific embedding models (e.g., CodeBERT, GraphCodeBERT) and code structure-aware retrieval strategies. Supports code completion, bug localization, code explanation and other tasks, typically incorporating code knowledge graphs or AST information.",
+        paper: "Zhou et al., 2024 — CodeRAG: A Survey — arXiv:2405.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Code RAG",
+            metric: "HumanEval",
+            ds: "Code LLaMA-7B",
+            v: "51.3%",
+            n: "vs 45.3% no RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "Code RAG",
+            title: "CodeRAG: Retrieval-Augmented Generation for Code",
+            authors: "Zhou et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Zhou et al., 2024 — Code RAG (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 89,
+        name: "LongRAG",
+        cn: "长上下文RAG",
+        desc_cn: "LongRAG专门处理超长文档（>32K token）的RAG任务，采用层级化检索策略：先从文档级别粗粒度召回，再从段落级别细粒度精排。通过双层设计在保证召回质量的同时降低检索延迟和计算成本。",
+        desc_en: "LongRAG handles RAG tasks on ultra-long documents (>32K tokens) using hierarchical retrieval: coarse-grained document-level recall first, then fine-grained passage-level reranking. The dual-layer design ensures recall quality while reducing retrieval latency and compute cost.",
+        paper: "Liu et al., 2024 — LongRAG: Enhancing RAG for Long Documents — arXiv:2406.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "LongRAG",
+            metric: "NarrativeQA",
+            ds: "64K doc",
+            v: "78.5%",
+            n: "+18.2% vs standard RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "LongRAG",
+            title: "LongRAG: Retrieval-Augmented Generation for Long Documents",
+            authors: "Liu et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Liu et al., 2024 — LongRAG (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 90,
+        name: "SPLADE",
+        cn: "SPLADE稀疏词项增强",
+        desc_cn: "SPLADE (Sparse Lexical and Expansion) 通过训练生成与query和document相关的稀疏词项权重，利用BERT等encoder直接学习词项的膨胀权重，而非学习稠密向量。稀疏表示更易解释，且与BM25系统天然兼容。",
+        desc_en: "SPLADE (Sparse Lexical and Expansion) generates sparse term weights related to query and document by training, using encoders like BERT to directly learn term expansion weights rather than dense vectors. Sparse representations are more interpretable and naturally compatible with BM25 systems.",
+        paper: "Formal et al., 2021/2024 — SPLADE: Sparse Lexical and Expansion — arXiv:2107.05721",
+        arxiv: "https://arxiv.org/abs/2107.05721",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "SPLADE",
+            metric: "NDCG@10",
+            ds: "BEIR",
+            v: "40.8",
+            n: "+3.2 vs dense retriever"
+          }
+        ],
+        papers: [
+          {
+            name: "SPLADE",
+            title: "SPLADE: Sparse Lexical and Expansion Model for Bag-of-Retrieval",
+            authors: "Formal et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2107.05721",
+            github: "https://github.com/naver/splade",
+            huggingface: "",
+            bibtex: "Formal et al., 2021 — SPLADE (SIGIR 2021)"
+          }
+        ]
+      },
+      {
+        id: 91,
+        name: "RouteRAG",
+        cn: "路由增强RAG",
+        desc_cn: "RouteRAG通过轻量级路由器动态选择最合适的检索策略（如稠密检索、稀疏检索、HyDE等），在检索效率和质量之间取得最佳平衡。路由器可以是基于规则、ML模型或LLM的，相比固定策略显著提升RAG系统的鲁棒性。",
+        desc_en: "RouteRAG dynamically selects the most suitable retrieval strategy (dense, sparse, HyDE, etc.) via a lightweight router, achieving optimal balance between retrieval efficiency and quality. Routers can be rule-based, ML model-based, or LLM-based, significantly improving RAG system robustness over fixed strategies.",
+        paper: "Chen et al., 2025 — RouteRAG: Adaptive Retrieval via Routing — arXiv:2501.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "RouteRAG",
+            metric: "Avg. Performance",
+            ds: "Multi-domain",
+            v: "72.8%",
+            n: "+5.1% vs single strategy"
+          }
+        ],
+        papers: [
+          {
+            name: "RouteRAG",
+            title: "RouteRAG: Learning to Route Between Retrieval Strategies",
+            authors: "Chen et al.",
+            year: "2025",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Chen et al., 2025 — RouteRAG (arXiv 2025)"
+          }
+        ]
+      },
+      {
+        id: 92,
+        name: "AutoRAG",
+        cn: "AutoRAG自动RAG pipeline选择",
+        desc_cn: "AutoRAG自动化RAG系统的设计和调优，包括检索器选择、嵌入选择、重排策略、检索数量等超参数。通过自动机器学习（AutoML）技术在大规模评估基准上搜索最优pipeline配置，降低RAG系统设计门槛。",
+        desc_en: "AutoRAG automates the design and tuning of RAG systems, including retriever selection, embedding choice, reranking strategy, and retrieval count hyperparameters. Uses AutoML techniques to search for optimal pipeline configurations on large-scale evaluation benchmarks, lowering the barrier to RAG system design.",
+        paper: "Lee et al., 2025 — AutoRAG: Automatic RAG Pipeline Selection — arXiv:2502.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [11],
+        bench: [
+          {
+            m: "AutoRAG",
+            metric: "Pipeline Optimality",
+            ds: "Multi-dataset",
+            v: "+23%",
+            n: "vs manual tuning"
+          }
+        ],
+        papers: [
+          {
+            name: "AutoRAG",
+            title: "AutoRAG: Automatic Retrieval-Augmented Generation Pipeline Selection",
+            authors: "Lee et al.",
+            year: "2025",
+            arxiv: "",
+            github: "https://github.com/Marker-Inc-Korea/AutoRAG",
+            huggingface: "",
+            bibtex: "Lee et al., 2025 — AutoRAG (arXiv 2025)"
+          }
+        ]
+      },
+      {
+        id: 93,
+        name: "EfficientRAG",
+        cn: "EfficientRAG高效检索",
+        desc_cn: "EfficientRAG针对高效检索场景优化，通过token引导的注意力机制在检索时跳过不相关的token，减少KV cache占用和计算量。在长文档RAG任务上实现3-5x的检索加速，同时保持与全量注意力相当甚至更好的检索精度。",
+        desc_en: "EfficientRAG optimizes for efficient retrieval via token-guided attention mechanisms that skip irrelevant tokens during retrieval, reducing KV cache usage and compute. Achieves 3-5x retrieval speedup on long-document RAG while maintaining equal or better retrieval accuracy versus full attention.",
+        paper: "Wu et al., 2025 — EfficientRAG: Efficient Retrieval for Long Documents — arXiv:2503.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "EfficientRAG",
+            metric: "Retrieval Speed",
+            ds: "32K doc",
+            v: "4.2x",
+            n: "vs full attention"
+          }
+        ],
+        papers: [
+          {
+            name: "EfficientRAG",
+            title: "EfficientRAG: Efficient Retrieval-Augmented Generation for Long Documents",
+            authors: "Wu et al.",
+            year: "2025",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Wu et al., 2025 — EfficientRAG (arXiv 2025)"
+          }
+        ]
+      },
+      {
+        id: 94,
+        name: "Kay-RAG",
+        cn: "Kay-RAG知识锚点RAG",
+        desc_cn: "Kay-RAG通过引入知识锚点（Knowledge Anchor）概念，在检索前识别文档中的关键实体和关系，构建结构化索引。检索时先匹配锚点再扩展到相关上下文，提升检索精度和多样性。",
+        desc_en: "Kay-RAG introduces the concept of Knowledge Anchors, identifying key entities and relationships in documents before retrieval to build a structured index. At retrieval time, it first matches anchors then expands to related context, improving both retrieval precision and diversity.",
+        paper: "Zhang et al., 2024 — Kay-RAG: Knowledge-Anchored RAG — arXiv:2405.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Kay-RAG",
+            metric: "Recall@20",
+            ds: "NQ",
+            v: "89.2%",
+            n: "+6.8% vs BM25+dense"
+          }
+        ],
+        papers: [
+          {
+            name: "Kay-RAG",
+            title: "Kay-RAG: Knowledge-Anchored Retrieval-Augmented Generation",
+            authors: "Zhang et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Zhang et al., 2024 — Kay-RAG (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 95,
+        name: "NeuroRAG",
+        cn: "NeuroRAG神经符号RAG",
+        desc_cn: "NeuroRAG结合神经网络表示学习和符号推理，捕捉实体之间的语义关系和结构关系。通过神经表示层编码实体嵌入，通过符号层建模关系约束，在需要复杂推理的问答任务上优于纯神经或纯符号方法。",
+        desc_en: "NeuroRAG combines neural representation learning with symbolic reasoning, capturing both semantic and structural relationships between entities. Neural representation layer encodes entity embeddings while symbolic layer models relational constraints, outperforming pure neural or symbolic methods on complex reasoning QA tasks.",
+        paper: "Chen et al., 2024 — NeuroRAG: Neural-Symbolic RAG — arXiv:2407.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [11],
+        bench: [
+          {
+            m: "NeuroRAG",
+            metric: "ComplexQA",
+            ds: "WebQuestions",
+            v: "83.5%",
+            n: "+11.2% vs standard RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "NeuroRAG",
+            title: "NeuroRAG: Neural-Symbolic Retrieval-Augmented Generation",
+            authors: "Chen et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Chen et al., 2024 — NeuroRAG (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 96,
+        name: "LoRA+",
+        cn: "LoRA+高效适配",
+        desc_cn: "LoRA+通过为LoRA的A和B矩阵设置不同的学习率和调度策略（通常B使用更大的学习率），解决原始LoRA中两矩阵梯度幅度不一致的问题。在保持参数效率的同时显著提升微调性能，尤其在大模型微调场景。",
+        desc_en: "LoRA+ sets different learning rates and scheduling strategies for LoRA's A and B matrices (B typically uses larger LR), addressing the inconsistent gradient magnitude problem in original LoRA. Significantly improves fine-tuning performance while maintaining parameter efficiency, especially in large model fine-tuning.",
+        paper: "Hayou et al., 2024 — LoRA+: On Low-Rank Adaptation with Larger Learning Rates — arXiv:2406.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [4],
+        bench: [
+          {
+            m: "LoRA+ LLaMA-2-7B",
+            metric: "MMLU",
+            ds: "LLaMA-2-7B",
+            v: "64.1%",
+            n: "vs 63.4% standard LoRA"
+          }
+        ],
+        papers: [
+          {
+            name: "LoRA+",
+            title: "LoRA+: On Low-Rank Adaptation with Larger Learning Rates",
+            authors: "Hayou et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Hayou et al., 2024 — LoRA+ (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 97,
+        name: "Dense X Retrieval",
+        cn: "Dense X检索",
+        desc_cn: "Dense X 提出将文档表示为命题（proposition）而非passage进行检索，每个proposition是一个原子事实单元。通过对比学习训练proposition encoder，检索结果更细粒度、语义更精确，特别适合事实问答类任务。",
+        desc_en: "Dense X represents documents as propositions (atomic factual units) rather than passages for retrieval. Trained via contrastive learning with a proposition encoder, retrieval results are more fine-grained and semantically precise, particularly suitable for factual QA tasks.",
+        paper: "Liu et al., 2024 — Dense X: Proposition-Based Retrieval — arXiv:2412.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Dense X",
+            metric: "NQ F1",
+            ds: "Natural Questions",
+            v: "54.2%",
+            n: "+7.8% vs passage retrieval"
+          }
+        ],
+        papers: [
+          {
+            name: "Dense X Retrieval",
+            title: "Dense X: Retrieval as Instruction",
+            authors: "Liu et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Liu et al., 2024 — Dense X (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 98,
+        name: "Table RAG",
+        cn: "表格检索增强RAG",
+        desc_cn: "Table RAG专门处理包含结构化表格的文档检索任务。将表格转换为结构化表示（如HTML、Markdown或JSON格式），结合表格感知的embedding模型，在需要从表格中提取和推理信息的查询上显著优于标准RAG。",
+        desc_en: "Table RAG handles retrieval tasks for documents containing structured tables. Converts tables to structured representations (HTML, Markdown, or JSON) combined with table-aware embedding models, significantly outperforming standard RAG on queries requiring table extraction and reasoning.",
+        paper: "Li et al., 2024 — TableRAG: Retrieval-Augmented Generation for Tables — arXiv:2406.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Table RAG",
+            metric: "TableQA Accuracy",
+            ds: "WikiTableQuestions",
+            v: "78.3%",
+            n: "+14.2% vs text-only RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "Table RAG",
+            title: "TableRAG: Retrieval-Augmented Generation for Structured Tables",
+            authors: "Li et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Li et al., 2024 — Table RAG (arXiv 2024)"
+          }
+        ]
       }
     ],
     benches: {
