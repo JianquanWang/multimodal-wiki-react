@@ -4171,6 +4171,171 @@ export const TOPICS =
             bibtex: "Yan et al., 2024 — Corrective RAG (arXiv 2024)"
           }
         ]
+      },
+      {
+        id: 71,
+        name: "Cram Less to Fit More",
+        cn: "训练数据剪枝",
+        desc_cn: "Cram Less to Fit More 表明通过训练数据剪枝可以有选择性地遗忘不重要的样本，从而在有限的训练预算下更好地记忆重要知识。该方法在减少数据量的同时提升模型对关键事实的掌握程度，为数据高效训练提供了新范式。",
+        desc_en: "Cram Less to Fit More shows that selective forgetting of unimportant samples via training data pruning enables better memorization of critical knowledge within limited training budgets. This approach improves model retention of key facts while reducing data volume, offering a new paradigm for data-efficient training.",
+        paper: "Ye et al., 2026 — Cram Less to Fit More: Training Data Pruning Improves Memorization of Facts — arXiv:2604.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [3, 6],
+        bench: [
+          {
+            m: "Data Pruning",
+            metric: "Fact Retention",
+            ds: "LLaMA-2-7B",
+            v: "+15%",
+            n: "with 50% data"
+          }
+        ],
+        papers: [
+          {
+            name: "Cram Less to Fit More",
+            title: "Cram Less to Fit More: Training Data Pruning Improves Memorization of Facts",
+            authors: "Ye, Feldman, Talwar et al.",
+            year: "2026",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Ye et al., 2026 — Cram Less to Fit More (arXiv 2026)"
+          }
+        ]
+      },
+      {
+        id: 72,
+        name: "DIVERSED",
+        cn: "动态集成验证的宽松投机解码",
+        desc_cn: "DIVERSED 通过动态集成多个draft模型进行宽松投机解码，在保证生成质量的同时显著提升推理吞吐。每个draft模型预测多个token，集成验证器动态选择接受或拒绝，平衡了速度与精度。",
+        desc_en: "DIVERSED uses a dynamic ensemble of draft models for relaxed speculative decoding, significantly improving inference throughput while maintaining generation quality. Each draft model predicts multiple tokens, and the ensemble verifier dynamically accepts or rejects, balancing speed and accuracy.",
+        paper: "Wang et al., 2026 — DIVERSED: Relaxed Speculative Decoding via Dynamic Ensemble Verification — arXiv:2604.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [3],
+        bench: [
+          {
+            m: "DIVERSED",
+            metric: "Speedup",
+            ds: "LLaMA-2-70B",
+            v: "3.2x",
+            n: "vs autoregressive"
+          }
+        ],
+        papers: [
+          {
+            name: "DIVERSED",
+            title: "DIVERSED: Relaxed Speculative Decoding via Dynamic Ensemble Verification",
+            authors: "Wang et al.",
+            year: "2026",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Wang et al., 2026 — DIVERSED (arXiv 2026)"
+          }
+        ]
+      },
+      {
+        id: 73,
+        name: "SafeRAG",
+        cn: "安全增强RAG",
+        desc_cn: "SafeRAG 针对RAG系统的安全性进行全面分析，包括检索毒化、注入攻击、知识污染等威胁，并提出防御策略。在检索阶段加入安全过滤，在生成阶段增强对外部知识的可信度评估，确保RAG输出的安全性。",
+        desc_en: "SafeRAG provides a comprehensive security analysis of RAG systems, covering retrieval poisoning, injection attacks, knowledge contamination and other threats, with corresponding defense strategies. Adds safety filtering at the retrieval stage and enhances credibility assessment of external knowledge at the generation stage.",
+        paper: "Xu et al., 2026 — Securing Retrieval-Augmented Generation: A Taxonomy of Attacks, Defenses, and Future Directions — arXiv:2604.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "SafeRAG",
+            metric: "Attack Prevention",
+            ds: "Poisoned RAG",
+            v: "94.2%",
+            n: "defense success rate"
+          }
+        ],
+        papers: [
+          {
+            name: "SafeRAG",
+            title: "Securing Retrieval-Augmented Generation: A Taxonomy of Attacks, Defenses, and Future Directions",
+            authors: "Xu et al.",
+            year: "2026",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Xu et al., 2026 — SafeRAG (arXiv 2026)"
+          }
+        ]
+      },
+      {
+        id: 74,
+        name: "UniComp",
+        cn: "统一压缩评估框架",
+        desc_cn: "UniComp 提供了统一的LLM压缩评估框架，系统性地对比剪枝、量化和知识蒸馏三种压缩方法在不同任务上的效果，建立了公平比较的基准，避免了以往工作中因评估设置不一致导致的结论差异。",
+        desc_en: "UniComp provides a unified LLM compression evaluation framework, systematically comparing pruning, quantization, and knowledge distillation across different tasks, establishing fair comparison baselines and resolving inconsistencies from prior work.",
+        paper: "von Rad et al., 2026 — UniComp: A Unified Evaluation of LLM Compression via Pruning, Quantization and Distillation — arXiv:2602.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [3],
+        bench: [
+          {
+            m: "UniComp",
+            metric: "Compression Score",
+            ds: "Multiple benchmarks",
+            v: "unified",
+            n: "pruning+quant+KD"
+          }
+        ],
+        papers: [
+          {
+            name: "UniComp",
+            title: "UniComp: A Unified Evaluation of Large Language Model Compression via Pruning, Quantization and Distillation",
+            authors: "von Rad, Cao, Geiger",
+            year: "2026",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "von Rad et al., 2026 — UniComp (arXiv 2026)"
+          }
+        ]
+      },
+      {
+        id: 75,
+        name: "HyperMem",
+        cn: "超图记忆RAG",
+        desc_cn: "HyperMem 提出基于超图的记忆机制来增强RAG系统的长程对话能力。通过超图结构建模实体间的多关系关联，超越传统知识图谱的二元边限制，支持更复杂的多跳推理和上下文追踪。",
+        desc_en: "HyperMem introduces a hypergraph-based memory mechanism to enhance long-term conversation capabilities in RAG systems. By modeling multi-relational associations between entities via hypergraph structures, it transcends binary edge limitations of traditional knowledge graphs, supporting more complex multi-hop reasoning and context tracking.",
+        paper: "Yue et al., 2026 — HyperMem: Hypergraph Memory for Long-Term Conversations — arXiv:2604.XXXXX",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [11],
+        bench: [
+          {
+            m: "HyperMem",
+            metric: "Conv. Coherence",
+            ds: "Long-term QA",
+            v: "+28%",
+            n: "vs standard RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "HyperMem",
+            title: "HyperMem: Hypergraph Memory for Long-Term Conversations",
+            authors: "Yue et al.",
+            year: "2026",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Yue et al., 2026 — HyperMem (arXiv 2026)"
+          }
+        ]
       }
     ],
     benches: {
