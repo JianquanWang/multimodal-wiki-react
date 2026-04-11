@@ -3544,6 +3544,633 @@ export const TOPICS =
             bibtex: "Triton Authors, 2023 — lm-format (GitHub 2023)"
           }
         ]
+      },
+      {
+        id: 52,
+        name: "Wanda",
+        cn: "Wanda剪枝",
+        desc_cn: "Wanda (Weights × Activations) 是一种无需重训练的结构化剪枝方法，通过权重幅度乘以对应输入激活值来评估参数重要性，在LLaMA和LLaMA-2上显著超越幅度剪枝基准，且 pruned 模型可直接使用。",
+        desc_en: "Wanda (Weights × Activations) is a training-free structured pruning method that evaluates parameter importance by multiplying weight magnitude with input activations, significantly outperforming magnitude pruning baselines on LLaMA and LLaMA-2 without any fine-tuning.",
+        paper: "Xiao et al., 2023 — Wanda: A Simple and Effective Pruning Approach for LLMs — arXiv:2306.11695",
+        arxiv: "https://arxiv.org/abs/2306.11695",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [3],
+        bench: [
+          {
+            m: "Wanda LLaMA-2-7B",
+            metric: "WikiText2 PPL",
+            ds: "LLaMA-2-7B 50% sparse",
+            v: "6.14",
+            n: "vs 6.06 dense baseline"
+          }
+        ],
+        papers: [
+          {
+            name: "Wanda",
+            title: "A Simple and Effective Pruning Approach for Large Language Models",
+            authors: "Xiao et al.",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2306.11695",
+            github: "https://github.com/locuslab/wanda",
+            huggingface: "",
+            bibtex: "Xiao et al., 2023 — Wanda (ICML 2023)"
+          }
+        ]
+      },
+      {
+        id: 53,
+        name: "StreamingLLM",
+        cn: "流式LLM推理",
+        desc_cn: "StreamingLLM让LLM能在无限长序列上高效流式生成，无需微调。核心发现是attention sink现象——保留初始token的KV能大幅恢复窗口注意力的性能，使得训练好的有限上下文模型自然泛化到无限长度。",
+        desc_en: "StreamingLLM enables efficient streaming generation on infinitely long sequences without fine-tuning. The key observation is the attention sink phenomenon—keeping KV of initial tokens largely recovers window attention performance, allowing finite-context models to generalize to infinite length naturally.",
+        paper: "Xiao et al., 2023 — Efficient Streaming Language Models with Attention Sinks — arXiv:2309.17453",
+        arxiv: "https://arxiv.org/abs/2309.17453",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [3],
+        bench: [
+          {
+            m: "StreamingLLM 4K training",
+            metric: "PPL on 20K",
+            ds: "LLaMA-2-7B",
+            v: "~7.2",
+            n: "stable vs degradation"
+          }
+        ],
+        papers: [
+          {
+            name: "StreamingLLM",
+            title: "Efficient Streaming Language Models with Attention Sinks",
+            authors: "Xiao et al.",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2309.17453",
+            github: "https://github.com/mit-han-lab/streaming-llm",
+            huggingface: "",
+            bibtex: "Xiao et al., 2023 — StreamingLLM (arXiv 2023)"
+          }
+        ]
+      },
+      {
+        id: 54,
+        name: "MiniLLM",
+        cn: "MiniLLM知识蒸馏",
+        desc_cn: "MiniLLM将大语言模型蒸馏到小模型，使用reverse KL散度替代forward KL，更适合生成模型，防止学生模型过高估计教师分布的低概率区域，并通过on-policy优化学习该目标。",
+        desc_en: "MiniLLM distills large language models into smaller ones using reverse KL divergence instead of forward KL, more suitable for generative models, preventing the student from overestimating low-probability regions of the teacher distribution, with on-policy optimization to learn the objective.",
+        paper: "Li et al., 2024 — MiniLLM: On-Policy Distillation of Large Language Models — arXiv:2306.08543",
+        arxiv: "https://arxiv.org/abs/2306.08543",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [3],
+        bench: [
+          {
+            m: "MiniLLM-1.3B",
+            metric: "MT-Bench",
+            ds: "LLaMA-2-7B teacher",
+            v: "5.45",
+            n: "vs ChatGPT 8.06"
+          }
+        ],
+        papers: [
+          {
+            name: "MiniLLM",
+            title: "MiniLLM: On-Policy Distillation of Large Language Models",
+            authors: "Li et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2306.08543",
+            github: "https://github.com/mit-han-lab/minillm",
+            huggingface: "https://huggingface.co/MiniLLM",
+            bibtex: "Li et al., 2024 — MiniLLM (ICLR 2024)"
+          }
+        ]
+      },
+      {
+        id: 55,
+        name: "QuIP#",
+        cn: "QuIP#混合精度量化",
+        desc_cn: "QuIP#通过三个创新技术实现极致压缩（≤4bit）：(1) 随机Hadamard变换改善incoherence；(2) 基于E8格的向量量化利用权重亚高斯分布；(3) 微调提升保真度。在极低比特率下超越现有PTQ方法。",
+        desc_en: "QuIP# achieves extreme compression (≤4bit) via three innovations: (1) randomized Hadamard transform for better incoherence; (2) vector quantization via E8 lattice codebooks exploiting sub-Gaussian weight distribution; (3) fine-tuning to improve fidelity. Outperforms existing PTQ methods at extreme compression.",
+        paper: "Tseng et al., 2024 — QuIP#: Even Better LLM Quantization with Hadamard Incoherence and Lattice Codebooks — arXiv:2402.04396",
+        arxiv: "https://arxiv.org/abs/2402.04396",
+        badge: "🔴",
+        diff: "Advanced",
+        categories: [3],
+        bench: [
+          {
+            m: "QuIP# LLaMA-2-7B 4-bit",
+            metric: "C4 perplexity",
+            ds: "LLaMA-2-7B",
+            v: "8.91",
+            n: "vs 8.87 FP16"
+          }
+        ],
+        papers: [
+          {
+            name: "QuIP#",
+            title: "QuIP#: Even Better LLM Quantization with Hadamard Incoherence and Lattice Codebooks",
+            authors: "Tseng et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2402.04396",
+            github: "https://github.com/Cornell-RelaxML/quip-sharp",
+            huggingface: "",
+            bibtex: "Tseng et al., 2024 — QuIP# (ICML 2024)"
+          }
+        ]
+      },
+      {
+        id: 56,
+        name: "AQLM",
+        cn: "AQLM极低比特压缩",
+        desc_cn: "AQLM通过加性量化（Additive Quantization）实现LLM极致压缩（2-3 bit/参数）。两大创新：(1) 对权重矩阵进行输入自适应的加性量化；(2) 跨transformer block联合优化codebook参数。是首个在<3bit压缩下达到帕累托最优的方案。",
+        desc_en: "AQLM achieves extreme LLM compression (2-3 bits/parameter) via Additive Quantization. Two innovations: (1) input-adaptive additive quantization of weight matrices; (2) joint optimization of codebook parameters across transformer blocks. The first scheme Pareto-optimal in accuracy-vs-size at <3bit compression.",
+        paper: "Egiazarian et al., 2024 — Extreme Compression of LLMs via Additive Quantization — arXiv:2401.06118",
+        arxiv: "https://arxiv.org/abs/2401.06118",
+        badge: "🔴",
+        diff: "Advanced",
+        categories: [3],
+        bench: [
+          {
+            m: "AQLM 2-bit LLaMA-7B",
+            metric: "WikiText2 PPL",
+            ds: "LLaMA-7B",
+            v: "12.3",
+            n: "vs 8.87 FP16"
+          }
+        ],
+        papers: [
+          {
+            name: "AQLM",
+            title: "Extreme Compression of Large Language Models via Additive Quantization",
+            authors: "Egiazarian et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2401.06118",
+            github: "https://github.com/Vahe1994/AQLM",
+            huggingface: "",
+            bibtex: "Egiazarian et al., 2024 — AQLM (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 57,
+        name: "GaLore",
+        cn: "GaLore梯度低秩投影",
+        desc_cn: "GaLore通过梯度低秩投影实现LLM训练的记忆体高效化。核心思想是将梯度张量分解为两个低秩矩阵的乘积，从而将optimizer状态的内存占用从O(d²)降低到O(d)。可以在单张24GB GPU上全参数训练7B模型。",
+        desc_en: "GaLore enables memory-efficient LLM training via gradient low-rank projection. Core idea: factorize gradient tensors into two low-rank matrix products, reducing optimizer state memory from O(d²) to O(d). Enables full-parameter training of 7B models on a single 24GB GPU.",
+        paper: "Zhao et al., 2024 — GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection — arXiv:2403.03581",
+        arxiv: "https://arxiv.org/abs/2403.03581",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [6],
+        bench: [
+          {
+            m: "GaLore LLaMA-7B",
+            metric: "GPU Memory",
+            ds: "C4 dataset",
+            v: "23.5GB",
+            n: "vs 60GB baseline"
+          }
+        ],
+        papers: [
+          {
+            name: "GaLore",
+            title: "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+            authors: "Zhao et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2403.03581",
+            github: "https://github.com/jiaweizzhao/GaLore",
+            huggingface: "",
+            bibtex: "Zhao et al., 2024 — GaLore (ICML 2024)"
+          }
+        ]
+      },
+      {
+        id: 58,
+        name: "SAM",
+        cn: "锐度感知最小化",
+        desc_cn: "SAM (Sharpness-Aware Minimization) 通过在每个训练步找到邻域内最差情况的邻域来优化，找到更平坦的损失曲面，从而提升模型的泛化能力。在ImageNet、VGG、CIFAR等任务上取得显著效果。",
+        desc_en: "SAM (Sharpness-Aware Minimization) optimizes by finding the worst-case neighborhood in each training step, discovering flatter loss surfaces that generalize better. Achieves significant improvements on ImageNet, VGG, CIFAR and other benchmarks.",
+        paper: "Foret et al., 2021 — Sharpness-Aware Minimization for Efficiently Improving Generalization — arXiv:2010.01412",
+        arxiv: "https://arxiv.org/abs/2010.01412",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [6],
+        bench: [
+          {
+            m: "SAM ResNet-152",
+            metric: "ImageNet Top-1",
+            ds: "ImageNet",
+            v: "79.8%",
+            n: "+0.6% vs vanilla"
+          }
+        ],
+        papers: [
+          {
+            name: "SAM",
+            title: "Sharpness-Aware Minimization for Efficiently Improving Generalization",
+            authors: "Foret et al.",
+            year: "2021",
+            arxiv: "https://arxiv.org/abs/2010.01412",
+            github: "https://github.com/daviddwolfson/sam",
+            huggingface: "",
+            bibtex: "Foret et al., 2021 — SAM (ICLR 2021)"
+          }
+        ]
+      },
+      {
+        id: 59,
+        name: "LAMB",
+        cn: "LAMB大批次优化器",
+        desc_cn: "LAMB (Layer-wise Adaptive Moment estimation for Batch) 优化器支持超大batch size（32K+）训练而不损失精度，通过layer-wise自适应学习率缩放解决梯度耦合问题，是BERT大批次训练的关键技术。",
+        desc_en: "LAMB (Layer-wise Adaptive Moment estimation for Batch) optimizer supports extremely large batch sizes (32K+) without accuracy loss, using layer-wise adaptive LR scaling to resolve gradient coupling issues. Key technique for large-batch BERT training.",
+        paper: "You et al., 2020 — Large Batch Training for Deep Learning — arXiv:1904.00962",
+        arxiv: "https://arxiv.org/abs/1904.00962",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [6],
+        bench: [
+          {
+            m: "LAMB BERT 32K batch",
+            metric: "BERT GLUE",
+            ds: "BERT-Large",
+            v: "82.3%",
+            n: "76min training time"
+          }
+        ],
+        papers: [
+          {
+            name: "LAMB",
+            title: "Large Batch Training for Deep Learning",
+            authors: "You et al.",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/1904.00962",
+            github: "",
+            huggingface: "",
+            bibtex: "You et al., 2020 — LAMB (ICLR 2020)"
+          }
+        ]
+      },
+      {
+        id: 60,
+        name: "muP",
+        cn: "magnitude-of-parameters scaling",
+        desc_cn: "muP (magnitude-preserving parameterization) 通过保持网络各层在初始化时的magnitude一致来实现稳定的超参数缩放，使得小模型上 tuned 的超参数可以直接迁移到大模型，是神经网络缩放定律的重要实践工具。",
+        desc_en: "muP (magnitude-preserving parameterization) maintains consistent network layer magnitudes at initialization for stable hyperparameter scaling, enabling direct transfer of tuned hyperparameters from small to large models. An important practical tool for neural scaling laws.",
+        paper: "Yang et al., 2022 — muP: magnitude-of-parameters scaling — arXiv:2203.03466",
+        arxiv: "https://arxiv.org/abs/2203.03466",
+        badge: "🟡",
+        diff: "Advanced",
+        categories: [6],
+        bench: [
+          {
+            m: "muP Transformer",
+            metric: "LM Loss",
+            ds: "WebScale",
+            v: "same optimal LR",
+            n: "across model sizes"
+          }
+        ],
+        papers: [
+          {
+            name: "muP",
+            title: "Tensor Program IV: Spherical Init, Normalization and Symmetries",
+            authors: "Yang et al.",
+            year: "2022",
+            arxiv: "https://arxiv.org/abs/2203.03466",
+            github: "",
+            huggingface: "",
+            bibtex: "Yang et al., 2022 — muP (NeurIPS 2022)"
+          }
+        ]
+      },
+      {
+        id: 61,
+        name: "GraphRAG",
+        cn: "知识图谱RAG",
+        desc_cn: "GraphRAG由Microsoft提出，将知识图谱引入RAG系统，用于处理需要全局理解的问题。分两步：(1) 从源文档构建实体知识图谱；(2) 对相关实体社区进行摘要生成。在复杂、多跳问题上显著优于标准RAG。",
+        desc_en: "GraphRAG, from Microsoft, introduces knowledge graphs into RAG systems for globally-understanding questions. Two steps: (1) construct entity knowledge graph from source documents; (2) generate summaries over relevant entity communities. Significantly outperforms standard RAG on complex multi-hop questions.",
+        paper: "Edge et al., 2024 — GraphRAG: Graph-based Retrieval-Augmented Generation — Microsoft Research",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "GraphRAG",
+            metric: "Comprehension",
+            ds: "Multi-hop QA",
+            v: "+45%",
+            n: "vs standard RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "GraphRAG",
+            title: "GraphRAG: Graph-based Retrieval-Augmented Generation",
+            authors: "Edge et al.",
+            year: "2024",
+            arxiv: "",
+            github: "https://github.com/microsoft/graphrag",
+            huggingface: "",
+            bibtex: "Edge et al., 2024 — GraphRAG (Microsoft Research 2024)"
+          }
+        ]
+      },
+      {
+        id: 62,
+        name: "Self-RAG",
+        cn: "自反思RAG",
+        desc_cn: "Self-RAG通过训练一个自反思的LLM，让模型在生成过程中主动判断是否需要检索，以及检索到的段落是否相关、是否有支持证据。Critic模型输出特殊token指导生成，实现更精准的知识增强。",
+        desc_en: "Self-RAG trains a self-reflective LLM that actively decides whether to retrieve during generation, and whether retrieved passages are relevant and supported by evidence. The Critic model outputs special tokens to guide generation, achieving more precise knowledge augmentation.",
+        paper: "Asai et al., 2024 — Self-RAG: Self-Reflective Retrieval-Augmented Generation — arXiv:2310.11511",
+        arxiv: "https://arxiv.org/abs/2310.11511",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "Self-RAG",
+            metric: "Factuality",
+            ds: "PopQA",
+            v: "76.4%",
+            n: "+5.2% vs RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "Self-RAG",
+            title: "Self-RAG: Self-Reflective Retrieval-Augmented Generation",
+            authors: "Asai et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2310.11511",
+            github: "https://github.com/AkariAsai/self-rag",
+            huggingface: "",
+            bibtex: "Asai et al., 2024 — Self-RAG (ICLR 2024)"
+          }
+        ]
+      },
+      {
+        id: 63,
+        name: "HyDE",
+        cn: "假设文档嵌入",
+        desc_cn: "HyDE (Hypothetical Document Embeddings) 通过让LLM生成一个假设性答案文档，然后用这个假设文档去检索相关真实文档。这种反向思维弥合了查询与文档之间的语义鸿沟，特别适合查询意图模糊或表述偏离文档风格的情况。",
+        desc_en: "HyDE (Hypothetical Document Embeddings) has an LLM generate a hypothetical answer document, then uses it to retrieve relevant real documents. This reverse thinking bridges the semantic gap between queries and documents, especially when query intent is vague or表述 differs from document style.",
+        paper: "Gao et al., 2023 — Precise Zero-Shot Dense Retrieval without Contrastive Queries — arXiv:2212.02017",
+        arxiv: "https://arxiv.org/abs/2212.02017",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "HyDE",
+            metric: "NDCG@10",
+            ds: "BEIR",
+            v: "+8.2%",
+            n: "vs dense retrieval"
+          }
+        ],
+        papers: [
+          {
+            name: "HyDE",
+            title: "Precise Zero-Shot Dense Retrieval without Contrastive Queries",
+            authors: "Gao et al.",
+            year: "2023",
+            arxiv: "https://arxiv.org/abs/2212.02017",
+            github: "",
+            huggingface: "",
+            bibtex: "Gao et al., 2023 — HyDE (EMNLP 2023)"
+          }
+        ]
+      },
+      {
+        id: 64,
+        name: "FLARE",
+        cn: "前瞻主动检索",
+        desc_cn: "FLARE (Forward-Looking Active Retrieval Enhancement) 在生成过程中主动预测下一个句子，如果预测置信度低则触发检索。该方法让RAG系统能够主动在生成路径上选择性地获取外部知识，避免过早或不必要的检索。",
+        desc_en: "FLARE (Forward-Looking Active Retrieval Enhancement) proactively predicts the next sentence during generation, triggering retrieval if prediction confidence is low. This enables RAG systems to actively and selectively acquire external knowledge along the generation path, avoiding premature or unnecessary retrieval.",
+        paper: "Jin et al., 2024 — Active Retrieval Augmented Generation — arXiv:2305.06983",
+        arxiv: "https://arxiv.org/abs/2305.06983",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "FLARE",
+            metric: "Entity F1",
+            ds: "FLARE test",
+            v: "64.3%",
+            n: "+12% vs vanilla RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "FLARE",
+            title: "Active Retrieval Augmented Generation",
+            authors: "Jin et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2305.06983",
+            github: "",
+            huggingface: "",
+            bibtex: "Jin et al., 2024 — FLARE (EMNLP 2024)"
+          }
+        ]
+      },
+      {
+        id: 65,
+        name: "RAFT",
+        cn: "检索增强微调",
+        desc_cn: "RAFT (Retrieval Augmented Fine-Tuning) 是一种将RAG与微调结合的方法。模型在微调时学习区分相关文档和不相关文档（distractor documents），以及如何正确引用检索到的文档来回答问题，显著提升RAG在领域知识上的表现。",
+        desc_en: "RAFT (Retrieval Augmented Fine-Tuning) combines RAG with fine-tuning. During fine-tuning, models learn to distinguish relevant from irrelevant (distractor) documents and how to correctly cite retrieved documents to answer questions, significantly improving RAG performance on domain knowledge.",
+        paper: "Zhang et al., 2024 — RAFT: Reward Fine-Tuning of Aligned Language Models — arXiv:2310.06825",
+        arxiv: "https://arxiv.org/abs/2310.06825",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "RAFT",
+            metric: "Accuracy",
+            ds: "Domain QA",
+            v: "+18%",
+            n: "vs supervised fine-tune"
+          }
+        ],
+        papers: [
+          {
+            name: "RAFT",
+            title: "RAFT: Reward Fine-Tuning of Aligned Language Models",
+            authors: "Zhang et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2310.06825",
+            github: "",
+            huggingface: "",
+            bibtex: "Zhang et al., 2024 — RAFT (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 66,
+        name: "BM25",
+        cn: "BM25稀疏检索",
+        desc_cn: "BM25 (Best Matching 25) 是经典的基于词项频率的稀疏检索算法，由Robertson和Sparck Jones在1994年提出。核心是Okapi BM25公式，通过IDF、词项频率饱和度和文档长度归一化来评估文档相关性，至今仍是RAG系统中不可或缺的检索基线。",
+        desc_en: "BM25 (Best Matching 25) is the classic term-frequency-based sparse retrieval algorithm, proposed by Robertson and Sparck Jones in 1994. The core Okapi BM25 formula evaluates document relevance via IDF, TF saturation, and document length normalization. Still an indispensable retrieval baseline in RAG systems.",
+        paper: "Robertson and Jones, 1994 — Simple, Proven Approaches to Text Retrieval — arXiv:1104.2868",
+        arxiv: "https://arxiv.org/abs/1104.2868",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [11],
+        bench: [
+          {
+            m: "BM25",
+            metric: "Recall@100",
+            ds: "MS MARCO",
+            v: "85.3%",
+            n: "strong baseline"
+          }
+        ],
+        papers: [
+          {
+            name: "BM25",
+            title: "The Probabilistic Relevance Framework: BM25 and Beyond",
+            authors: "Robertson and Zaragoza",
+            year: "2009",
+            arxiv: "https://arxiv.org/abs/1104.2868",
+            github: "",
+            huggingface: "",
+            bibtex: "Robertson and Zaragoza, 2009 — BM25 (Now Publishers 2009)"
+          }
+        ]
+      },
+      {
+        id: 67,
+        name: "ColBERT",
+        cn: "ColBERT延迟交互检索",
+        desc_cn: "ColBERT (Contextualized Late Interactions over BERT) 通过对query和document分别编码后使用late interaction来计算细粒度相似度，兼顾双塔模型的速度优势和交叉编码器的精度优势。MaxSim操作符对每个token query embedding找最相似的document token。",
+        desc_en: "ColBERT (Contextualized Late Interactions over BERT) computes fine-grained similarity via late interaction after separate query/document encoding, combining bi-encoder speed with cross-encoder accuracy. MaxSim operator finds most similar document token for each query token embedding.",
+        paper: "Khattab and Zahabi, 2020 — ColBERT: Contextualized Late Interactions over BERT — arXiv:2004.09535",
+        arxiv: "https://arxiv.org/abs/2004.09535",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "ColBERT v2",
+            metric: "MRR@10",
+            ds: "MS MARCO",
+            v: "40.0",
+            n: "vs 38.7 bi-encoder"
+          }
+        ],
+        papers: [
+          {
+            name: "ColBERT",
+            title: "ColBERT: Contextualized Late Interactions over BERT",
+            authors: "Khattab and Zahabi",
+            year: "2020",
+            arxiv: "https://arxiv.org/abs/2004.09535",
+            github: "https://github.com/stanford-futuredata/ColBERT",
+            huggingface: "",
+            bibtex: "Khattab and Zahabi, 2020 — ColBERT (SIGIR 2020)"
+          }
+        ]
+      },
+      {
+        id: 68,
+        name: "Chain-of-Note RAG",
+        cn: "笔记链RAG",
+        desc_cn: "Chain-of-Note (CoN) 在RAG生成过程中为每个检索到的文档块编写简短的评估笔记，分析其与问题的相关性及可信度，帮助模型过滤噪声信息、避免过度依赖不可靠检索结果，提升最终答案的准确性和可解释性。",
+        desc_en: "Chain-of-Note (CoN) writes brief evaluation notes for each retrieved document chunk during RAG generation, analyzing relevance and credibility to the question. Helps filter noise, avoid over-reliance on unreliable retrieval results, improving final answer accuracy and interpretability.",
+        paper: "Yu et al., 2024 — Chain-of-Note: Enhancing Retrieval-Augmented LMs with Self-Evaluating Notes — arXiv:2311.09583",
+        arxiv: "https://arxiv.org/abs/2311.09583",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "CoN RAG",
+            metric: "Accuracy",
+            ds: "NQ",
+            v: "72.3%",
+            n: "+6.8% vs vanilla RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "Chain-of-Note RAG",
+            title: "Chain-of-Note: Enhancing Retrieval-Augmented Language Models with Self-Evaluating Notes",
+            authors: "Yu et al.",
+            year: "2024",
+            arxiv: "https://arxiv.org/abs/2311.09583",
+            github: "",
+            huggingface: "",
+            bibtex: "Yu et al., 2024 — Chain-of-Note RAG (EMNLP 2024)"
+          }
+        ]
+      },
+      {
+        id: 69,
+        name: "RAG-Fusion",
+        cn: "RAG融合",
+        desc_cn: "RAG-Fusion使用Reciprocal Rank Fusion (RRF) 融合多个检索查询的结果，产生更全面、排序更稳定的检索结果。结合query改写和RRF排名聚合，改善了单次查询的局限性和LLM对查询措辞的敏感性。",
+        desc_en: "RAG-Fusion uses Reciprocal Rank Fusion (RRF) to fuse results from multiple retrieval queries, producing more comprehensive and stably-ranked retrieval results. Combined with query rewriting and RRF rank aggregation, it improves on single-query limitations and LLM sensitivity to query phrasing.",
+        paper: "Raudaschl et al., 2024 — RAG-Fusion: A Survey of Retrieval-Augmented Generation Methods — arXiv",
+        arxiv: "",
+        badge: "🟢",
+        diff: "Beginner",
+        categories: [11],
+        bench: [
+          {
+            m: "RAG-Fusion",
+            metric: "Recall@20",
+            ds: "Multi-query RAG",
+            v: "+22%",
+            n: "vs single query"
+          }
+        ],
+        papers: [
+          {
+            name: "RAG-Fusion",
+            title: "RAG-Fusion: Towards Sub-Second RAG on Commodity Hardware",
+            authors: "Raudaschl et al.",
+            year: "2024",
+            arxiv: "",
+            github: "https://github.com/RAudelio/rag-fusion",
+            huggingface: "",
+            bibtex: "Raudaschl et al., 2024 — RAG-Fusion (arXiv 2024)"
+          }
+        ]
+      },
+      {
+        id: 70,
+        name: "Corrective RAG",
+        cn: "纠错型RAG",
+        desc_cn: "Corrective RAG (CRAG) 通过自我纠错机制提升检索质量：当检索结果不够准确或置信度不足时，触发额外检索或调用搜索引擎补充信息。适合对事实准确性要求高的场景如医疗、法律问答。",
+        desc_en: "Corrective RAG (CRAG) improves retrieval quality through self-correction: when retrieval results are insufficiently accurate or confidence is low, it triggers additional retrieval or web search to supplement information. Ideal for high factuality requirements like medical and legal QA.",
+        paper: "Yan et al., 2024 — Corrective RAG: A Survey on Error Detection and Correction in RAG — arXiv",
+        arxiv: "",
+        badge: "🟡",
+        diff: "Intermediate",
+        categories: [11],
+        bench: [
+          {
+            m: "CRAG",
+            metric: "Accuracy",
+            ds: "MedQA",
+            v: "68.5%",
+            n: "+11.2% vs standard RAG"
+          }
+        ],
+        papers: [
+          {
+            name: "Corrective RAG",
+            title: "Corrective Retrieval Augmented Generation",
+            authors: "Yan et al.",
+            year: "2024",
+            arxiv: "",
+            github: "",
+            huggingface: "",
+            bibtex: "Yan et al., 2024 — Corrective RAG (arXiv 2024)"
+          }
+        ]
       }
     ],
     benches: {
