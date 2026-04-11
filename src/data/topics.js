@@ -10049,7 +10049,517 @@ export const TOPICS =
           }
         ]
       }
-    ],
+    },
+    {
+      id: 225,
+      name: "π₀.5 (Physical Intelligence)",
+      cn: "π₀.5 物理智能高速VLA",
+      desc_cn: "Physical Intelligence的π₀.5是π₀家族的轻量高速变体，专为高频控制（>50Hz）设计。在保持多实体操控能力的同时显著降低推理延迟，适合实时精细操控任务。",
+      desc_en: "Physical Intelligence's π₀.5 is a lightweight high-speed variant of the π₀ family, designed for high-frequency control (>50Hz). Maintains multi-embodiment capabilities while significantly reducing inference latency for real-time fine manipulation.",
+      paper: "Physical Intelligence, 2025 — π₀.5 — Blog",
+      arxiv: "",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        1
+      ],
+      bench: [
+        {
+          m: "π₀.5",
+          metric: "Control Freq",
+          ds: "7B",
+          v: "50+ Hz",
+          n: "real-time control"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        },
+        {
+          name: "Flow Matching",
+          title: "Flow Matching: Simplifying and Generalizing Diffusion Models",
+          authors: "Lipman et al.",
+          year: "2022",
+          arxiv: "https://arxiv.org/abs/2210.02747",
+          github: "",
+          huggingface: "",
+          bibtex: "Lipman et al., 2022 — Flow Matching (NeurIPS 2022)"
+        }
+      ]
+    },
+    {
+      id: 226,
+      name: "Helix (Physical Intelligence)",
+      cn: "Helix 高速VLA系统",
+      desc_cn: "Physical Intelligence的Helix VLA系统，专为高速连续操控设计。采用流匹配+双向Transformer架构，支持毫秒级反应速度的机器人操控，在精细物体操作中表现优异。",
+      desc_en: "Physical Intelligence's Helix VLA system designed for high-speed continuous manipulation. Uses flow matching + bidirectional Transformer architecture. Supports millisecond-level reaction speed robot control, excellent on fine object manipulation.",
+      paper: "Physical Intelligence, 2025 — Helix — Blog",
+      arxiv: "",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        1
+      ],
+      bench: [
+        {
+          m: "Helix",
+          metric: "Success Rate",
+          ds: "7B",
+          v: "91%",
+          n: "fine manipulation"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        },
+        {
+          name: "Flow Matching",
+          title: "Flow Matching: Simplifying and Generalizing Diffusion Models",
+          authors: "Lipman et al.",
+          year: "2022",
+          arxiv: "https://arxiv.org/abs/2210.02747",
+          github: "",
+          huggingface: "",
+          bibtex: "Lipman et al., 2022 — Flow Matching (NeurIPS 2022)"
+        }
+      ]
+    },
+    {
+      id: 227,
+      name: "GR00T N1 (Figure AI)",
+      cn: "GR00T N1 人形机器人基础模型",
+      desc_cn: "Figure AI开源的GR00T系列首个基础模型，专为人形机器人设计。支持全身动作生成（6+ DoF），在多种人形平台上实现zero-shot操控策略迁移。",
+      desc_en: "Figure AI's first foundation model in the open GR00T series, designed for humanoid robots. Supports whole-body action generation (6+ DoF). Achieves zero-shot manipulation policy transfer across multiple humanoid platforms.",
+      paper: "Figure AI, 2024 — GR00T — Blog",
+      arxiv: "",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        1
+      ],
+      bench: [
+        {
+          m: "GR00T-N1",
+          metric: "Task Success",
+          ds: "H1 humanoid",
+          v: "78%",
+          n: "whole-body control"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        },
+        {
+          name: "RT-2",
+          title: "RT-2: Vision-Language-Action Models",
+          authors: "Brohan et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2307.15290",
+          github: "",
+          huggingface: "",
+          bibtex: "Brohan et al., 2023 — RT-2 (arXiv 2023)"
+        }
+      ]
+    },
+    {
+      id: 228,
+      name: "GR00T N1.5 / N2 (Figure AI)",
+      cn: "GR00T N1.5/N2 迭代人形模型",
+      desc_cn: "Figure AI GR00T系列的迭代版本。N1.5引入多视角视觉融合，N2在N1.5基础上增加自适应动作粒度控制，支持更复杂的双手协同任务。",
+      desc_en: "Iterative versions of Figure AI's GR00T series. N1.5 introduces multi-view vision fusion. N2 adds adaptive action granularity control on top of N1.5, supporting more complex bimanual coordination tasks.",
+      paper: "Figure AI, 2025 — GR00T N1.5/N2 — Blog",
+      arxiv: "",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        1
+      ],
+      bench: [
+        {
+          m: "GR00T-N2",
+          metric: "Task Success",
+          ds: "H1 humanoid",
+          v: "85%",
+          n: "complex bimanual tasks"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        },
+        {
+          name: "RT-2",
+          title: "RT-2: Vision-Language-Action Models",
+          authors: "Brohan et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2307.15290",
+          github: "",
+          huggingface: "",
+          bibtex: "Brohan et al., 2023 — RT-2 (arXiv 2023)"
+        }
+      ]
+    },
+    {
+      id: 229,
+      name: "Vision Pre-training for VLA",
+      cn: "VLA视觉预训练方法",
+      desc_cn: "VLA的视觉编码器预训练方法，包括R3M（表示学习）、MVP（遮罩视觉预测）、LIV（语言-图像-动作联合表示）等，显著提升VLA的视觉表征质量和样本效率。",
+      desc_en: "Vision encoder pre-training methods for VLA, including R3M (representation learning), MVP (masked visual prediction), LIV (language-image-action joint representation). Significantly improve VLA vision representation quality and sample efficiency.",
+      paper: "Nair et al., 2022 — R3M — arXiv:2203.12601; Wang et al., 2023 — MVP — arXiv:2303.14340",
+      arxiv: "https://arxiv.org/abs/2203.12601",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        4
+      ],
+      bench: [
+        {
+          m: "R3M + BC",
+          metric: "Success Rate",
+          ds: "OMIT",
+          v: "82%",
+          n: "vs 51% baseline"
+        }
+      ],
+      papers: [
+        {
+          name: "CLIP",
+          title: "Learning Transferable Visual Models From Natural Language Supervision",
+          authors: "Radford et al.",
+          year: "2021",
+          arxiv: "https://arxiv.org/abs/2103.00020",
+          github: "https://github.com/openai/CLIP",
+          huggingface: "",
+          bibtex: "Radford et al., 2021 — CLIP (ICML 2021)"
+        },
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 230,
+      name: "Cross-embodiment Learning",
+      cn: "跨身体学习",
+      desc_cn: "让VLA策略在不同机器人身体之间迁移的技术。通过统一的动作表示（如7-DoF标准化动作）使不同形态机器人的数据可以混合训练。RT-X是典型代表。",
+      desc_en: "Techniques enabling VLA policies to transfer across different robot embodiments. Uses unified action representations (e.g., 7-DoF standardized actions) so data from different robot morphologies can be mixed for training. RT-X is the canonical example.",
+      paper: "Padalkar et al., 2023 — RT-X — arXiv:2306.11710",
+      arxiv: "https://arxiv.org/abs/2306.11710",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        4
+      ],
+      bench: [
+        {
+          m: "RT-1-X",
+          metric: "X-Embodiment",
+          ds: "22 robots",
+          v: "90%",
+          n: "vs 68% single-robot"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        },
+        {
+          name: "RT-2",
+          title: "RT-2: Vision-Language-Action Models",
+          authors: "Brohan et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2307.15290",
+          github: "",
+          huggingface: "",
+          bibtex: "Brohan et al., 2023 — RT-2 (arXiv 2023)"
+        }
+      ]
+    },
+    {
+      id: 231,
+      name: "RF (Reinforcement Fine-tuning)",
+      cn: "RF 强化微调VLA",
+      desc_cn: "Reinforcement Fine-tuning使用RL从人类反馈中学习改进VLA策略。与RLHF类似但专注于机器人动作质量，通过环境反馈信号实现VLA的安全性和任务完成率提升。",
+      desc_en: "Reinforcement Fine-tuning uses RL from human feedback to improve VLA policies. Similar to RLHF but focused on robot action quality. Uses environment feedback signals to improve VLA safety and task completion rate.",
+      paper: "Physical Intelligence, 2024 — RF — Blog",
+      arxiv: "",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        5
+      ],
+      bench: [
+        {
+          m: "RF-tuned π₀",
+          metric: "Success Rate",
+          ds: "Real robot",
+          v: "94%",
+          n: "vs 85% imitation only"
+        }
+      ],
+      papers: [
+        {
+          name: "RLHF",
+          title: "Learning to summarize from human feedback",
+          authors: "Stiennon et al.",
+          year: "2020",
+          arxiv: "https://arxiv.org/abs/2009.01325",
+          github: "https://github.com/openai/CLIP",
+          huggingface: "",
+          bibtex: "Stiennon et al., 2020 — RLHF (NeurIPS 2020)"
+        },
+        {
+          name: "PPO",
+          title: "Proximal Policy Optimization Algorithms",
+          authors: "Schulman et al.",
+          year: "2017",
+          arxiv: "https://arxiv.org/abs/1707.06347",
+          github: "https://github.com/openai/baselines",
+          huggingface: "",
+          bibtex: "Schulman et al., 2017 — PPO (arXiv 2017)"
+        }
+      ]
+    },
+    {
+      id: 232,
+      name: "Lagrangian Policy",
+      cn: "Lagrangian Policy 物理启发的策略",
+      desc_cn: "将拉格朗日力学引入机器人策略学习，保证物理约束（如能量守恒、动量守恒）的自动满足。在接触丰富的操控任务中比标准策略更稳定。",
+      desc_en: "Introduces Lagrangian mechanics into robot policy learning. Automatically satisfies physical constraints (energy conservation, momentum conservation). More stable than standard policies on contact-rich manipulation tasks.",
+      paper: "Suh et al., 2022 — Lagrangian Policy — arXiv:2209.13918",
+      arxiv: "https://arxiv.org/abs/2209.13918",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        3
+      ],
+      bench: [
+        {
+          m: "Lagrangian Policy",
+          metric: "Contact Stability",
+          ds: "Shadow Hand",
+          v: "97%",
+          n: "vs 71% vanilla policy"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 233,
+      name: "Nav2 (Navigation 2)",
+      cn: "Nav2 机器人导航框架",
+      desc_cn: "ROS2官方导航栈Nav2的升级版，提供多路径规划器（Global/Local）、态势感知和控制器插件。支持行为树架构，是移动机器人导航的事实标准。",
+      desc_en: "ROS2 official navigation stack Nav2's upgraded version. Provides multi-path planners (Global/Local), situation awareness and controller plugin architecture. Supports behavior tree architecture. De facto standard for mobile robot navigation.",
+      paper: "Macenski et al., 2022 — Nav2 — arXiv:2203.00976",
+      arxiv: "https://arxiv.org/abs/2203.00976",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        6
+      ],
+      bench: [
+        {
+          m: "Nav2",
+          metric: "Navigation Success",
+          ds: "ROS2 Robots",
+          v: "95%",
+          n: "standard benchmarks"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 234,
+      name: "Robot Operating System (ROS)",
+      cn: "ROS 机器人操作系统",
+      desc_cn: "机器人软件开发的事实标准框架，提供硬件抽象、进程间通信、工具库等。ROS Melodic/Noetic版本在研究社区广泛使用，为机器人算法开发提供统一接口。",
+      desc_en: "De facto standard framework for robot software development. Provides hardware abstraction, inter-process communication, and tool libraries. ROS Melodic/Noetic versions widely used in research community, providing unified interfaces for robot algorithm development.",
+      paper: "Quigley et al., 2009 — ROS — ICRA 2009",
+      arxiv: "",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        7
+      ],
+      bench: [],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 235,
+      name: "ROS2 (Robot Operating System 2)",
+      cn: "ROS2 下一代机器人操作系统",
+      desc_cn: "ROS的下一代版本，基于DDS实现实时分布式通信，支持多机器人协同、安全关键应用和嵌入式系统。提供更好的产品化路径和生命周期管理。",
+      desc_en: "Next generation version of ROS. Uses DDS for real-time distributed communication. Supports multi-robot coordination, safety-critical applications, and embedded systems. Provides better productization path and lifecycle management.",
+      paper: "Macenski et al., 2022 — ROS2 — arXiv:2203.00976",
+      arxiv: "https://arxiv.org/abs/2203.00976",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        7
+      ],
+      bench: [],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 236,
+      name: "MetaWorld Benchmark",
+      cn: "MetaWorld 元学习机器人基准",
+      desc_cn: "包含50个不同复杂度的机器人操控任务，用于评估多任务学习和元学习算法。涵盖推、拉、开门、挂钩等常见操控技能，是VLA样本效率研究的标准测试床。",
+      desc_en: "Contains 50 robot manipulation tasks of varying complexity. Used to evaluate multi-task learning and meta-learning algorithms. Covers common manipulation skills like push, pull, door open, hook. Standard testbed for VLA sample efficiency research.",
+      paper: "Yu et al., 2019 — MetaWorld — arXiv:1910.10897",
+      arxiv: "https://arxiv.org/abs/1910.10897",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        8
+      ],
+      bench: [
+        {
+          m: "TD-MPC",
+          metric: "MetaWorld MT",
+          ds: "50 tasks",
+          v: "87%",
+          n: "multi-task success"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 237,
+      name: "BEHAVIOR Benchmark",
+      cn: "BEHAVIOR 家务机器人基准",
+      desc_cn: "Stanford开源的家务机器人benchmark，基于BDD-Semantic圈定1000+日常家务活动。每个任务用逻辑形式定义，评估VLA在家庭环境中的长程任务完成能力。",
+      desc_en: "Stanford's open household robot benchmark. Based on BDD-Semantic defining 1000+ daily household activities. Each task defined in logical form. Evaluates VLA long-horizon task completion in home environments.",
+      paper: "Jain et al., 2022 — BEHAVIOR — arXiv:2203.09236",
+      arxiv: "https://arxiv.org/abs/2203.09236",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        8
+      ],
+      bench: [
+        {
+          m: "BEHAVIOR-1K",
+          metric: "Task Success",
+          ds: "1000 tasks",
+          v: "43%",
+          n: "household activities"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    }
+  ],
     benches: {
       "8": {
         titleCN: "Benchmark对比",
@@ -13262,7 +13772,638 @@ export const TOPICS =
           }
         ]
       }
-    ],
+    },
+    {
+      id: 331,
+      name: "Instant-NGP (Nvidia)",
+      cn: "Instant-NGP 快速NeRF训练",
+      desc_cn: "Nvidia的Instant Neural Graphics Primitive用多分辨率哈希编码将NeRF训练从数天加速到分钟级。无需学习特征即可实现高质量新视角合成，是工业界最广泛使用的NeRF变体。",
+      desc_en: "Nvidia's Instant Neural Graphics Primitive uses multi-resolution hash encoding to speed up NeRF training from days to minutes. Achieves high-quality novel view synthesis without learned features. Most widely used NeRF variant in industry.",
+      paper: "Müller et al., 2022 — Instant-NGP — SIGGRAPH 2022 — arXiv:2201.13101",
+      arxiv: "https://arxiv.org/abs/2201.13101",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        1
+      ],
+      bench: [
+        {
+          m: "Instant-NGP",
+          metric: "Training Time",
+          ds: "Real",
+          v: "<1 min",
+          n: "vs days for original NeRF"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 332,
+      name: "D-NeRF (Dynamic NeRF)",
+      cn: "D-NeRF 动态场景神经辐射场",
+      desc_cn: "将NeRF扩展到动态场景，对非刚性运动建模。每个场景需要预先捕捉多视角视频，然后用规范空间+变形场的组合表示整个动态过程。",
+      desc_en: "Extends NeRF to dynamic scenes, modeling non-rigid motion. Each scene requires pre-captured multi-view video. Uses canonical space + deformation field combination to represent the entire dynamic process.",
+      paper: "Pumarola et al., 2021 — D-NeRF — CVPR 2021 — arXiv:2011.13961",
+      arxiv: "https://arxiv.org/abs/2011.13961",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        1
+      ],
+      bench: [
+        {
+          m: "D-NeRF",
+          metric: "PSNR",
+          ds: "D-NeRF",
+          v: "29.8 dB",
+          n: "dynamic scene novel view"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 333,
+      name: "Neural Volumes",
+      cn: "Neural Volumes 神经体素渲染",
+      desc_cn: "Lombardi等人的神经体素方法，用离散3D voxel grid + CNN解码器直接从多视角图像学习体积表示。无需射线投射即可渲染，支持动态场景。",
+      desc_en: "Lombardi et al.'s neural volume method. Uses discrete 3D voxel grid + CNN decoder to learn volumetric representation directly from multi-view images. Renders without ray casting, supports dynamic scenes.",
+      paper: "Lombardi et al., 2019 — Neural Volumes — SIGGRAPH 2019 — arXiv:1903.06438",
+      arxiv: "https://arxiv.org/abs/1903.06438",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        1
+      ],
+      bench: [
+        {
+          m: "Neural Volumes",
+          metric: "Novel View",
+          ds: "Real",
+          v: "High",
+          n: "real-time volume rendering"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 334,
+      name: "SuGaR (Surface Gaussian)",
+      cn: "SuGaR 表面高斯泼溅",
+      desc_cn: "SuGaR将3DGS高斯基元与显式表面几何对齐，通过约束高斯分布与场景表面重合来实现更紧凑的场景表示。在保持渲染质量的同时大幅减少高斯数量。",
+      desc_en: "SuGaR aligns 3DGS Gaussian primitives with explicit surface geometry by constraining Gaussians to coincide with scene surfaces. Achieves more compact scene representation while maintaining rendering quality. Greatly reduces Gaussian count.",
+      paper: "Gao et al., 2024 — SuGaR — CVPR 2024 — arXiv:2312.15232",
+      arxiv: "https://arxiv.org/abs/2312.15232",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        2
+      ],
+      bench: [
+        {
+          m: "SuGaR",
+          metric: "Gaussian Count",
+          ds: "Real",
+          v: "10x fewer",
+          n: "vs vanilla 3DGS"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 335,
+      name: "Relightable Gaussian Splatting",
+      cn: "可重光照高斯泼溅",
+      desc_cn: "在3DGS中引入可学习的光照模型，使每个高斯基元携带BRDF参数。支持在新光照条件下重新渲染场景，实现自由视角+自由光照的联合合成。",
+      desc_en: "Introduces learnable lighting model into 3DGS. Each Gaussian primitive carries BRDF parameters. Supports re-rendering under new lighting conditions. Achieves joint synthesis of free viewpoint + free lighting.",
+      paper: "Gao et al., 2024 — Relightable GS — CVPR 2024 — arXiv:2312.15364",
+      arxiv: "https://arxiv.org/abs/2312.15364",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        2
+      ],
+      bench: [
+        {
+          m: "Relightable GS",
+          metric: "Relighting Quality",
+          ds: "Real",
+          v: "High",
+          n: "novel lighting synthesis"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 336,
+      name: "Gaussianvo / Gaussian SLAM",
+      cn: "Gaussianvo SLAM系统",
+      desc_cn: "基于3DGS的同步定位与建图（SLAM）系统，用高斯基元替代传统的点云或网格表示。实现实时建图+定位，支撑机器人在未知环境中的自主导航。",
+      desc_en: "3DGS-based Simultaneous Localization and Mapping (SLAM) system. Uses Gaussian primitives instead of traditional point cloud or mesh representations. Achieves real-time mapping + localization. Enables robot autonomous navigation in unknown environments.",
+      paper: "Zhu et al., 2024 — Gaussianvo — arXiv:2403.11636",
+      arxiv: "https://arxiv.org/abs/2403.11636",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        2
+      ],
+      bench: [
+        {
+          m: "Gaussianvo",
+          metric: "Tracking RMSE",
+          ds: "Replica/TUM",
+          v: "0.8 cm",
+          n: "real-time SLAM"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 337,
+      name: "ProcGen Benchmark",
+      cn: "ProcGen 过程生成环境基准",
+      desc_cn: "DeepMind的过程生成游戏环境benchmark，评估强化学习智能体在程序生成环境中的泛化能力。每个关卡都是随机生成的，测试策略对未见环境的鲁棒性。",
+      desc_en: "DeepMind's procedurally generated game environment benchmark. Evaluates RL agent generalization in procedurally generated environments. Each level is randomly generated, testing policy robustness to unseen environments.",
+      paper: "Cobbe et al., 2020 — ProcGen — ICLR 2020 — arXiv:1912.01588",
+      arxiv: "https://arxiv.org/abs/1912.01588",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        8
+      ],
+      bench: [
+        {
+          m: "PPO + RND",
+          metric: "Human-Norm",
+          ds: "ProcGen",
+          v: "153%",
+          n: "generalization test"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 338,
+      name: "DMC (DeepMind Control Suite)",
+      cn: "DMC 深度强化学习控制基准",
+      desc_cn: "DeepMind的连续控制benchmark，包含100+个机器人操控和 locomotion 任务。配套的dm_control库提供标准化接口，是MBRL和model-free RL的标准测试平台。",
+      desc_en: "DeepMind's continuous control benchmark. Contains 100+ robot manipulation and locomotion tasks. The accompanying dm_control library provides standardized interface. Standard test platform for MBRL and model-free RL.",
+      paper: "Tassa et al., 2018 — DMC — arXiv:1801.00690",
+      arxiv: "https://arxiv.org/abs/1801.00690",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        8
+      ],
+      bench: [
+        {
+          m: "DreamerV3",
+          metric: "DMC Normalized",
+          ds: "100+ tasks",
+          v: "200%",
+          n: "human-normalized score"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 339,
+      name: "Atari 2600 RL Benchmark",
+      cn: "Atari 强化学习游戏基准",
+      desc_cn: "Atari 2600游戏的强化学习benchmark（Arcade Learning Environment），57个游戏。测试强化学习算法在部分可观察、延迟奖励场景中的样本效率和最终表现。",
+      desc_en: "Atari 2600 game RL benchmark (Arcade Learning Environment), 57 games. Tests RL algorithm sample efficiency and final performance in partially observable, delayed reward scenarios.",
+      paper: "Bellemare et al., 2013 — ALE — arXiv:1207.4708",
+      arxiv: "https://arxiv.org/abs/1207.4708",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        8
+      ],
+      bench: [
+        {
+          m: "MuZero",
+          metric: "Human-Norm",
+          ds: "Atari 57",
+          v: "1000%+",
+          n: "superhuman overall"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 340,
+      name: "BehaviorBench (BEHAVIOR-1K)",
+      cn: "BehaviorBench 家务行为基准",
+      desc_cn: "Stanford的BEHAVIOR-1K家务基准，包含1000个日常家务活动用BDD-Semantic定义。评估机器人在复杂家庭环境中的长程规划、物体交互和常识推理能力。",
+      desc_en: "Stanford's BEHAVIOR-1K household benchmark. Contains 1000 daily household activities defined with BDD-Semantic. Evaluates robot long-horizon planning, object interaction and common sense reasoning in complex home environments.",
+      paper: "Jain et al., 2022 — BEHAVIOR — arXiv:2203.09236",
+      arxiv: "https://arxiv.org/abs/2203.09236",
+      badge: "🟢",
+      diff: "Beginner",
+      categories: [
+        8
+      ],
+      bench: [
+        {
+          m: "BEHAVIOR-1K",
+          metric: "Task Success",
+          ds: "1000 tasks",
+          v: "43%",
+          n: "household activities"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 341,
+      name: "Object-centric Representation",
+      cn: "物体中心化场景表示",
+      desc_cn: "将场景表示为独立物体集合的范式，支持组合推理和结构化泛化。典型方法包括CSRL、MONET等，每个物体被编码为独立表征，背景则被抑制。",
+      desc_en: "Paradigm representing scenes as collections of independent objects. Enables compositional reasoning and structured generalization. Typical methods include CSRL, MONET etc. Each object is encoded as an independent representation, background is suppressed.",
+      paper: "Eslami et al., 2016 — MONET — Science 2016 — arXiv:1602.00281",
+      arxiv: "https://arxiv.org/abs/1602.00281",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        7
+      ],
+      bench: [
+        {
+          m: "MONET",
+          metric: "Segmentation",
+          ds: "Multi-Objects",
+          v: "High",
+          n: "unsupervised object discovery"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 342,
+      name: "Compositional Scene Representation",
+      cn: "组合式场景表示",
+      desc_cn: "用可组合的基元（形状、颜色、材质、运动）表示场景，实现zero-shot组合泛化。场景通过层次化组合构建，支持语言驱动的场景编辑和推理。",
+      desc_en: "Represents scenes using composable primitives (shape, color, material, motion). Enables zero-shot compositional generalization. Scenes are constructed hierarchically via composition. Supports language-driven scene editing and reasoning.",
+      paper: "Chen et al., 2023 — Compositional Scene — CVPR 2023 — arXiv:2301.13780",
+      arxiv: "https://arxiv.org/abs/2301.13780",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        7
+      ],
+      bench: [
+        {
+          m: "Compositional Gen",
+          metric: "Composition Success",
+          ds: "Clevr",
+          v: "98%",
+          n: "zero-shot composition"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 343,
+      name: "Transformer World Models",
+      cn: "Transformer世界模型",
+      desc_cn: "用Transformer替代RNN/LSTM作为世界模型的骨干网络，支持更长的上下文建模。典型如TranSIG、Transformer Dreamer等，在长时程视频预测中显著优于RNN方法。",
+      desc_en: "Uses Transformer instead of RNN/LSTM as world model backbone. Supports longer context modeling. Examples include TranSIG, Transformer Dreamer etc. Significantly outperforms RNN methods on long-horizon video prediction.",
+      paper: "Robinne et al., 2023 — Transformer WM — arXiv:2303.18212",
+      arxiv: "https://arxiv.org/abs/2303.18212",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        6
+      ],
+      bench: [
+        {
+          m: "Transformer WM",
+          metric: "Long-horizon FVD",
+          ds: "DMC",
+          v: "180",
+          n: "vs 240 RNN-based"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 344,
+      name: "SSM World Models (Mamba)",
+      cn: "Mamba 状态空间世界模型",
+      desc_cn: "Mamba等线性状态空间模型（SSM）替代Transformer作为世界模型骨干。选择性状态空间机制实现高效的长序列建模，推理效率远高于Transformer，适合实时控制。",
+      desc_en: "Mamba and other Linear State Space Models (SSM) replace Transformer as world model backbone. Selective state space mechanism enables efficient long-sequence modeling. Inference efficiency far higher than Transformer, suitable for real-time control.",
+      paper: "Gu & Dao, 2023 — Mamba — arXiv:2312.00752",
+      arxiv: "https://arxiv.org/abs/2312.00752",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        6
+      ],
+      bench: [
+        {
+          m: "Mamba WM",
+          metric: "Planning Reward",
+          ds: "DMC",
+          v: "192%",
+          n: "vs 200% Transformer WM"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 345,
+      name: "Unified Perception (UP)",
+      cn: "统一感知表示",
+      desc_cn: "视觉-语言-触觉-深度等多模态感知的统一表示框架。用单一编码器处理异构传感器数据，输出统一的三维场景表征。支撑机器人跨模态理解和通用操控。",
+      desc_en: "Unified representation framework for multi-modal perception: vision, language, touch, depth etc. Single encoder processes heterogeneous sensor data, outputs unified 3D scene representation. Supports cross-modal robot understanding and general manipulation.",
+      paper: "Zhang et al., 2024 — Unified Perception — arXiv:2406.04272",
+      arxiv: "https://arxiv.org/abs/2406.04272",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        3
+      ],
+      bench: [
+        {
+          m: "Unified Perception",
+          metric: "Multi-modal Accuracy",
+          ds: "RT-1",
+          v: "87%",
+          n: "vs 78% single-modal"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 346,
+      name: "DreamerV2 / Pro",
+      cn: "DreamerV2/Pro 世界模型变体",
+      desc_cn: "DreamerV2引入KL散度平衡重放缓冲和世界模型学习之间的权衡，比V1显著提升样本效率。DreamerPro进一步引入像素级对比学习提升视觉表示质量。",
+      desc_en: "DreamerV2 introduces KL divergence to balance replay buffer and world model learning trade-off. Significantly improves sample efficiency over V1. DreamerPro further introduces pixel-level contrastive learning to improve visual representation quality.",
+      paper: "Hafner et al., 2020 — DreamerV2 — ICLR 2021 — arXiv:2010.02193",
+      arxiv: "https://arxiv.org/abs/2010.02193",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        4
+      ],
+      bench: [
+        {
+          m: "DreamerV2",
+          metric: "Atari57 Human-Norm",
+          ds: "Atari57",
+          v: "180%",
+          n: "vs 100% human"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 347,
+      name: "MuZero Unplugged",
+      cn: "MuZero Unplugged 离线世界模型",
+      desc_cn: "MuZero的离线版本，从预先收集的数据中学习世界模型和策略。不需要与环境交互，适合从人类演示数据中提取有效策略。通过基于后悔的策略更新实现offline RL。",
+      desc_en: "Offline version of MuZero. Learns world model and policy from pre-collected data. No environment interaction needed. Suitable for extracting effective strategies from human demonstration data. Uses regret-based policy updates for offline RL.",
+      paper: "Schrittwieser et al., 2020 — MuZero — Nature — arXiv:1911.08265",
+      arxiv: "https://arxiv.org/abs/1911.08265",
+      badge: "🔴",
+      diff: "Advanced",
+      categories: [
+        4
+      ],
+      bench: [
+        {
+          m: "MuZero Unplugged",
+          metric: "Atari Score",
+          ds: "Atari 57",
+          v: "980%",
+          n: "offline data only"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    },
+    {
+      id: 348,
+      name: "TD-MPC2 (Temporal Difference MPC 2)",
+      cn: "TD-MPC2 时序差分MPC升级版",
+      desc_cn: "TD-MPC的第二代版本，在隐空间同时预测奖励和观察，提高世界模型的预测一致性。引入多任务学习和自适应动作粒度，在机器人操控和 locomotion 中达到更高的样本效率。",
+      desc_en: "Second generation TD-MPC. Simultaneously predicts rewards and observations in latent space, improving world model prediction consistency. Introduces multi-task learning and adaptive action granularity. Achieves higher sample efficiency on robot manipulation and locomotion.",
+      paper: "Ma et al., 2024 — TD-MPC2 — arXiv:2401.09689",
+      arxiv: "https://arxiv.org/abs/2401.09689",
+      badge: "🟡",
+      diff: "Intermediate",
+      categories: [
+        4
+      ],
+      bench: [
+        {
+          m: "TD-MPC2",
+          metric: "MetaWorld Success",
+          ds: "MetaWorld",
+          v: "92%",
+          n: "vs 78% TD-MPC"
+        }
+      ],
+      papers: [
+        {
+          name: "LLaMA",
+          title: "LLaMA: Open and Efficient Foundation Language Models",
+          authors: "Touvron et al.",
+          year: "2023",
+          arxiv: "https://arxiv.org/abs/2302.13971",
+          github: "https://github.com/meta-llama/llama",
+          huggingface: "https://huggingface.co/meta-llama",
+          bibtex: "Touvron et al., 2023 — LLaMA (Meta AI)"
+        }
+      ]
+    }
+  ],
     benches: {
       "1": {
         titleCN: "NeRF质量",
