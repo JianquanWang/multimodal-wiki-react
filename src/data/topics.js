@@ -9681,8 +9681,8 @@ export const TOPICS =
         cn: "π₀ 物理智能VLA",
         desc_cn: "Physical Intelligence的VLA模型，用flow matching训练生成式机器人策略。双向Transformer+action chunks实现流畅的连续动作生成。",
         desc_en: "Physical Intelligence's VLA model. Uses flow matching to train generative robot policies. Bidirectional Transformer + action chunks for smooth continuous action generation.",
-        paper: "Ahn et al., 2024 — π₀ — Physical Intelligence",
-        arxiv: "",
+        paper: "Ahn et al., 2024 — π₀ — Physical Intelligence — https://www.pi.website/blog/pi0",
+        arxiv: "https://www.pi.website/blog/pi0",
         badge: "🔴",
         diff: "Advanced",
         categories: [
@@ -11607,8 +11607,8 @@ export const TOPICS =
       cn: "π₀.5 物理智能高速VLA",
       desc_cn: "Physical Intelligence的π₀.5是π₀家族的轻量高速变体，专为高频控制（>50Hz）设计。在保持多实体操控能力的同时显著降低推理延迟，适合实时精细操控任务。",
       desc_en: "Physical Intelligence's π₀.5 is a lightweight high-speed variant of the π₀ family, designed for high-frequency control (>50Hz). Maintains multi-embodiment capabilities while significantly reducing inference latency for real-time fine manipulation.",
-      paper: "Physical Intelligence, 2025 — π₀.5 — Blog",
-      arxiv: "",
+        paper: "Physical Intelligence, 2025 — π₀.5 — https://www.pi.website/blog/pi05",
+        arxiv: "https://www.pi.website/blog/pi05",
       badge: "🔴",
       diff: "Advanced",
       categories: [
@@ -11652,8 +11652,8 @@ export const TOPICS =
       cn: "Helix 高速VLA系统",
       desc_cn: "Physical Intelligence的Helix VLA系统，专为高速连续操控设计。采用流匹配+双向Transformer架构，支持毫秒级反应速度的机器人操控，在精细物体操作中表现优异。",
       desc_en: "Physical Intelligence's Helix VLA system designed for high-speed continuous manipulation. Uses flow matching + bidirectional Transformer architecture. Supports millisecond-level reaction speed robot control, excellent on fine object manipulation.",
-      paper: "Physical Intelligence, 2025 — Helix — Blog",
-      arxiv: "",
+        paper: "Physical Intelligence, 2025 — Helix — https://www.pi.website/blog/partner",
+        arxiv: "https://www.pi.website/blog/partner",
       badge: "🔴",
       diff: "Advanced",
       categories: [
